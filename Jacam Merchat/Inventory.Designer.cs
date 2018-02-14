@@ -30,6 +30,12 @@
         {
             this.tabPage = new System.Windows.Forms.TabControl();
             this.tb1 = new System.Windows.Forms.TabPage();
+            this.lblId = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblDes = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnAddPrice = new System.Windows.Forms.Button();
             this.dgvPro = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tb2 = new System.Windows.Forms.TabPage();
@@ -38,12 +44,6 @@
             this.tb3 = new System.Windows.Forms.TabPage();
             this.dgvSO = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAddPrice = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblDes = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.lblId = new System.Windows.Forms.Label();
             this.tabPage.SuspendLayout();
             this.tb1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPro)).BeginInit();
@@ -84,6 +84,59 @@
             this.tb1.TabIndex = 0;
             this.tb1.Text = "Stocks";
             this.tb1.UseVisualStyleBackColor = true;
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(166, 3);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(42, 21);
+            this.lblId.TabIndex = 7;
+            this.lblId.Text = "N/A";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(580, 18);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(247, 27);
+            this.txtPrice.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(523, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 21);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Price:";
+            // 
+            // lblDes
+            // 
+            this.lblDes.AutoSize = true;
+            this.lblDes.Location = new System.Drawing.Point(113, 24);
+            this.lblDes.Name = "lblDes";
+            this.lblDes.Size = new System.Drawing.Size(171, 21);
+            this.lblDes.TabIndex = 4;
+            this.lblDes.Text = "No Product Selected";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 21);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Description:";
+            // 
+            // btnAddPrice
+            // 
+            this.btnAddPrice.Location = new System.Drawing.Point(833, 18);
+            this.btnAddPrice.Name = "btnAddPrice";
+            this.btnAddPrice.Size = new System.Drawing.Size(113, 27);
+            this.btnAddPrice.TabIndex = 2;
+            this.btnAddPrice.Text = "Add Price";
+            this.btnAddPrice.UseVisualStyleBackColor = true;
+            this.btnAddPrice.Click += new System.EventHandler(this.btnAddPrice_Click);
             // 
             // dgvPro
             // 
@@ -185,59 +238,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Stock Out History";
             // 
-            // btnAddPrice
-            // 
-            this.btnAddPrice.Location = new System.Drawing.Point(833, 18);
-            this.btnAddPrice.Name = "btnAddPrice";
-            this.btnAddPrice.Size = new System.Drawing.Size(113, 27);
-            this.btnAddPrice.TabIndex = 2;
-            this.btnAddPrice.Text = "Add Price";
-            this.btnAddPrice.UseVisualStyleBackColor = true;
-            this.btnAddPrice.Click += new System.EventHandler(this.btnAddPrice_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 21);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Description:";
-            // 
-            // lblDes
-            // 
-            this.lblDes.AutoSize = true;
-            this.lblDes.Location = new System.Drawing.Point(113, 24);
-            this.lblDes.Name = "lblDes";
-            this.lblDes.Size = new System.Drawing.Size(171, 21);
-            this.lblDes.TabIndex = 4;
-            this.lblDes.Text = "No Product Selected";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(523, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 21);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Price:";
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(580, 18);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(247, 27);
-            this.txtPrice.TabIndex = 6;
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(166, 3);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(42, 21);
-            this.lblId.TabIndex = 7;
-            this.lblId.Text = "N/A";
-            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -250,6 +250,7 @@
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "Inventory";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventory_FormClosing);
+            this.Load += new System.EventHandler(this.Inventory_Load);
             this.tabPage.ResumeLayout(false);
             this.tb1.ResumeLayout(false);
             this.tb1.PerformLayout();

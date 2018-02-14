@@ -318,27 +318,38 @@ namespace Jacam_Merchat
                 int ri = dgvDel.CurrentRow.Index;
                 if (ri >= 0)
                 {
-                    int id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
-                    addQuantity add = new addQuantity();
-                    add.offSet = 4;
-                    add.limit = int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString());
-                    add.rec = this;
-                    add.ShowDialog();
-                    if (quant > 0)
+                    if (dgvDel.Rows[ri].Cells[7].Value.ToString() != "")
                     {
-                        string upd = "UPDATE po_del_line SET qty_rec = '" + quant + "', date_rec ='" + DateTime.Today.ToString("yyyy-MM-dd") + "', prof_id = '" + user_id + "' WHERE line_id = '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "'";
-                        conn.Open();
-                        MySqlCommand comm = new MySqlCommand(upd, conn);
-                        comm.ExecuteNonQuery();
-                        conn.Close();
-                        MessageBox.Show("Recieved Successfully!", "");
+                        int id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
+                        addQuantity add = new addQuantity();
+                        add.offSet = 4;
+                        add.limit = int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString());
+                        add.rec = this;
+                        add.ShowDialog();
+                        if (quant > 0)
+                        {
+                            string upd = "UPDATE po_del_line SET qty_rec = '" + quant + "', date_rec ='" + DateTime.Today.ToString("yyyy-MM-dd") + "', prof_id = '" + user_id + "' WHERE line_id = '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "'";
+                            conn.Open();
+                            MySqlCommand comm = new MySqlCommand(upd, conn);
+                            comm.ExecuteNonQuery();
+                            string ins = "INSERT INTO stock_in VALUES(NULL, '" + dgvDel.Rows[ri].Cells[8].Value.ToString() + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', '" + quant + "', '" + user_id + "', '"+ dgvDel.Rows[ri].Cells[34].Value.ToString() +"')";
+                            comm = new MySqlCommand(ins, conn);
+                            comm.ExecuteNonQuery();
+                            conn.Close();
+                            MessageBox.Show("Recieved Successfully!", "");
+                            offset = 1;
+                        }
+                        else
+                        {
+                            MessageBox.Show("You must recieve more than 0 items!", "");
+                        }
+                        showPurchDelStaff();
                         offset = 1;
-                    }else
-                    {
-                        MessageBox.Show("You must recieve more than 0 items!","");
                     }
-                    showPurchDelStaff();
-                    offset = 1;
+                    else
+                    {
+                        MessageBox.Show("Already Recieved! Cannot Recieve again", "Please Choose another Item!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

@@ -54,7 +54,7 @@ namespace Jacam_Merchat
 
         private void showSI()
         {
-            string sel = "SELECT i.des, si.qty, p.name, si.date_added  FROM stock_in si LEFT JOIN inventory i ON si.item_id = i.item_id LEFT JOIN profile p ON p.prof_id = si.user_id ";
+            string sel = "SELECT bi.name, si.qty, p.name, si.date_added, b.title  FROM stock_in si LEFT JOIN inventory i ON si.item_id = i.item_id LEFT JOIN profile p ON p.prof_id = si.user_id LEFT JOIN bid_items bi ON bi.item_id = si.item_id LEFT JOIN bid b ON b.bid_id = si.bid_id ";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -67,6 +67,7 @@ namespace Jacam_Merchat
             dgvSI.Columns[1].HeaderText = "Added QTY";
             dgvSI.Columns[2].HeaderText = "Added BY";
             dgvSI.Columns[3].HeaderText = "Date Added";
+            dgvSI.Columns[4].HeaderText = "From Bid";
         }
 
         private void Inventory_FormClosing(object sender, FormClosingEventArgs e)
@@ -97,6 +98,11 @@ namespace Jacam_Merchat
                 lblId.Text = dgvPro.Rows[ri].Cells[0].Value.ToString();
                 lblDes.Text = dgvPro.Rows[ri].Cells[1].Value.ToString();
             }
+        }
+
+        private void Inventory_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
