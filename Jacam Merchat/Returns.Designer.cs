@@ -55,6 +55,7 @@
             // 
             this.btnUpdDate.ActiveControl = null;
             this.btnUpdDate.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnUpdDate.ForeColor = System.Drawing.Color.White;
             this.btnUpdDate.Location = new System.Drawing.Point(907, 739);
             this.btnUpdDate.Name = "btnUpdDate";
             this.btnUpdDate.Size = new System.Drawing.Size(125, 46);
@@ -69,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 820);
+            this.ClientSize = new System.Drawing.Size(1068, 780);
             this.Controls.Add(this.btnUpdDate);
             this.Controls.Add(this.dgvRet);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

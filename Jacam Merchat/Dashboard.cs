@@ -34,6 +34,43 @@ namespace Jacam_Merchat
                 btnSupProd.BackColor = Color.LightGray;
                 btnOrder.BackColor = Color.LightGray;
             }
+            if(user_type == 4)
+            {
+                btnPurchOrd.Enabled = false;
+                btnSupProd.Enabled = false;
+                btnOrder.Enabled = false;
+                btnProfMan.Enabled = false;
+                btnCompany.Enabled = false;
+                btnDel.Enabled = false;
+                btnInv.Enabled = false;
+                btnPurchOrd.BackColor = Color.LightGray;
+                btnSupProd.BackColor = Color.LightGray;
+                btnOrder.BackColor = Color.LightGray;
+                btnProfMan.BackColor = Color.LightGray;
+                btnCompany.BackColor = Color.LightGray;
+                btnDel.BackColor = Color.LightGray;
+                btnInv.BackColor = Color.LightGray;
+            }
+            else
+            {
+                btnPurchOrd.Enabled = false;
+                btnSupProd.Enabled = false;
+                btnOrder.Enabled = false;
+                btnProfMan.Enabled = false;
+                btnCompany.Enabled = false;
+                btnDel.Enabled = false;
+                btnInv.Enabled = false;
+                btnPOS.Enabled = false;
+                btnPurchOrd.Enabled = false;
+                btnPurchOrderDel.Enabled = false;
+                btnPurchOrd.BackColor = Color.LightGray;
+                btnSupProd.BackColor = Color.LightGray;
+                btnOrder.BackColor = Color.LightGray;
+                btnProfMan.BackColor = Color.LightGray;
+                btnCompany.BackColor = Color.LightGray;
+                btnDel.BackColor = Color.LightGray;
+                btnInv.BackColor = Color.LightGray;
+            }
         }
 
         private void btnProfMan_Click(object sender, EventArgs e)

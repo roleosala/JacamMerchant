@@ -77,5 +77,10 @@ namespace Jacam_Merchat
             txtPwd.Clear();
             txtUsrnme.Focus();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

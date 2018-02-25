@@ -31,6 +31,7 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.btnSet = new MetroFramework.Controls.MetroTile();
             this.lblDate = new System.Windows.Forms.Label();
+            this.btnCancel = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // dtpDate
@@ -60,11 +61,25 @@
             this.lblDate.TabIndex = 2;
             this.lblDate.Text = "label1";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.ActiveControl = null;
+            this.btnCancel.BackColor = System.Drawing.Color.Coral;
+            this.btnCancel.Location = new System.Drawing.Point(130, 133);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(110, 41);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseCustomBackColor = true;
+            this.btnCancel.UseSelectable = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // addDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(407, 209);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.btnSet);
             this.Controls.Add(this.dtpDate);
@@ -83,5 +98,6 @@
         private System.Windows.Forms.DateTimePicker dtpDate;
         private MetroFramework.Controls.MetroTile btnSet;
         private System.Windows.Forms.Label lblDate;
+        private MetroFramework.Controls.MetroTile btnCancel;
     }
 }

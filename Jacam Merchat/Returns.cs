@@ -122,6 +122,7 @@ namespace Jacam_Merchat
                         MySqlCommand comm = new MySqlCommand(upd, conn);
                         comm.ExecuteNonQuery();
                         conn.Close();
+                        MessageBox.Show("Successfully updated the Return Date!", "Successful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     if (user_type == 1 && dtpDate != null)
                     {
@@ -130,10 +131,10 @@ namespace Jacam_Merchat
                         MySqlCommand comm = new MySqlCommand(upd, conn);
                         comm.ExecuteNonQuery();
                         conn.Close();
+                        MessageBox.Show("Successfully updated the Return Date!", "Successful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     counter = 0;
                     showReturnStaff();
-                    MessageBox.Show("Successfully updated the Return Date!", "Successful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

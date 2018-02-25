@@ -28,20 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsrnme = new System.Windows.Forms.TextBox();
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.btnLogin = new MetroFramework.Controls.MetroTile();
             this.btnCancel = new MetroFramework.Controls.MetroTile();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(36, 227);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(86, 217);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 21);
             this.label1.TabIndex = 0;
@@ -51,8 +57,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(36, 260);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(86, 271);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 21);
             this.label2.TabIndex = 0;
@@ -61,7 +67,7 @@
             // txtUsrnme
             // 
             this.txtUsrnme.BackColor = System.Drawing.Color.White;
-            this.txtUsrnme.Location = new System.Drawing.Point(134, 221);
+            this.txtUsrnme.Location = new System.Drawing.Point(90, 241);
             this.txtUsrnme.Name = "txtUsrnme";
             this.txtUsrnme.Size = new System.Drawing.Size(311, 27);
             this.txtUsrnme.TabIndex = 1;
@@ -69,7 +75,7 @@
             // txtPwd
             // 
             this.txtPwd.BackColor = System.Drawing.Color.White;
-            this.txtPwd.Location = new System.Drawing.Point(134, 254);
+            this.txtPwd.Location = new System.Drawing.Point(90, 295);
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(311, 27);
             this.txtPwd.TabIndex = 2;
@@ -77,7 +83,7 @@
             // btnLogin
             // 
             this.btnLogin.ActiveControl = null;
-            this.btnLogin.Location = new System.Drawing.Point(263, 287);
+            this.btnLogin.Location = new System.Drawing.Point(159, 350);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(88, 39);
             this.btnLogin.TabIndex = 3;
@@ -90,7 +96,7 @@
             this.btnCancel.ActiveControl = null;
             this.btnCancel.BackColor = System.Drawing.Color.Coral;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(357, 287);
+            this.btnCancel.Location = new System.Drawing.Point(253, 350);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 39);
             this.btnCancel.TabIndex = 4;
@@ -99,13 +105,40 @@
             this.btnCancel.UseSelectable = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(40, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(405, 115);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(164, 162);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 33);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Login Page";
+            // 
             // Login
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(481, 361);
+            this.ClientSize = new System.Drawing.Size(481, 473);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPwd);
@@ -116,8 +149,8 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Login";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
-            this.Text = "Login";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +164,8 @@
         private System.Windows.Forms.TextBox txtPwd;
         private MetroFramework.Controls.MetroTile btnLogin;
         private MetroFramework.Controls.MetroTile btnCancel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label label3;
     }
 }
