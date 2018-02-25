@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventory));
             this.tabPage = new System.Windows.Forms.TabControl();
             this.tb1 = new System.Windows.Forms.TabPage();
             this.lblId = new System.Windows.Forms.Label();
@@ -44,6 +45,10 @@
             this.tb3 = new System.Windows.Forms.TabPage();
             this.dgvSO = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.printDialogSi = new System.Windows.Forms.PrintDialog();
+            this.PrintDocSi = new System.Drawing.Printing.PrintDocument();
+            this.btnPrintSi = new System.Windows.Forms.Button();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.tabPage.SuspendLayout();
             this.tb1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPro)).BeginInit();
@@ -64,7 +69,7 @@
             this.tabPage.Location = new System.Drawing.Point(36, 100);
             this.tabPage.Name = "tabPage";
             this.tabPage.SelectedIndex = 0;
-            this.tabPage.Size = new System.Drawing.Size(960, 561);
+            this.tabPage.Size = new System.Drawing.Size(960, 579);
             this.tabPage.TabIndex = 0;
             // 
             // tb1
@@ -80,7 +85,7 @@
             this.tb1.Location = new System.Drawing.Point(4, 30);
             this.tb1.Name = "tb1";
             this.tb1.Padding = new System.Windows.Forms.Padding(3);
-            this.tb1.Size = new System.Drawing.Size(952, 527);
+            this.tb1.Size = new System.Drawing.Size(952, 545);
             this.tb1.TabIndex = 0;
             this.tb1.Text = "Stocks";
             this.tb1.UseVisualStyleBackColor = true;
@@ -149,9 +154,12 @@
             this.dgvPro.BackgroundColor = System.Drawing.Color.White;
             this.dgvPro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPro.Location = new System.Drawing.Point(6, 48);
+            this.dgvPro.MultiSelect = false;
             this.dgvPro.Name = "dgvPro";
             this.dgvPro.ReadOnly = true;
-            this.dgvPro.Size = new System.Drawing.Size(940, 473);
+            this.dgvPro.RowHeadersVisible = false;
+            this.dgvPro.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPro.Size = new System.Drawing.Size(940, 491);
             this.dgvPro.TabIndex = 1;
             this.dgvPro.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPro_CellDoubleClick);
             // 
@@ -166,12 +174,13 @@
             // 
             // tb2
             // 
+            this.tb2.Controls.Add(this.btnPrintSi);
             this.tb2.Controls.Add(this.dgvSI);
             this.tb2.Controls.Add(this.label2);
             this.tb2.Location = new System.Drawing.Point(4, 30);
             this.tb2.Name = "tb2";
             this.tb2.Padding = new System.Windows.Forms.Padding(3);
-            this.tb2.Size = new System.Drawing.Size(952, 527);
+            this.tb2.Size = new System.Drawing.Size(952, 545);
             this.tb2.TabIndex = 1;
             this.tb2.Text = "Stocks In";
             this.tb2.UseVisualStyleBackColor = true;
@@ -186,10 +195,13 @@
             this.dgvSI.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSI.BackgroundColor = System.Drawing.Color.White;
             this.dgvSI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSI.Location = new System.Drawing.Point(6, 27);
+            this.dgvSI.Location = new System.Drawing.Point(6, 49);
+            this.dgvSI.MultiSelect = false;
             this.dgvSI.Name = "dgvSI";
             this.dgvSI.ReadOnly = true;
-            this.dgvSI.Size = new System.Drawing.Size(940, 494);
+            this.dgvSI.RowHeadersVisible = false;
+            this.dgvSI.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSI.Size = new System.Drawing.Size(940, 490);
             this.dgvSI.TabIndex = 3;
             // 
             // label2
@@ -238,11 +250,41 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Stock Out History";
             // 
+            // printDialogSi
+            // 
+            this.printDialogSi.Document = this.PrintDocSi;
+            this.printDialogSi.UseEXDialog = true;
+            // 
+            // PrintDocSi
+            // 
+            this.PrintDocSi.DocumentName = "Stocks In";
+            this.PrintDocSi.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocSi_PrintPage);
+            // 
+            // btnPrintSi
+            // 
+            this.btnPrintSi.Location = new System.Drawing.Point(855, 7);
+            this.btnPrintSi.Name = "btnPrintSi";
+            this.btnPrintSi.Size = new System.Drawing.Size(91, 36);
+            this.btnPrintSi.TabIndex = 4;
+            this.btnPrintSi.Text = "Print";
+            this.btnPrintSi.UseVisualStyleBackColor = true;
+            this.btnPrintSi.Click += new System.EventHandler(this.btnPrintSi_Click);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 696);
+            this.ClientSize = new System.Drawing.Size(1032, 714);
             this.Controls.Add(this.tabPage);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -283,5 +325,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.PrintDialog printDialogSi;
+        private System.Drawing.Printing.PrintDocument PrintDocSi;
+        private System.Windows.Forms.Button btnPrintSi;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

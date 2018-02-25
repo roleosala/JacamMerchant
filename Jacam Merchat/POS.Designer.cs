@@ -81,7 +81,7 @@
             // lblCustName
             // 
             this.lblCustName.AutoSize = true;
-            this.lblCustName.Location = new System.Drawing.Point(752, 670);
+            this.lblCustName.Location = new System.Drawing.Point(751, 622);
             this.lblCustName.Name = "lblCustName";
             this.lblCustName.Size = new System.Drawing.Size(42, 21);
             this.lblCustName.TabIndex = 18;
@@ -90,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(752, 649);
+            this.label4.Location = new System.Drawing.Point(751, 601);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 21);
             this.label4.TabIndex = 17;
@@ -99,7 +99,7 @@
             // btnSelCust
             // 
             this.btnSelCust.ActiveControl = null;
-            this.btnSelCust.Location = new System.Drawing.Point(755, 694);
+            this.btnSelCust.Location = new System.Drawing.Point(755, 646);
             this.btnSelCust.Name = "btnSelCust";
             this.btnSelCust.Size = new System.Drawing.Size(138, 35);
             this.btnSelCust.TabIndex = 16;
@@ -205,7 +205,7 @@
             // 
             this.btnCheckOut.ActiveControl = null;
             this.btnCheckOut.BackColor = System.Drawing.Color.Coral;
-            this.btnCheckOut.Location = new System.Drawing.Point(756, 767);
+            this.btnCheckOut.Location = new System.Drawing.Point(756, 718);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(241, 43);
             this.btnCheckOut.TabIndex = 21;
@@ -235,7 +235,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(777, 569);
+            this.label6.Location = new System.Drawing.Point(777, 556);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 21);
             this.label6.TabIndex = 24;
@@ -243,7 +243,7 @@
             // 
             // txtCash
             // 
-            this.txtCash.Location = new System.Drawing.Point(841, 563);
+            this.txtCash.Location = new System.Drawing.Point(841, 550);
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(156, 27);
             this.txtCash.TabIndex = 25;
@@ -252,7 +252,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(752, 610);
+            this.label7.Location = new System.Drawing.Point(751, 577);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 21);
             this.label7.TabIndex = 22;
@@ -261,7 +261,7 @@
             // lblChange
             // 
             this.lblChange.AutoSize = true;
-            this.lblChange.Location = new System.Drawing.Point(837, 610);
+            this.lblChange.Location = new System.Drawing.Point(837, 580);
             this.lblChange.Name = "lblChange";
             this.lblChange.Size = new System.Drawing.Size(19, 21);
             this.lblChange.TabIndex = 23;
@@ -271,7 +271,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 846);
+            this.ClientSize = new System.Drawing.Size(1041, 803);
             this.Controls.Add(this.txtCash);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblChange);
@@ -294,8 +294,9 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "POS";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
-            this.Text = "Form1";
+            this.Text = "Point of Sale (POS)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.POS_FormClosing);
+            this.Load += new System.EventHandler(this.POS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInv)).EndInit();
             this.ResumeLayout(false);

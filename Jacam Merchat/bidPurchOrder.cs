@@ -99,7 +99,7 @@ namespace Jacam_Merchat
 
         private void showSupPurchOrder() //supplier
         {
-            string sel = "SELECT * FROM po_bid pb, po_bid_line pbl WHERE pb.po_bid_id = pbl.po_bid_id and sup_id = '"+user_id+"'";
+            string sel = "SELECT pb.*, p.name FROM po_bid pb LEFT JOIN profile p ON p.prof_id = pb.prof_id WHERE po_bid_id in (SELECT po_bid_id FROM po_bid_line WHERE sup_id = '"+user_id+"')";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -108,11 +108,16 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvPO.DataSource = dt;
+            dgvPO.Columns[0].Visible = false;
+            dgvPO.Columns[1].Visible = false;
+            dgvPO.Columns[2].HeaderText = "Date Purchased";
+            dgvPO.Columns[3].HeaderText = "Reference No.";
+            dgvPO.Columns[4].HeaderText = "Purchased By";
         }
 
         private void showSupPurchOrderLine(int id) //supplier
         {
-            string sel = "SELECT * FROM po_bid_line pbl WHERE po_bid_id = '"+id+"' AND sup_id = '"+user_id+"'";
+            string sel = "SELECT pbl.*, bi.name FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id WHERE po_bid_id = '" + id+"' AND sup_id = '"+user_id+"'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -121,6 +126,12 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvPO.DataSource = dt;
+            dgvPO.Columns[0].Visible = false;
+            dgvPO.Columns[1].Visible = false;
+            dgvPO.Columns[2].Visible = false;
+            dgvPO.Columns[3].HeaderText = "QTY Bought";
+            dgvPO.Columns[4].Visible = false;
+            dgvPO.Columns[5].HeaderText = "Item Description";
         }
 
         private void bidPurchOrder_Load(object sender, EventArgs e)

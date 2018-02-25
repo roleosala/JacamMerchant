@@ -17,10 +17,13 @@ namespace Jacam_Merchat
         public int user_id { get; set; }
         public int user_type { get; set; }
         public Dashboard prevform { get; set; }
+        public string dtpDate { get; set; }
         public purchaseOrderDelivery()
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
+            lbldate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            lbldate.Hide();
         }
 
         private void showPoBid()
@@ -55,7 +58,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[3].Visible = true;
             dgvDel.Columns[3].HeaderText = "Qty Revieved";
             dgvDel.Columns[4].Visible = true;
-            dgvDel.Columns[4].HeaderText = "Date Recieved";
+            dgvDel.Columns[4].HeaderText = "Date Received";
             dgvDel.Columns[5].Visible = false;
             dgvDel.Columns[6].Visible = false;
             dgvDel.Columns[7].Visible = false;
@@ -64,7 +67,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[9].HeaderText = "Qty Bought";
             dgvDel.Columns[10].Visible = false;
             dgvDel.Columns[11].Visible = false;
-            dgvDel.Columns[12].HeaderText = "Recieved By";
+            dgvDel.Columns[12].HeaderText = "Received By";
             dgvDel.Columns[13].Visible = false;
             dgvDel.Columns[14].Visible = false;
             dgvDel.Columns[15].Visible = false;
@@ -93,7 +96,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[37].HeaderText = "Address";
         }
 
-        private void showDelLineSupRec(int id)// po_bid_line Recieve
+        private void showDelLineSupRec(int id)// po_bid_line Receive
         {
             string sel = "SELECT * FROM jacammerchant.po_del_line pdl LEFT JOIN po_bid_line pbl ON pbl.po_bid_line_id = pdl.po_bid_line_id LEFT JOIN profile p ON p.prof_id = pdl.prof_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id WHERE po_del_id = '" + id + "'";
             conn.Open();
@@ -110,7 +113,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[3].Visible = true;
             dgvDel.Columns[3].HeaderText = "Qty Revieved";
             dgvDel.Columns[4].Visible = true;
-            dgvDel.Columns[4].HeaderText = "Date Recieved";
+            dgvDel.Columns[4].HeaderText = "Date Received";
             dgvDel.Columns[5].Visible = false;
             dgvDel.Columns[6].Visible = false;
             dgvDel.Columns[7].Visible = false;
@@ -119,7 +122,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[9].HeaderText = "Qty Bought";
             dgvDel.Columns[10].Visible = false;
             dgvDel.Columns[11].Visible = false;
-            dgvDel.Columns[12].HeaderText = "Recieved By";
+            dgvDel.Columns[12].HeaderText = "Received By";
             dgvDel.Columns[13].Visible = false;
             dgvDel.Columns[14].Visible = false;
             dgvDel.Columns[15].Visible = false;
@@ -167,7 +170,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[4].Visible = false;
             dgvDel.Columns[5].Visible = false;
             dgvDel.Columns[6].Visible = false;
-            dgvDel.Columns[7].HeaderText = "Date Recieved";
+            dgvDel.Columns[7].HeaderText = "Date Received";
             dgvDel.Columns[8].HeaderText = "Reference NO.";
             dgvDel.Columns[9].Visible = false;
             dgvDel.Columns[10].Visible = false;
@@ -190,7 +193,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[27].Visible = false;
             dgvDel.Columns[28].Visible = false;
             dgvDel.Columns[29].Visible = false;
-            dgvDel.Columns[30].HeaderText = "Recieved By";
+            dgvDel.Columns[30].HeaderText = "Received By";
             dgvDel.Columns[31].Visible = false;
             dgvDel.Columns[32].Visible = false;
             dgvDel.Columns[33].Visible = false;
@@ -221,7 +224,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[4].Visible = false;
             dgvDel.Columns[5].Visible = false;
             dgvDel.Columns[6].Visible = false;
-            dgvDel.Columns[7].HeaderText = "Date Recieved";
+            dgvDel.Columns[7].Visible = false;
             dgvDel.Columns[8].HeaderText = "Reference NO.";
             dgvDel.Columns[9].Visible = false;
             dgvDel.Columns[10].Visible = false;
@@ -301,7 +304,7 @@ namespace Jacam_Merchat
                         if (user_type == 5 || user_type == 1 && user_type != 4)
                         {
                             showDelLineSupRec(id);
-                            btnView.Text = "Recieve";
+                            btnView.Text = "Receive";
                             offset = 2;
                             
                         }
@@ -318,37 +321,113 @@ namespace Jacam_Merchat
                 int ri = dgvDel.CurrentRow.Index;
                 if (ri >= 0)
                 {
-                    if (dgvDel.Rows[ri].Cells[7].Value.ToString() != "")
+                    conn.Open();
+                    string ch = "SELECT date_rec, date_del FROM po_del_line pdl, po_del pd WHERE line_id = '"+ dgvDel.Rows[ri].Cells[0].Value.ToString()+"' AND pd.po_del_id = pdl.po_del_id";
+                    MySqlCommand comm2 = new MySqlCommand(ch, conn);
+                    MySqlDataAdapter adp2 = new MySqlDataAdapter(comm2);
+                    comm2.ExecuteNonQuery();
+                    DataTable dt2 = new DataTable();
+                    adp2.Fill(dt2);
+                    conn.Close();
+                    if (dt2.Rows[0][0].ToString() == "")
                     {
-                        int id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
-                        addQuantity add = new addQuantity();
-                        add.offSet = 4;
-                        add.limit = int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString());
-                        add.rec = this;
-                        add.ShowDialog();
-                        if (quant > 0)
+                        if (dgvDel.Rows[ri].Cells[7].Value.ToString() != "")
                         {
-                            string upd = "UPDATE po_del_line SET qty_rec = '" + quant + "', date_rec ='" + DateTime.Today.ToString("yyyy-MM-dd") + "', prof_id = '" + user_id + "' WHERE line_id = '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "'";
+                            int id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
+                            addQuantity add = new addQuantity();
+                            add.offSet = 4;
+                            add.limit = int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString());
+                            add.rec = this;
+                            add.ShowDialog();
                             conn.Open();
-                            MySqlCommand comm = new MySqlCommand(upd, conn);
-                            comm.ExecuteNonQuery();
-                            string ins = "INSERT INTO stock_in VALUES(NULL, '" + dgvDel.Rows[ri].Cells[8].Value.ToString() + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', '" + quant + "', '" + user_id + "', '"+ dgvDel.Rows[ri].Cells[34].Value.ToString() +"')";
-                            comm = new MySqlCommand(ins, conn);
-                            comm.ExecuteNonQuery();
+                            string checkDate = "SELECT DATEDIFF('"+ DateTime.Parse(dt2.Rows[0][1].ToString()).ToString("yyyy-MM-dd") + "', '"+ lbldate.Text +"')";
+                            comm2 = new MySqlCommand(checkDate, conn);
+                            adp2 = new MySqlDataAdapter(comm2);
+                            comm2.ExecuteNonQuery();
+                            DataTable dt3 = new DataTable();
+                            adp2.Fill(dt3);
                             conn.Close();
-                            MessageBox.Show("Recieved Successfully!", "");
+                            if (int.Parse(dt3.Rows[0][0].ToString()) <= 0 || dt3.Rows[0][0].ToString() != "")
+                            {
+                                if (quant > 0)
+                                {
+                                    string upd = "UPDATE po_del_line SET qty_rec = '" + quant + "', date_rec ='" + DateTime.Today.ToString("yyyy-MM-dd") + "', prof_id = '" + user_id + "' WHERE line_id = '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "'";
+                                    conn.Open();
+                                    MySqlCommand comm = new MySqlCommand(upd, conn);
+                                    comm.ExecuteNonQuery();
+                                    string ins = "INSERT INTO stock_in VALUES(NULL, '" + dgvDel.Rows[ri].Cells[8].Value.ToString() + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', '" + quant + "', '" + user_id + "', '" + dgvDel.Rows[ri].Cells[34].Value.ToString() + "')";
+                                    comm = new MySqlCommand(ins, conn);
+                                    comm.ExecuteNonQuery();
+                                    string ser = "SELECT item_id, qty FROM inventory WHERE des = '" + dgvDel.Rows[ri].Cells[35].Value.ToString() + "'";
+                                    comm = new MySqlCommand(ser, conn);
+                                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                                    comm.ExecuteNonQuery();
+                                    DataTable dt = new DataTable();
+                                    adp.Fill(dt);
+                                    if (dt.Rows.Count == 1)
+                                    {
+                                        int qt = int.Parse(dt.Rows[0][1].ToString()) + int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString());
+                                        upd = "UPDATE inventory SET qty = '" + qt + "' WHERE item_id = '" + dt.Rows[0][0].ToString() + "'";
+                                        comm = new MySqlCommand(upd, conn);
+                                        comm.ExecuteNonQuery();
+                                    }
+                                    else
+                                    {
+                                        ins = "INSERT INTO inventory VALUES(NULL, '" + dgvDel.Rows[ri].Cells[35].Value.ToString() + "','" + quant + "', NULL)";
+                                        comm = new MySqlCommand(ins, conn);
+                                        comm.ExecuteNonQuery();
+                                    }
+                                    conn.Close();
+                                    offset = 1;
+                                    if (quant < int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString()))
+                                    {
+                                        DialogResult res = MessageBox.Show("Do you want to set the date for the damaged items now?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                                        if (DialogResult.OK == res)
+                                        {
+                                            addDate det = new addDate();
+                                            det.del = this;
+                                            det.offSet = 1;
+                                            det.ShowDialog();
+                                            ins = "INSERT INTO po_return VALUES(NULL, '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "', '" + dtpDate + "', '" + user_id + "', NULL, NULL, NULL)";
+                                        }
+                                        else
+                                        {
+                                            ins = "INSERT INTO po_return VALUES(NULL, '"+dgvDel.Rows[ri].Cells[0].Value.ToString()+"', NULL, NULL, NULL, NULL)";
+                                        }
+                                        int re = int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString()) - quant;
+                                        MessageBox.Show("Incomplete Items Received Successfully!", "");
+                                        conn.Open();
+                                        comm = new MySqlCommand(ins, conn);
+                                        comm.ExecuteNonQuery();
+                                        conn.Close();
+                                        MessageBox.Show("You can update the return date from the Return Form from the Dashboard.", "Successfully Set!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Received All Items Successfully!", "");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("You must Receive more than 0 items!", "");
+                                }
+                                
+                            }
+                            else
+                            {
+                                MessageBox.Show("You cannot Receive Items Now! Please see Date Delivery Before receiving", "");
+                            }
+                            
+                            showPurchDelStaff();
                             offset = 1;
                         }
-                        else
-                        {
-                            MessageBox.Show("You must recieve more than 0 items!", "");
-                        }
-                        showPurchDelStaff();
-                        offset = 1;
                     }
                     else
                     {
-                        MessageBox.Show("Already Recieved! Cannot Recieve again", "Please Choose another Item!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Already Received! Cannot Receive again", "Please Choose another Item!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnView.Enabled = false;
+                        btnView.BackColor = Color.LightGray;
+                        btnView.ForeColor = Color.White;
                     }
                 }
             }
@@ -384,6 +463,31 @@ namespace Jacam_Merchat
             {
                 this.Close();
             }
+        }
+
+        private void dgvDel_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*
+            int ri = dgvDel.CurrentRow.Index;
+            if (ri >= 0)
+            {
+                if (offset == 1)
+                {
+                    string check = dgvDel.Rows[ri].Cells[4].Value.ToString();
+                    if (check == "")
+                    {
+                        btnView.Enabled = true;
+                        btnView.BackColor = Color.DeepSkyBlue;
+                        btnView.ForeColor = Color.White;
+                    }else
+                    {
+                        btnView.Enabled = false;
+                        btnView.BackColor = Color.LightGray;
+                        btnView.ForeColor = Color.White;
+                    }
+                }
+            }
+            */
         }
     }
 }

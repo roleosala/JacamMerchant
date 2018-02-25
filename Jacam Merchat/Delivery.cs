@@ -25,7 +25,7 @@ namespace Jacam_Merchat
         }
         public void sales()
         {
-            string sel = "SELECT o.order_id, p.name, c.name, o.order_date, o.total, o.rn, d.status FROM orders o LEFT JOIN profile p ON o.user_id = p.prof_id LEFT JOIN profile c ON c.prof_id = o.prof_id LEFT JOIN delivery d ON d.order_id = o.order_id";
+            string sel = "SELECT o.order_id, p.name, c.name, o.order_date, o.total, o.rn FROM orders o LEFT JOIN profile p ON o.user_id = p.prof_id LEFT JOIN profile c ON c.prof_id = o.prof_id LEFT JOIN delivery d ON d.order_id = o.order_id";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -75,32 +75,7 @@ namespace Jacam_Merchat
             }
             */
         }
-        private void showDelSup()
-        {
-
-            string sel = "SELECT * FROM po_del";
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand(sel, conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            comm.ExecuteNonQuery();
-            conn.Close();
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            dgvDel.DataSource = dt;
-        }
-        private void showDelLineSup()
-        {
-
-            string sel = "SELECT * FROM po_del_line";
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand(sel, conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            comm.ExecuteNonQuery();
-            conn.Close();
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            dgvDel.DataSource = dt;
-        }
+        
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int ri = dgvDel.CurrentRow.Index;
@@ -112,9 +87,6 @@ namespace Jacam_Merchat
                 add.order_id = dgvDel.Rows[ri].Cells[0].Value.ToString();
                 add.rn = dgvDel.Rows[ri].Cells[5].Value.ToString();
                 add.ShowDialog(); 
-            }else if (user_type == 4)
-            {
-
             }
         }
 
@@ -129,10 +101,6 @@ namespace Jacam_Merchat
             {
                 showDel();
             }
-            else if (user_type == 4)
-            {
-                showDelSup();
-            }
             else
             {
                 sales();
@@ -142,14 +110,23 @@ namespace Jacam_Merchat
 
         private void dgvDel_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (user_type == 4)
+
+        }
+
+        private void btnStat_Click(object sender, EventArgs e)
+        {
+            int ri = dgvDel.CurrentRow.Index;
+            if (ri >= 0)
             {
-                int ri = dgvDel.CurrentRow.Index;
-                if (ri >= 0)
-                {
-                    showDelLineSup();
-                }   
+                delStatus stat = new delStatus();
+                stat.order_id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
+                stat.del = this;
+                stat.user_id = user_id;
+                stat.user_type = user_type;
+                this.Hide();
+                stat.Show();
             }
+            
         }
     }
 }

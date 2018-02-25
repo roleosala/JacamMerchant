@@ -68,8 +68,15 @@ namespace Jacam_Merchat
                 }
                 if (id != "0")
                 {
-                    string ins = "INSERT INTO delivery VALUES(NULL, '" + id + "', '" + order_id + "', '"+txtStreet.Text+"', '"+txtPostalCode.Text+"', '1')";
+                    string max = "SELECT max(del_id) FROM delivery";
                     conn.Open();
+                    comm = new MySqlCommand(max, conn);
+                    adp = new MySqlDataAdapter(comm);
+                    comm.ExecuteNonQuery();
+                    dt = new DataTable();
+                    adp.Fill(dt);
+                    int dr = int.Parse(dt.Rows[0][0].ToString()) + 1;
+                    string ins = "INSERT INTO delivery VALUES(NULL, '" + id + "', '" + order_id + "', '"+txtStreet.Text+"', '"+txtPostalCode.Text+"', '1', '"+dr+"', '"+DateTime.Now.ToString("yyyy-MM-dd")+"')";
                     comm = new MySqlCommand(ins, conn);
                     comm.ExecuteNonQuery();
                     conn.Close();

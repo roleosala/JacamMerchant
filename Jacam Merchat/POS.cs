@@ -224,5 +224,10 @@ namespace Jacam_Merchat
                 }
             }
         }
+
+        private void POS_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

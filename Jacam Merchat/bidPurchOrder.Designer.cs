@@ -49,6 +49,8 @@
             this.dgvPO.Margin = new System.Windows.Forms.Padding(5);
             this.dgvPO.Name = "dgvPO";
             this.dgvPO.ReadOnly = true;
+            this.dgvPO.RowHeadersVisible = false;
+            this.dgvPO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPO.Size = new System.Drawing.Size(855, 509);
             this.dgvPO.TabIndex = 2;
             this.dgvPO.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPO_CellContentClick);

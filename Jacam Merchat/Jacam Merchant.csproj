@@ -102,6 +102,12 @@
     <Compile Include="addCredentials.Designer.cs">
       <DependentUpon>addCredentials.cs</DependentUpon>
     </Compile>
+    <Compile Include="addDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addDate.Designer.cs">
+      <DependentUpon>addDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="addProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,12 @@
     <Compile Include="Delivery.Designer.cs">
       <DependentUpon>Delivery.cs</DependentUpon>
     </Compile>
+    <Compile Include="delStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delStatus.Designer.cs">
+      <DependentUpon>delStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="POS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +217,12 @@
     </Compile>
     <Compile Include="purchaseOrderDelivery.Designer.cs">
       <DependentUpon>purchaseOrderDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Returns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returns.Designer.cs">
+      <DependentUpon>Returns.cs</DependentUpon>
     </Compile>
     <Compile Include="selCustomer.cs">
       <SubType>Form</SubType>
@@ -251,6 +269,9 @@
     <EmbeddedResource Include="addCredentials.resx">
       <DependentUpon>addCredentials.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addDate.resx">
+      <DependentUpon>addDate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addProfile.resx">
       <DependentUpon>addProfile.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,6 +302,9 @@
     <EmbeddedResource Include="Delivery.resx">
       <DependentUpon>Delivery.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="delStatus.resx">
+      <DependentUpon>delStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="purchaseOrderDelivery.resx">
       <DependentUpon>purchaseOrderDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Returns.resx">
+      <DependentUpon>Returns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="selCustomer.resx">
       <DependentUpon>selCustomer.cs</DependentUpon>

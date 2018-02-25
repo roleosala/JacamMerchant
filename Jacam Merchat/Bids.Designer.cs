@@ -45,6 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewBidItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvViewBidItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvViewBidItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvViewBidItems.Location = new System.Drawing.Point(38, 153);
             this.dgvViewBidItems.Margin = new System.Windows.Forms.Padding(5);

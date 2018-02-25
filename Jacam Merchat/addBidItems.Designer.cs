@@ -110,6 +110,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCurBid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCurBid.BackgroundColor = System.Drawing.Color.White;
             this.dgvCurBid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCurBid.Location = new System.Drawing.Point(27, 165);
             this.dgvCurBid.MultiSelect = false;

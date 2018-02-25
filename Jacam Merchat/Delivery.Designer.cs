@@ -30,6 +30,7 @@
         {
             this.dgvDel = new System.Windows.Forms.DataGridView();
             this.btnAdd = new MetroFramework.Controls.MetroTile();
+            this.btnStat = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             // btnAdd
             // 
             this.btnAdd.ActiveControl = null;
-            this.btnAdd.Location = new System.Drawing.Point(754, 655);
+            this.btnAdd.Location = new System.Drawing.Point(645, 655);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(139, 42);
             this.btnAdd.TabIndex = 1;
@@ -58,11 +59,23 @@
             this.btnAdd.UseSelectable = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnStat
+            // 
+            this.btnStat.ActiveControl = null;
+            this.btnStat.Location = new System.Drawing.Point(790, 655);
+            this.btnStat.Name = "btnStat";
+            this.btnStat.Size = new System.Drawing.Size(103, 42);
+            this.btnStat.TabIndex = 2;
+            this.btnStat.Text = "Status";
+            this.btnStat.UseSelectable = true;
+            this.btnStat.Click += new System.EventHandler(this.btnStat_Click);
+            // 
             // Delivery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 732);
+            this.Controls.Add(this.btnStat);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvDel);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,5 +94,6 @@
 
         private System.Windows.Forms.DataGridView dgvDel;
         private MetroFramework.Controls.MetroTile btnAdd;
+        private MetroFramework.Controls.MetroTile btnStat;
     }
 }

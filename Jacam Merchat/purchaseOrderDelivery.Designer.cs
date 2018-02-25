@@ -31,6 +31,7 @@
             this.dgvDel = new System.Windows.Forms.DataGridView();
             this.btnView = new MetroFramework.Controls.MetroTile();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lbldate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,8 +48,11 @@
             this.dgvDel.Margin = new System.Windows.Forms.Padding(5);
             this.dgvDel.Name = "dgvDel";
             this.dgvDel.ReadOnly = true;
+            this.dgvDel.RowHeadersVisible = false;
+            this.dgvDel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDel.Size = new System.Drawing.Size(855, 507);
             this.dgvDel.TabIndex = 1;
+            this.dgvDel.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellClick);
             this.dgvDel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellContentClick);
             // 
             // btnView
@@ -73,11 +77,21 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lbldate
+            // 
+            this.lbldate.AutoSize = true;
+            this.lbldate.Location = new System.Drawing.Point(649, 111);
+            this.lbldate.Name = "lbldate";
+            this.lbldate.Size = new System.Drawing.Size(102, 21);
+            this.lbldate.TabIndex = 4;
+            this.lbldate.Text = "Date Today";
+            // 
             // purchaseOrderDelivery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 732);
+            this.Controls.Add(this.lbldate);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.dgvDel);
@@ -90,6 +104,7 @@
             this.Load += new System.EventHandler(this.purchaseOrderDelivery_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -98,5 +113,6 @@
         private System.Windows.Forms.DataGridView dgvDel;
         private MetroFramework.Controls.MetroTile btnView;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lbldate;
     }
 }

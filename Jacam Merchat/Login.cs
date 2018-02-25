@@ -28,7 +28,7 @@ namespace Jacam_Merchat
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand(login, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-               comm.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
                 conn.Close();
                 DataTable dt = new DataTable();
                 adp.Fill(dt);

@@ -39,7 +39,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 97);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(36, 227);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 21);
             this.label1.TabIndex = 0;
@@ -48,7 +50,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 130);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(36, 260);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 21);
             this.label2.TabIndex = 0;
@@ -56,14 +60,16 @@
             // 
             // txtUsrnme
             // 
-            this.txtUsrnme.Location = new System.Drawing.Point(134, 91);
+            this.txtUsrnme.BackColor = System.Drawing.Color.White;
+            this.txtUsrnme.Location = new System.Drawing.Point(134, 221);
             this.txtUsrnme.Name = "txtUsrnme";
             this.txtUsrnme.Size = new System.Drawing.Size(311, 27);
             this.txtUsrnme.TabIndex = 1;
             // 
             // txtPwd
             // 
-            this.txtPwd.Location = new System.Drawing.Point(134, 124);
+            this.txtPwd.BackColor = System.Drawing.Color.White;
+            this.txtPwd.Location = new System.Drawing.Point(134, 254);
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(311, 27);
             this.txtPwd.TabIndex = 2;
@@ -71,7 +77,7 @@
             // btnLogin
             // 
             this.btnLogin.ActiveControl = null;
-            this.btnLogin.Location = new System.Drawing.Point(263, 157);
+            this.btnLogin.Location = new System.Drawing.Point(263, 287);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(88, 39);
             this.btnLogin.TabIndex = 3;
@@ -84,7 +90,7 @@
             this.btnCancel.ActiveControl = null;
             this.btnCancel.BackColor = System.Drawing.Color.Coral;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(357, 157);
+            this.btnCancel.Location = new System.Drawing.Point(357, 287);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 39);
             this.btnCancel.TabIndex = 4;
@@ -99,7 +105,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(481, 231);
+            this.ClientSize = new System.Drawing.Size(481, 361);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPwd);
@@ -107,10 +113,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Login";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "Login";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ResumeLayout(false);
             this.PerformLayout();
 

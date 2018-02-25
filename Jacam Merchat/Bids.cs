@@ -39,6 +39,9 @@ namespace Jacam_Merchat
             adp.Fill(dt);
             dgvViewBidItems.DataSource = dt;
             dgvViewBidItems.Columns[0].Visible = false;
+            dgvViewBidItems.Columns[1].HeaderText = "Bidding Title";
+            dgvViewBidItems.Columns[2].HeaderText = "Start Date";
+            dgvViewBidItems.Columns[3].HeaderText = "End Date";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -70,17 +73,33 @@ namespace Jacam_Merchat
             
         }
 
+        public int exp = 0;
+    
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             int ri = dgvViewBidItems.CurrentRow.Index;
             if (ri >= 0)
             {
-                int bid_id = int.Parse(dgvViewBidItems.Rows[ri].Cells[0].Value.ToString());
-                addBidItems add = new addBidItems();
-                add.bid_id = bid_id;
-                add.user_id = user_id;
-                add.user_type = user_type;
-                add.ShowDialog();
+                DateTime ed = DateTime.Parse(dgvViewBidItems.Rows[ri].Cells[2].Value.ToString());
+                DateTime sd = DateTime.Parse(dgvViewBidItems.Rows[ri].Cells[3].Value.ToString());
+                DateTime det = DateTime.Now;
+                TimeSpan ds = sd - det;
+                TimeSpan de = ed - det;
+                int dsNotNeg = ds.Days;
+                int deNeg = de.Days;
+                if (dsNotNeg >= 0 && deNeg <= 0)
+                {
+                    int bid_id = int.Parse(dgvViewBidItems.Rows[ri].Cells[0].Value.ToString());
+                    addBidItems add = new addBidItems();
+                    add.bid_id = bid_id;
+                    add.user_id = user_id;
+                    add.user_type = user_type;
+                    add.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Bidding has already Expired!");
+                }
             }
         }
 
@@ -89,12 +108,27 @@ namespace Jacam_Merchat
             int ri = dgvViewBidItems.CurrentRow.Index;
             if (ri >= 0)
             {
+                DateTime ed = DateTime.Parse(dgvViewBidItems.Rows[ri].Cells[2].Value.ToString());
+                DateTime sd = DateTime.Parse(dgvViewBidItems.Rows[ri].Cells[3].Value.ToString());
+                DateTime det = DateTime.Now;
+                TimeSpan ds = sd - det;
+                TimeSpan de = ed - det;
+                int dsNotNeg = ds.Days;
+                int deNeg = de.Days;
+                if (dsNotNeg >= 0 && deNeg <= 0)
+                {
+                    exp = 0;
+                }else
+                {
+                    exp = 1;
+                }
                 int bid_id = int.Parse(dgvViewBidItems.Rows[ri].Cells[0].Value.ToString());
                 addBidItems add = new addBidItems();
                 add.bid_id = bid_id;
                 add.user_id = user_id;
                 add.user_type = user_type;
                 add.offSet = 1;
+                add.exp = exp;
                 add.prevform = this;
                 add.ShowDialog();
             }

@@ -19,6 +19,7 @@ namespace Jacam_Merchat
         public int bid_id;
         public int offSet = 0;
         public Bids prevform { get; set; }
+        public int exp { get; set; }
         public addBidItems()
         {
             InitializeComponent();
@@ -151,40 +152,62 @@ namespace Jacam_Merchat
 
         private void dgvCurBid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int ri = dgvCurBid.CurrentRow.Index;
-            if (user_type == 4)
-            {
-                if (ri >= 0)
-                {
-                    lblID.Text = dgvCurBid.Rows[ri].Cells[0].Value.ToString();
-                    txtDesc.Text = dgvCurBid.Rows[ri].Cells[2].Value.ToString();
-                    txtQty.Text = dgvCurBid.Rows[ri].Cells[7].Value.ToString();
-                    txtAp.Text = dgvCurBid.Rows[ri].Cells[8].Value.ToString();
-                }
-            }
-            else if (offSet == 1 && user_type == 1)
+            if (exp == 1)
             {
 
             }
             else
             {
-                if (ri >= 0)
+                int ri = dgvCurBid.CurrentRow.Index;
+                if (user_type == 4)
                 {
-                    lblID.Text = dgvCurBid.Rows[ri].Cells[0].Value.ToString();
-                    txtDesc.Text = dgvCurBid.Rows[ri].Cells[2].Value.ToString();
-                    txtQty.Text = dgvCurBid.Rows[ri].Cells[3].Value.ToString();
-                    txtAp.Text = dgvCurBid.Rows[ri].Cells[4].Value.ToString();
+                    if (ri >= 0)
+                    {
+                        lblID.Text = dgvCurBid.Rows[ri].Cells[0].Value.ToString();
+                        txtDesc.Text = dgvCurBid.Rows[ri].Cells[2].Value.ToString();
+                        txtQty.Text = dgvCurBid.Rows[ri].Cells[7].Value.ToString();
+                        txtAp.Text = dgvCurBid.Rows[ri].Cells[8].Value.ToString();
+                    }
+                }
+                else if (offSet == 1 && user_type == 1)
+                {
+
+                }
+                else
+                {
+                    if (ri >= 0)
+                    {
+                        lblID.Text = dgvCurBid.Rows[ri].Cells[0].Value.ToString();
+                        txtDesc.Text = dgvCurBid.Rows[ri].Cells[2].Value.ToString();
+                        txtQty.Text = dgvCurBid.Rows[ri].Cells[3].Value.ToString();
+                        txtAp.Text = dgvCurBid.Rows[ri].Cells[4].Value.ToString();
+                    }
                 }
             }
         }
 
         private void addBidItems_Load(object sender, EventArgs e)
         {
-            if (user_type == 4)
+            if (exp == 1 && user_type == 1)
+            {
+                btnAddToCart.Hide();
+            }
+            if (user_type == 4 && offSet == 0)
             {
                 showSup();
                 this.Text = "Add Items";
                 btnAddToCart.Hide();
+            }
+            else if (offSet == 1 && user_type == 4)
+            {
+                showSup();
+                txtDesc.ReadOnly = true;
+                txtQty.ReadOnly = true;
+                txtAp.ReadOnly = true;
+                btnAddToCart.Hide();
+                btnAdd.Hide();
+                btnDelete.Hide();
+                btnEdit.Hide();
             }
             else if (offSet == 1 && user_type == 1)
             {
@@ -363,7 +386,7 @@ namespace Jacam_Merchat
 
         private void dgvCurBid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnAddToCart.Enabled = true;
+           btnAddToCart.Enabled = true;
         }
     }
 }

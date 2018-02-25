@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Drawing.Printing;
 using MySql.Data.MySqlClient;
+using Microsoft.VisualBasic;
 
 namespace Jacam_Merchat
 {
@@ -37,6 +40,11 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvPro.DataSource = dt;
+            dgvPro.Columns[0].Visible = false;
+            dgvPro.Columns[1].HeaderText = "Description";
+            dgvPro.Columns[2].HeaderText = "Qty";
+            dgvPro.Columns[3].HeaderText = "Price";
+            dgvPro.ClearSelection();
         }
 
         private void showSO()
@@ -50,6 +58,7 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvSO.DataSource = dt;
+            dgvSO.ClearSelection();
         }
 
         private void showSI()
@@ -68,6 +77,7 @@ namespace Jacam_Merchat
             dgvSI.Columns[2].HeaderText = "Added BY";
             dgvSI.Columns[3].HeaderText = "Date Added";
             dgvSI.Columns[4].HeaderText = "From Bid";
+            dgvSI.ClearSelection();
         }
 
         private void Inventory_FormClosing(object sender, FormClosingEventArgs e)
@@ -102,7 +112,63 @@ namespace Jacam_Merchat
 
         private void Inventory_Load(object sender, EventArgs e)
         {
+            for (int i = 0; i < dgvPro.Rows.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    dgvPro.Rows[i].DefaultCellStyle.BackColor = Color.Gainsboro;
+                }
+            }
+            for (int i = 0; i < dgvSI.Rows.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    dgvSI.Rows[i].DefaultCellStyle.BackColor = Color.Gainsboro;
+                }
+            }
+            for (int i = 0; i < dgvSO.Rows.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    dgvSO.Rows[i].DefaultCellStyle.BackColor = Color.Gainsboro;
+                }
+            }
+        }
+        Bitmap bitmap;
+        private void btnPrintSi_Click(object sender, EventArgs e)
+        {
+            printDialogSi.Document = PrintDocSi;
+            if (printDialogSi.ShowDialog() == DialogResult.OK)
+            {
+                PrintDocSi.Print();
+            }
+        }
 
+        private void PrintDocSi_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int x = 50;
+            int y = 50;
+            e.Graphics.DrawString("Jacam Merchant Stocks In Report", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, x, y);
+            e.Graphics.DrawString("Date Today:"+DateTime.Today.ToString("yyyy-MM-dd"), new Font("Times New Roman", 16, FontStyle.Italic), Brushes.Black, x += 500, y);
+            x = 50;
+            y = 100;
+            e.Graphics.DrawString("Description", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x, y);
+            e.Graphics.DrawString("Added QTY", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 150, y );
+            e.Graphics.DrawString("Added By", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 150, y );
+            e.Graphics.DrawString("Date Added", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 170, y );
+            e.Graphics.DrawString("From Bid", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 170, y );
+            x = 50;
+            y = 130;
+            for (int i=0; i < dgvSI.Rows.Count; i++)
+            {
+                e.Graphics.DrawString(dgvSI.Rows[i].Cells[0].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x, y);
+                e.Graphics.DrawString(dgvSI.Rows[i].Cells[1].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
+                e.Graphics.DrawString(dgvSI.Rows[i].Cells[2].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 130, y);
+                e.Graphics.DrawString(DateTime.Parse(dgvSI.Rows[i].Cells[3].Value.ToString()).ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
+                e.Graphics.DrawString(dgvSI.Rows[i].Cells[4].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
+                x = 50;
+                y += 25;
+            }
         }
     }
 }

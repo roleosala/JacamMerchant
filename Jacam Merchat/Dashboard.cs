@@ -25,6 +25,15 @@ namespace Jacam_Merchat
         private void Dashboard_Load(object sender, EventArgs e)
         {
             lblName.Text = name;
+            if (user_type == 1)
+            {
+                btnPurchOrd.Enabled = false;
+                btnSupProd.Enabled = false;
+                btnOrder.Enabled = false;
+                btnPurchOrd.BackColor = Color.LightGray;
+                btnSupProd.BackColor = Color.LightGray;
+                btnOrder.BackColor = Color.LightGray;
+            }
         }
 
         private void btnProfMan_Click(object sender, EventArgs e)
@@ -154,6 +163,16 @@ namespace Jacam_Merchat
             bid.user_type = user_type;
             bid.prevform = this;
             bid.Show();
+            this.Hide();
+        }
+
+        private void metroTile7_Click(object sender, EventArgs e)
+        {
+            Returns ret = new Returns();
+            ret.prevform = this;
+            ret.user_id = user_id;
+            ret.user_type = user_type;
+            ret.Show();
             this.Hide();
         }
     }
