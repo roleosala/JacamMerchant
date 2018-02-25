@@ -149,7 +149,7 @@ namespace Jacam_Merchat
             int x = 50;
             int y = 50;
             e.Graphics.DrawString("Jacam Merchant Stocks In Report", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, x, y);
-            e.Graphics.DrawString("Date Today:"+DateTime.Today.ToString("yyyy-MM-dd"), new Font("Times New Roman", 16, FontStyle.Italic), Brushes.Black, x += 500, y);
+            e.Graphics.DrawString("Date Today:"+DateTime.Today.ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Italic), Brushes.Black, x += 550, 50);
             x = 50;
             y = 100;
             e.Graphics.DrawString("Description", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x, y);
