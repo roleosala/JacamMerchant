@@ -43,7 +43,7 @@ namespace Jacam_Merchat
         }
         public void showDel()
         {
-            string sel = "SELECT d.del_id, d.address, d.pc, d.status, p.name, o.rn FROM delivery d LEFT JOIN profile p ON p.prof_id = d.prof_id LEFT JOIN orders o ON o.order_id = d.order_id";
+            string sel = "SELECT d.del_id, d.address, d.postal, d.status, p.name, o.rn FROM delivery d LEFT JOIN profile p ON p.prof_id = d.prof_id LEFT JOIN orders o ON o.order_id = d.order_id";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -100,6 +100,10 @@ namespace Jacam_Merchat
             if (user_type == 5 || user_type != 1 && user_type != 4)
             {
                 showDel();
+            }
+            else if (user_type == 3)
+            {
+
             }
             else
             {

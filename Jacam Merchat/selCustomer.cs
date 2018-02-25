@@ -36,6 +36,8 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvCust.DataSource = dt;
+            dgvCust.Columns[0].Visible = false;
+            dgvCust.Columns[1].HeaderText = "Client Name";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -49,6 +51,8 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvCust.DataSource = dt;
+            dgvCust.Columns[0].Visible = false;
+            dgvCust.Columns[1].HeaderText = "Client Name";
         }
 
         private void btnSel_Click(object sender, EventArgs e)
@@ -60,6 +64,11 @@ namespace Jacam_Merchat
                 this.Close();
             }
             
+        }
+
+        private void selCustomer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

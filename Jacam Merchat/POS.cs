@@ -150,17 +150,25 @@ namespace Jacam_Merchat
                     comm = new MySqlCommand(ins, conn);
                     comm.ExecuteNonQuery();
                 }
-                string sel2 = "SELECT max(order_id) FROM orders";
+                string sel2 = "SELECT max(order_id) FROM jacammerchant.order";
                 MySqlCommand id2 = new MySqlCommand(sel2, conn);
                 MySqlDataAdapter adp2 = new MySqlDataAdapter(id2);
                 id2.ExecuteNonQuery();
                 DataTable dt2 = new DataTable();
                 adp2.Fill(dt2);
-                int oi = int.Parse(dt2.Rows[0][0].ToString()) + 1;
-                string order = "INSERT INTO orders VALUES (NULL, '"+ user_id + "', '"+ prof_id +"', '"+ DateTime.Now.ToString("yyyy-MM-dd") + "', '"+ total + "', '" + DateTime.Now.ToString("yyyy") + DateTime.Now.ToString("MM") + DateTime.Now.ToString("dd") + oi +"');";
+                int oi = 0;
+                if (dt2.Rows[0][0].ToString() != "")
+                {
+                    oi = int.Parse(dt2.Rows[0][0].ToString()) + 1;
+                }
+                else
+                {
+                    oi = 1;
+                }
+                string order = "INSERT INTO jacammerchant.order VALUES (NULL, '"+ prof_id + "', '"+ user_id +"', '"+ DateTime.Now.ToString("yyyy-MM-dd") + "', '"+ total + "', '"+DateTime.Now.ToString("yyyy-MM-dd")+oi+"');";
                 MySqlCommand comm2 = new MySqlCommand(order, conn);
                 comm2.ExecuteNonQuery();
-                string sel = "SELECT max(order_id) FROM orders";
+                string sel = "SELECT max(order_id) FROM jacammerchant.order";
                 MySqlCommand id = new MySqlCommand(sel, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(id);
                 id.ExecuteNonQuery();

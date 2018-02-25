@@ -133,6 +133,11 @@ namespace Jacam_Merchat
                     dgvSO.Rows[i].DefaultCellStyle.BackColor = Color.Gainsboro;
                 }
             }
+            if (user_type == 3)
+            {
+                txtPrice.Hide();
+                btnAddPrice.Hide();
+            }
         }
         Bitmap bitmap;
         private void btnPrintSi_Click(object sender, EventArgs e)

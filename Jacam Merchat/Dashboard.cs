@@ -25,7 +25,7 @@ namespace Jacam_Merchat
         private void Dashboard_Load(object sender, EventArgs e)
         {
             lblName.Text = name;
-            if (user_type == 1)
+            if (user_type == 1 || user_type == 2)
             {
                 btnPurchOrd.Enabled = false;
                 btnSupProd.Enabled = false;
@@ -34,7 +34,27 @@ namespace Jacam_Merchat
                 btnSupProd.BackColor = Color.LightGray;
                 btnOrder.BackColor = Color.LightGray;
             }
-            if(user_type == 4)
+
+            else if (user_type == 3)
+            {
+                btnPurchOrd.Enabled = false;
+                btnSupProd.Enabled = false;
+                btnOrder.Enabled = false;
+                btnPurchOrderDel.Enabled = false;
+                btnReturns.Enabled = false;
+                btnBidPO.Enabled = false;
+                btnCompany.Enabled = false;
+                btnProfMan.Enabled = false;
+                btnPurchOrd.BackColor = Color.LightGray;
+                btnSupProd.BackColor = Color.LightGray;
+                btnOrder.BackColor = Color.LightGray;
+                btnPurchOrderDel.BackColor = Color.LightGray;
+                btnReturns.BackColor = Color.LightGray;
+                btnBidPO.BackColor = Color.LightGray;
+                btnCompany.BackColor = Color.LightGray;
+                btnProfMan.BackColor = Color.LightGray;
+            }
+            else if(user_type == 4)
             {
                 btnPurchOrd.Enabled = false;
                 btnSupProd.Enabled = false;
@@ -63,6 +83,7 @@ namespace Jacam_Merchat
                 btnPOS.Enabled = false;
                 btnPurchOrd.Enabled = false;
                 btnPurchOrderDel.Enabled = false;
+                btnPurchOrd.BackColor = Color.LightGray;
                 btnPurchOrd.BackColor = Color.LightGray;
                 btnSupProd.BackColor = Color.LightGray;
                 btnOrder.BackColor = Color.LightGray;

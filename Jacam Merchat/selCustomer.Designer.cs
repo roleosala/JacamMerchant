@@ -43,9 +43,12 @@
             this.dgvCust.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCust.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCust.Location = new System.Drawing.Point(38, 134);
-            this.dgvCust.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dgvCust.Margin = new System.Windows.Forms.Padding(5);
+            this.dgvCust.MultiSelect = false;
             this.dgvCust.Name = "dgvCust";
             this.dgvCust.ReadOnly = true;
+            this.dgvCust.RowHeadersVisible = false;
+            this.dgvCust.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCust.Size = new System.Drawing.Size(449, 584);
             this.dgvCust.TabIndex = 0;
             // 
@@ -53,7 +56,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(116, 102);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(371, 27);
             this.txtSearch.TabIndex = 1;
@@ -74,7 +77,7 @@
             // 
             this.btnSel.ActiveControl = null;
             this.btnSel.Location = new System.Drawing.Point(362, 728);
-            this.btnSel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSel.Margin = new System.Windows.Forms.Padding(5);
             this.btnSel.Name = "btnSel";
             this.btnSel.Size = new System.Drawing.Size(125, 38);
             this.btnSel.TabIndex = 3;
@@ -87,7 +90,7 @@
             this.btnCancel.ActiveControl = null;
             this.btnCancel.BackColor = System.Drawing.Color.Red;
             this.btnCancel.Location = new System.Drawing.Point(227, 728);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(125, 38);
             this.btnCancel.TabIndex = 3;
@@ -99,17 +102,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 808);
+            this.ClientSize = new System.Drawing.Size(527, 780);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvCust);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "selCustomer";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "Select Customer";
+            this.Load += new System.EventHandler(this.selCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCust)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
