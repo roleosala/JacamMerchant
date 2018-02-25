@@ -64,7 +64,15 @@ namespace Jacam_Merchat
 
         public void showSales()//Admin
         {
-            string sel = "SELECT o.order_id, p.name, c.name, o.order_date, o.total, o.rn FROM orders o LEFT JOIN profile p ON o.user_id = p.prof_id LEFT JOIN profile c ON c.prof_id = o.prof_id";
+            string sel = "";
+            if (user_type == 1)
+            {
+                sel = "SELECT o.order_id, p.name, c.name, o.order_date, o.total, o.rn FROM jacammerchant.order o LEFT JOIN profile p ON o.user_id = p.prof_id LEFT JOIN profile c ON c.prof_id = o.prof_id";
+            }else if (user_type == 3)
+            {
+                sel = "SELECT o.order_id, p.name, c.name, o.order_date, o.total, o.rn FROM jacammerchant.order o LEFT JOIN profile p ON o.user_id = p.prof_id LEFT JOIN profile c ON c.prof_id = o.prof_id WHERE o.user_id = '"+user_id+"'";
+            }
+            
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -75,8 +83,8 @@ namespace Jacam_Merchat
             dt2 = dt;
             dgvSales.DataSource = dt;
             dgvSales.Columns[0].Visible = false;
-            dgvSales.Columns[1].HeaderText = "Sold to";
-            dgvSales.Columns[2].HeaderText = "Sold by";
+            dgvSales.Columns[1].HeaderText = "Sold By";
+            dgvSales.Columns[2].HeaderText = "Sold To";
             dgvSales.Columns[3].HeaderText = "Date Sold";
             dgvSales.Columns[4].HeaderText = "Total";
         }
@@ -87,7 +95,7 @@ namespace Jacam_Merchat
             {
                 showSup();
             }
-            else if(user_type == 1)
+            else if(user_type == 1|| user_type ==3)
             {
                 showSales();
             }
