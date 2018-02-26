@@ -42,31 +42,43 @@
             this.dgvDel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDel.Location = new System.Drawing.Point(38, 102);
             this.dgvDel.Margin = new System.Windows.Forms.Padding(5);
+            this.dgvDel.MultiSelect = false;
             this.dgvDel.Name = "dgvDel";
             this.dgvDel.ReadOnly = true;
+            this.dgvDel.RowHeadersVisible = false;
+            this.dgvDel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDel.Size = new System.Drawing.Size(855, 545);
             this.dgvDel.TabIndex = 0;
+            this.dgvDel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellContentClick);
             this.dgvDel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellDoubleClick);
             // 
             // btnAdd
             // 
             this.btnAdd.ActiveControl = null;
+            this.btnAdd.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(645, 655);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(139, 42);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add Address";
+            this.btnAdd.UseCustomBackColor = true;
+            this.btnAdd.UseCustomForeColor = true;
             this.btnAdd.UseSelectable = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnStat
             // 
             this.btnStat.ActiveControl = null;
+            this.btnStat.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnStat.ForeColor = System.Drawing.Color.White;
             this.btnStat.Location = new System.Drawing.Point(790, 655);
             this.btnStat.Name = "btnStat";
             this.btnStat.Size = new System.Drawing.Size(103, 42);
             this.btnStat.TabIndex = 2;
             this.btnStat.Text = "Status";
+            this.btnStat.UseCustomBackColor = true;
+            this.btnStat.UseCustomForeColor = true;
             this.btnStat.UseSelectable = true;
             this.btnStat.Click += new System.EventHandler(this.btnStat_Click);
             // 

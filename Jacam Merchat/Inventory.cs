@@ -153,7 +153,7 @@ namespace Jacam_Merchat
             int x = 50;
             int y = 50;
             e.Graphics.DrawString("Jacam Merchant Stocks In Report", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, x, y);
-            e.Graphics.DrawString("Date Today:"+DateTime.Today.ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Italic), Brushes.Black, x += 550, 50);
+            e.Graphics.DrawString("Date Printed:" + DateTime.Today.ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Italic), Brushes.Black, x += 550, 50);
             x = 50;
             y = 100;
             e.Graphics.DrawString("Description", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x, y);
@@ -170,6 +170,40 @@ namespace Jacam_Merchat
                 e.Graphics.DrawString(dgvSI.Rows[i].Cells[2].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 130, y);
                 e.Graphics.DrawString(DateTime.Parse(dgvSI.Rows[i].Cells[3].Value.ToString()).ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
                 e.Graphics.DrawString(dgvSI.Rows[i].Cells[4].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
+                x = 50;
+                y += 25;
+            }
+        }
+
+        private void btnPrintSO_Click(object sender, EventArgs e)
+        {
+            printDialogSi.Document = PrintDocSO;
+            if (printDialogSi.ShowDialog() == DialogResult.OK)
+            {
+                PrintDocSO.Print();
+            }
+        }
+
+        private void PrintDocSO_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            int x = 50;
+            int y = 50;
+            e.Graphics.DrawString("Jacam Merchant Stocks Out Report", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, x, y);
+            e.Graphics.DrawString("Date Printed:" + DateTime.Today.ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Italic), Brushes.Black, x += 550, 50);
+            x = 50;
+            y = 100;
+            e.Graphics.DrawString("Description", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x, y);
+            e.Graphics.DrawString("QTY OUT", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 170, y);
+            e.Graphics.DrawString("Sold By", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 170, y);
+            e.Graphics.DrawString("Date Sold", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 190, y);
+            x = 50;
+            y = 130;
+            for (int i = 0; i < dgvSO.Rows.Count; i++)
+            {
+                e.Graphics.DrawString(dgvSO.Rows[i].Cells[0].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x, y);
+                e.Graphics.DrawString(dgvSO.Rows[i].Cells[1].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 190, y);
+                e.Graphics.DrawString(dgvSO.Rows[i].Cells[2].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 150, y);
+                e.Graphics.DrawString(DateTime.Parse(dgvSO.Rows[i].Cells[3].Value.ToString()).ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 190, y);
                 x = 50;
                 y += 25;
             }

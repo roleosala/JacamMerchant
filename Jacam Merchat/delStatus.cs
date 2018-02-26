@@ -22,7 +22,7 @@ namespace Jacam_Merchat
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
-            lblDelId.Hide();
+            //lblDelId.Hide();
             dgvItems.EnableHeadersVisualStyles = false;
             dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
         }
@@ -52,7 +52,7 @@ namespace Jacam_Merchat
 
         private void se()
         {
-            string sh = "SELECT o.*, c.prof_id ,c.name, d.*, p.prof_id ,p.name FROM jacammerchant.orders o LEFT JOIN profile c ON c.prof_id = o.user_id LEFT JOIN delivery d ON d.order_id = o.order_id LEFT JOIN profile p ON p.prof_id = d.prof_id WHERE o.order_id = '" + order_id + "'";
+            string sh = "SELECT o.*, c.prof_id ,c.name, d.*, p.prof_id ,p.name FROM jacammerchant.orders o LEFT JOIN profile c ON c.prof_id = o.user_id LEFT JOIN delivery d ON d.order_id = o.order_id LEFT JOIN profile p ON p.prof_id = d.prof_id WHERE d.order_id = '" + order_id + "'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sh, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -60,24 +60,28 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             conn.Close();
-            lblDelId.Text = dt.Rows[0][9].ToString();
-            lbldr.Text = dt.Rows[0][14].ToString();
-            if (dt.Rows[0][6].ToString() == "1")
+            if (dt.Rows.Count == 1)
             {
-                lblStat.Text = "On Delivery";
+                lblDelId.Text = dt.Rows[0]["del_id"].ToString();
+                lbldr.Text = dt.Rows[0]["dr"].ToString();
+                if (dt.Rows[0][6].ToString() == "1")
+                {
+                    lblStat.Text = "On Delivery";
+                }
+                lblAdd.Text = dt.Rows[0]["address"].ToString();
+                lblClient.Text = dt.Rows[0][8].ToString();
+                lblDelBy.Text = dt.Rows[0][18].ToString();
+                lblPC.Text = dt.Rows[0]["postal"].ToString();
+                lblOrder.Text = dt.Rows[0]["rn"].ToString();
+                lblDelDate.Text = DateTime.Parse(dt.Rows[0][16].ToString()).ToString("yyyy-MM-dd");
             }
-            lblAdd.Text = dt.Rows[0]["address"].ToString();
-            lblClient.Text = dt.Rows[0][8].ToString();
-            lblDelBy.Text = dt.Rows[0][18].ToString();
-            lblPC.Text = dt.Rows[0]["postal"].ToString();
-            lblOrder.Text = dt.Rows[0]["rn"].ToString();
-            lblDelDate.Text = dt.Rows[0][16].ToString();
         }
 
         private void delStatus_Load(object sender, EventArgs e)
         {
             show();
             se();
+            lblDelId.Text = order_id.ToString();
         }
 
         private void delStatus_FormClosing(object sender, FormClosingEventArgs e)

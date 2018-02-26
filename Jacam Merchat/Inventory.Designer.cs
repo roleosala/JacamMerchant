@@ -47,6 +47,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.printDialogSi = new System.Windows.Forms.PrintDialog();
             this.PrintDocSi = new System.Drawing.Printing.PrintDocument();
+            this.btnPrintSO = new System.Windows.Forms.Button();
+            this.PrintDocSO = new System.Drawing.Printing.PrintDocument();
             this.tabPage.SuspendLayout();
             this.tb1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPro)).BeginInit();
@@ -223,6 +225,7 @@
             // 
             // tb3
             // 
+            this.tb3.Controls.Add(this.btnPrintSO);
             this.tb3.Controls.Add(this.dgvSO);
             this.tb3.Controls.Add(this.label3);
             this.tb3.Location = new System.Drawing.Point(4, 30);
@@ -243,13 +246,13 @@
             this.dgvSO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSO.BackgroundColor = System.Drawing.Color.White;
             this.dgvSO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSO.Location = new System.Drawing.Point(6, 27);
+            this.dgvSO.Location = new System.Drawing.Point(6, 49);
             this.dgvSO.MultiSelect = false;
             this.dgvSO.Name = "dgvSO";
             this.dgvSO.ReadOnly = true;
             this.dgvSO.RowHeadersVisible = false;
             this.dgvSO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSO.Size = new System.Drawing.Size(940, 494);
+            this.dgvSO.Size = new System.Drawing.Size(940, 472);
             this.dgvSO.TabIndex = 3;
             // 
             // label3
@@ -263,13 +266,26 @@
             // 
             // printDialogSi
             // 
-            this.printDialogSi.Document = this.PrintDocSi;
             this.printDialogSi.UseEXDialog = true;
             // 
             // PrintDocSi
             // 
             this.PrintDocSi.DocumentName = "Stocks In";
             this.PrintDocSi.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocSi_PrintPage);
+            // 
+            // btnPrintSO
+            // 
+            this.btnPrintSO.Location = new System.Drawing.Point(855, 7);
+            this.btnPrintSO.Name = "btnPrintSO";
+            this.btnPrintSO.Size = new System.Drawing.Size(91, 36);
+            this.btnPrintSO.TabIndex = 5;
+            this.btnPrintSO.Text = "Print";
+            this.btnPrintSO.UseVisualStyleBackColor = true;
+            this.btnPrintSO.Click += new System.EventHandler(this.btnPrintSO_Click);
+            // 
+            // PrintDocSO
+            // 
+            this.PrintDocSO.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocSO_PrintPage);
             // 
             // Inventory
             // 
@@ -319,5 +335,7 @@
         private System.Windows.Forms.PrintDialog printDialogSi;
         private System.Drawing.Printing.PrintDocument PrintDocSi;
         private System.Windows.Forms.Button btnPrintSi;
+        private System.Windows.Forms.Button btnPrintSO;
+        private System.Drawing.Printing.PrintDocument PrintDocSO;
     }
 }
