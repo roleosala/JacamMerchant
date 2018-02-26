@@ -59,11 +59,13 @@
             // 
             this.btnView.ActiveControl = null;
             this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnView.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnView.Location = new System.Drawing.Point(799, 655);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(94, 42);
             this.btnView.TabIndex = 2;
             this.btnView.Text = "View";
+            this.btnView.UseCustomBackColor = true;
             this.btnView.UseSelectable = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 

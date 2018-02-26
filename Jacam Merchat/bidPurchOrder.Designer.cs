@@ -69,11 +69,13 @@
             // 
             this.btnDelRec.ActiveControl = null;
             this.btnDelRec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelRec.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnDelRec.Location = new System.Drawing.Point(794, 655);
             this.btnDelRec.Name = "btnDelRec";
             this.btnDelRec.Size = new System.Drawing.Size(99, 42);
             this.btnDelRec.TabIndex = 4;
             this.btnDelRec.Text = "Deliver";
+            this.btnDelRec.UseCustomBackColor = true;
             this.btnDelRec.UseSelectable = true;
             this.btnDelRec.Click += new System.EventHandler(this.btnDelRec_Click);
             // 

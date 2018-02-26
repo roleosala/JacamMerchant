@@ -266,8 +266,10 @@ namespace Jacam_Merchat
                 int ri = dgvDel.CurrentRow.Index;
                 if (ri >= 0)
                 {
+                    btnView.Text = "Deliver";
                     int id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
                     showDelLineSup(id);
+                    offset = 2;
                 }
             }
         }
@@ -308,8 +310,9 @@ namespace Jacam_Merchat
                             offset = 2;
                             
                         }
-                        else if (user_type == 4)
+                        else if (user_type == 4 && btnView.Text == "View")
                         {
+                            btnView.Hide();
                             showDelLineSup(id);
                             offset = 1;
                         }
@@ -450,6 +453,7 @@ namespace Jacam_Merchat
                 }
                 else if (user_type == 4)
                 {
+                    btnView.Show();
                     showDelSup();
                     btnView.Text = "View";
                 }

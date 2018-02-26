@@ -49,7 +49,7 @@ namespace Jacam_Merchat
 
         private void showSO()
         {
-            string sel = "SELECT * FROM stock_out";
+            string sel = "SELECT i.des, so.qty, p.name, so.date FROM stock_out so LEFT JOIN inventory i ON i.item_id = so.item_id LEFT JOIN profile p ON p.prof_id = so.user_id;";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -139,7 +139,6 @@ namespace Jacam_Merchat
                 btnAddPrice.Hide();
             }
         }
-        Bitmap bitmap;
         private void btnPrintSi_Click(object sender, EventArgs e)
         {
             printDialogSi.Document = PrintDocSi;

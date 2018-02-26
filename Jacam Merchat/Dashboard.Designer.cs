@@ -53,7 +53,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(36, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 21);
@@ -63,7 +63,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.ForeColor = System.Drawing.Color.Black;
             this.lblName.Location = new System.Drawing.Point(133, 97);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(57, 21);
@@ -316,7 +316,6 @@
             this.Name = "Dashboard";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = " ";
-            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();

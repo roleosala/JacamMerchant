@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventory));
             this.tabPage = new System.Windows.Forms.TabControl();
             this.tb1 = new System.Windows.Forms.TabPage();
             this.lblId = new System.Windows.Forms.Label();
@@ -40,6 +39,7 @@
             this.dgvPro = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tb2 = new System.Windows.Forms.TabPage();
+            this.btnPrintSi = new System.Windows.Forms.Button();
             this.dgvSI = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tb3 = new System.Windows.Forms.TabPage();
@@ -47,8 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.printDialogSi = new System.Windows.Forms.PrintDialog();
             this.PrintDocSi = new System.Drawing.Printing.PrintDocument();
-            this.btnPrintSi = new System.Windows.Forms.Button();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.tabPage.SuspendLayout();
             this.tb1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPro)).BeginInit();
@@ -185,6 +183,16 @@
             this.tb2.Text = "Stocks In";
             this.tb2.UseVisualStyleBackColor = true;
             // 
+            // btnPrintSi
+            // 
+            this.btnPrintSi.Location = new System.Drawing.Point(855, 7);
+            this.btnPrintSi.Name = "btnPrintSi";
+            this.btnPrintSi.Size = new System.Drawing.Size(91, 36);
+            this.btnPrintSi.TabIndex = 4;
+            this.btnPrintSi.Text = "Print";
+            this.btnPrintSi.UseVisualStyleBackColor = true;
+            this.btnPrintSi.Click += new System.EventHandler(this.btnPrintSi_Click);
+            // 
             // dgvSI
             // 
             this.dgvSI.AllowUserToAddRows = false;
@@ -220,7 +228,7 @@
             this.tb3.Location = new System.Drawing.Point(4, 30);
             this.tb3.Name = "tb3";
             this.tb3.Padding = new System.Windows.Forms.Padding(3);
-            this.tb3.Size = new System.Drawing.Size(952, 527);
+            this.tb3.Size = new System.Drawing.Size(952, 545);
             this.tb3.TabIndex = 2;
             this.tb3.Text = "Stocks out";
             this.tb3.UseVisualStyleBackColor = true;
@@ -236,8 +244,11 @@
             this.dgvSO.BackgroundColor = System.Drawing.Color.White;
             this.dgvSO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSO.Location = new System.Drawing.Point(6, 27);
+            this.dgvSO.MultiSelect = false;
             this.dgvSO.Name = "dgvSO";
             this.dgvSO.ReadOnly = true;
+            this.dgvSO.RowHeadersVisible = false;
+            this.dgvSO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSO.Size = new System.Drawing.Size(940, 494);
             this.dgvSO.TabIndex = 3;
             // 
@@ -259,26 +270,6 @@
             // 
             this.PrintDocSi.DocumentName = "Stocks In";
             this.PrintDocSi.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocSi_PrintPage);
-            // 
-            // btnPrintSi
-            // 
-            this.btnPrintSi.Location = new System.Drawing.Point(855, 7);
-            this.btnPrintSi.Name = "btnPrintSi";
-            this.btnPrintSi.Size = new System.Drawing.Size(91, 36);
-            this.btnPrintSi.TabIndex = 4;
-            this.btnPrintSi.Text = "Print";
-            this.btnPrintSi.UseVisualStyleBackColor = true;
-            this.btnPrintSi.Click += new System.EventHandler(this.btnPrintSi_Click);
-            // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
             // 
             // Inventory
             // 
@@ -328,6 +319,5 @@
         private System.Windows.Forms.PrintDialog printDialogSi;
         private System.Drawing.Printing.PrintDocument PrintDocSi;
         private System.Windows.Forms.Button btnPrintSi;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

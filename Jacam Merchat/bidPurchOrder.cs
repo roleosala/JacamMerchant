@@ -146,6 +146,7 @@ namespace Jacam_Merchat
                 showSupPurchOrder();
                 btnDelRec.Text = "Deliver";
             }
+            dgvPO.ClearSelection();
         }
 
         private void bidPurchOrder_FormClosing(object sender, FormClosingEventArgs e)
@@ -176,6 +177,9 @@ namespace Jacam_Merchat
                     offset = 1;
                 }
             }
+            dgvPO.ClearSelection();
+            btnDelRec.Enabled = true;
+            btnDelRec.BackColor = Color.DeepSkyBlue;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -211,32 +215,73 @@ namespace Jacam_Merchat
             {
                 this.Close();
             }
+            dgvPO.ClearSelection();
         }
 
         public int quant { get; set; }
 
+        public int offSet = 0;
+
         private void btnDelRec_Click(object sender, EventArgs e)
         {
             int ri = dgvPO.CurrentRow.Index;
-            if (ri >= 0)
+            if (ri >= 0 && offset == 0)
             {
                 int id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
-                int po_bid_id = int.Parse(dgvPO.Rows[ri].Cells[1].Value.ToString());
-                if (user_type == 1 || user_type == 5 && offset == 0)
+                if (user_type == 1 || user_type == 5)
                 {
+                    lblRn.Text = dgvPO.Rows[ri].Cells[3].Value.ToString();
                     showPurchOrderLine(id);
                     offset = 1;
                     btnDelRec.Hide();
+                    lblRn.Show();
+                    label1.Show();
                 }
                 else if (user_type == 4)
                 {
-                    addAddressSupplier purch = new addAddressSupplier();
-                    purch.user_id = user_id;
-                    purch.user_type = user_type;
-                    purch.po_id = id;
-                    purch.po_bid_id = po_bid_id;
-                    purch.ShowDialog();
+                    showSupPurchOrderLine(id);
+                    offset = 1;
                 }
+            }
+            else
+            {
+                dgvPO.ClearSelection();
+                ri = dgvPO.CurrentRow.Index;
+                if (ri >= 0)
+                {
+                    int id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
+                    int po_bid_id = int.Parse(dgvPO.Rows[ri].Cells[1].Value.ToString());
+                    if (user_type == 1 || user_type == 5 && offset == 0)
+                    {
+                        showPurchOrderLine(id);
+                        offset = 1;
+                        btnDelRec.Hide();
+                    }
+                    else if (user_type == 4)
+                    {
+                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_id = '"+po_bid_id+"')";
+                        conn.Open();
+                        MySqlCommand comm = new MySqlCommand(ch, conn);
+                        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                        comm.ExecuteNonQuery();
+                        conn.Close();
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
+                        if (dt.Rows.Count >= 1)
+                        {
+                            MessageBox.Show("The item you are trying to deliver is already scheduled. Please select another item to be delivered.","Item Already in Delivery!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }else
+                        {
+                            addAddressSupplier purch = new addAddressSupplier();
+                            purch.user_id = user_id;
+                            purch.user_type = user_type;
+                            purch.po_id = id;
+                            purch.po_bid_id = po_bid_id;
+                            purch.ShowDialog();
+                        }
+                    }
+                }
+                dgvPO.ClearSelection();
             }
         }
     }
