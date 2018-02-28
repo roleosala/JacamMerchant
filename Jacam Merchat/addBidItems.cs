@@ -139,7 +139,7 @@ namespace Jacam_Merchat
                 }
                 else
                 {
-                    string upd = "UPDATE bid_items SET name = '" + txtDesc.Text + "' quant = '" + txtQty.Text + "' base_price = '" + txtAp.Text + "' where item_id = '" + lblID.Text + "'";
+                    string upd = "UPDATE bid_items SET name = '" + txtDesc.Text + "', quant = '" + txtQty.Text + "', base_price = '" + txtAp.Text + "' where item_id = '" + lblID.Text + "'";
                     conn.Open();
                     MySqlCommand comm = new MySqlCommand(upd, conn);
                     comm.ExecuteNonQuery();
@@ -348,17 +348,21 @@ namespace Jacam_Merchat
                         comm.ExecuteNonQuery();
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
+                        int counter = 0;
                         if (dt.Rows.Count == 1)
                         {
-                            quant += int.Parse(dt.Rows[0][2].ToString());
-                            string updCart = "UPDATE cart SET qty = '"+quant+"' WHERE cart_id = '"+ dt.Rows[0][0].ToString() + "'";
+                            int ins = quant;
+                            ins += int.Parse(dt.Rows[0][2].ToString());
+                            string updCart = "UPDATE cart SET qty = '"+ins+"' WHERE cart_id = '"+ dt.Rows[0][0].ToString() + "'";
                             comm = new MySqlCommand(updCart, conn);
                             comm.ExecuteNonQuery();
+                            counter = 1;
                         }else
                         {
                             string ins = "INSERT INTO cart VALUES(NULL, '" + dgvCurBid.Rows[ri].Cells[5].Value.ToString() + "', '" + quant + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', 0);";
                             comm = new MySqlCommand(ins, conn);
                             comm.ExecuteNonQuery();
+                            counter = 0;
                         }
                         int newQty = int.Parse(dgvCurBid.Rows[ri].Cells[7].Value.ToString()) - quant;
                         string upd = "UPDATE bid_offer SET qty_offer = '" + newQty + "' WHERE bid_offer_id = '" + dgvCurBid.Rows[ri].Cells[5].Value.ToString() + "'";
@@ -382,6 +386,7 @@ namespace Jacam_Merchat
             {
                 MessageBox.Show("Please Select an Item First!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            quant = 0;
         }
 
         private void dgvCurBid_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -191,11 +191,13 @@
             // 
             this.dgvInv.AllowUserToAddRows = false;
             this.dgvInv.AllowUserToDeleteRows = false;
+            this.dgvInv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInv.BackgroundColor = System.Drawing.Color.White;
             this.dgvInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInv.Location = new System.Drawing.Point(40, 183);
             this.dgvInv.MultiSelect = false;
             this.dgvInv.Name = "dgvInv";
+            this.dgvInv.ReadOnly = true;
             this.dgvInv.RowHeadersVisible = false;
             this.dgvInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInv.Size = new System.Drawing.Size(957, 316);
@@ -271,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 803);
+            this.ClientSize = new System.Drawing.Size(1041, 772);
             this.Controls.Add(this.txtCash);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblChange);

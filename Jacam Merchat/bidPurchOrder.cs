@@ -60,14 +60,14 @@ namespace Jacam_Merchat
             dgvPO.Columns[2].Visible = false;
             dgvPO.Columns[3].HeaderText = "Purchased Quantity";
             dgvPO.Columns[4].Visible = false;
-            dgvPO.Columns[5].Visible = false;
+            dgvPO.Columns[5].HeaderText = "PO No.";
             dgvPO.Columns[6].Visible = false;
-            dgvPO.Columns[7].HeaderText = "Item Description";
-            dgvPO.Columns[8].Visible = false;
+            dgvPO.Columns[7].Visible = false;
+            dgvPO.Columns[8].HeaderText = "Item Description";
             dgvPO.Columns[9].Visible = false;
             dgvPO.Columns[10].Visible = false;
-            dgvPO.Columns[11].HeaderText = "Offered By";
-            dgvPO.Columns[12].Visible = false;
+            dgvPO.Columns[11].Visible = false;
+            dgvPO.Columns[12].HeaderText = "Offered By";
             dgvPO.Columns[13].Visible = false;
             dgvPO.Columns[14].Visible = false;
             dgvPO.Columns[15].Visible = false;
@@ -81,8 +81,8 @@ namespace Jacam_Merchat
             dgvPO.Columns[23].Visible = false;
             dgvPO.Columns[24].Visible = false;
             dgvPO.Columns[25].Visible = false;
-            dgvPO.Columns[26].HeaderText = "Purchased By";
-            dgvPO.Columns[27].Visible = false;
+            dgvPO.Columns[26].Visible = false;
+            dgvPO.Columns[27].HeaderText = "Purchased By";
             dgvPO.Columns[28].Visible = false;
             dgvPO.Columns[29].Visible = false;
             dgvPO.Columns[30].Visible = false;
@@ -92,9 +92,10 @@ namespace Jacam_Merchat
             dgvPO.Columns[34].Visible = false;
             dgvPO.Columns[35].Visible = false;
             dgvPO.Columns[36].Visible = false;
-            dgvPO.Columns[37].HeaderText = "From Bid";
-            dgvPO.Columns[38].Visible = false;
+            dgvPO.Columns[37].Visible = false;
+            dgvPO.Columns[38].HeaderText = "From Bid";
             dgvPO.Columns[39].Visible = false;
+            dgvPO.Columns[40].Visible = false;
         }
 
         private void showSupPurchOrder() //supplier
@@ -216,6 +217,8 @@ namespace Jacam_Merchat
                 this.Close();
             }
             dgvPO.ClearSelection();
+            label1.Hide();
+            lblRn.Text = "";
         }
 
         public int quant { get; set; }
@@ -259,7 +262,8 @@ namespace Jacam_Merchat
                     }
                     else if (user_type == 4)
                     {
-                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_id = '"+po_bid_id+"')";
+                        int po_bid_line_id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
+                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_line_id = '"+po_bid_line_id+"')";
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand(ch, conn);
                         MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -269,7 +273,7 @@ namespace Jacam_Merchat
                         adp.Fill(dt);
                         if (dt.Rows.Count >= 1)
                         {
-                            MessageBox.Show("The item you are trying to deliver is already scheduled. Please select another item to be delivered.","Item Already in Delivery!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("The item you are trying to set a delivery date is already scheduled. Please select another item to be delivered.","Item Already in Delivery!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }else
                         {
                             addAddressSupplier purch = new addAddressSupplier();

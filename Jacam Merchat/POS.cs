@@ -101,6 +101,10 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvInv.DataSource = dt;
+            dgvInv.Columns[0].Visible = false;
+            dgvInv.Columns[1].HeaderText = "Item Description";
+            dgvInv.Columns[2].HeaderText = "Qty Available";
+            dgvInv.Columns[3].HeaderText = "Price";
         }
 
         public int cust_id;

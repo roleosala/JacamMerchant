@@ -105,7 +105,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "biddedItems";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
-            this.Text = "biddedItems";
+            this.Text = "Cart";
             this.Load += new System.EventHandler(this.biddedItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBid)).EndInit();
             this.ResumeLayout(false);

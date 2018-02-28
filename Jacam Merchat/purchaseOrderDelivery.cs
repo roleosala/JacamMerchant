@@ -94,6 +94,10 @@ namespace Jacam_Merchat
             dgvDel.Columns[36].Visible = false;
             dgvDel.Columns[37].Visible = false;
             dgvDel.Columns[37].HeaderText = "Address";
+            dgvDel.Columns[38].Visible = false;
+            dgvDel.Columns[39].Visible = false;
+            dgvDel.Columns["address2"].Visible = false;
+            dgvDel.ClearSelection();
         }
 
         private void showDelLineSupRec(int id)// po_bid_line Receive
@@ -121,9 +125,9 @@ namespace Jacam_Merchat
             dgvDel.Columns[9].Visible = true;
             dgvDel.Columns[9].HeaderText = "Qty Bought";
             dgvDel.Columns[10].Visible = false;
-            dgvDel.Columns[11].Visible = false;
-            dgvDel.Columns[12].HeaderText = "Received By";
-            dgvDel.Columns[13].Visible = false;
+            dgvDel.Columns[11].HeaderText = "PO Number";
+            dgvDel.Columns[12].Visible = false;
+            dgvDel.Columns[13].HeaderText = "Received By";
             dgvDel.Columns[14].Visible = false;
             dgvDel.Columns[15].Visible = false;
             dgvDel.Columns[16].Visible = false;
@@ -133,8 +137,8 @@ namespace Jacam_Merchat
             dgvDel.Columns[20].Visible = false;
             dgvDel.Columns[21].Visible = false;
             dgvDel.Columns[22].Visible = false;
-            dgvDel.Columns[23].HeaderText = "From Supplier";
-            dgvDel.Columns[24].Visible = false;
+            dgvDel.Columns[23].Visible = false;
+            dgvDel.Columns[24].HeaderText = "From Supplier";
             dgvDel.Columns[25].Visible = false;
             dgvDel.Columns[26].Visible = false;
             dgvDel.Columns[27].Visible = false;
@@ -145,9 +149,10 @@ namespace Jacam_Merchat
             dgvDel.Columns[32].Visible = false;
             dgvDel.Columns[33].Visible = false;
             dgvDel.Columns[34].Visible = false;
-            dgvDel.Columns[35].HeaderText = "Item Description";
-            dgvDel.Columns[36].Visible = false;
+            dgvDel.Columns[35].Visible = false;
+            dgvDel.Columns[36].HeaderText = "Item Description";
             dgvDel.Columns[37].Visible = false;
+            dgvDel.Columns[38].Visible = false;
             dgvDel.ClearSelection();
         }
 
@@ -183,18 +188,18 @@ namespace Jacam_Merchat
             dgvDel.Columns[17].Visible = false;
             dgvDel.Columns[18].Visible = false;
             dgvDel.Columns[19].Visible = false;
-            dgvDel.Columns[20].Visible = false;
+            dgvDel.Columns[20].HeaderText = "PO NO.";
             dgvDel.Columns[21].Visible = false;
-            dgvDel.Columns[22].HeaderText = "Item Description";
-            dgvDel.Columns[23].Visible = false;
+            dgvDel.Columns[22].Visible = false;
+            dgvDel.Columns[23].HeaderText = "Item Description";
             dgvDel.Columns[24].Visible = false;
             dgvDel.Columns[25].Visible = false;
-            dgvDel.Columns[26].HeaderText = "From BID";
-            dgvDel.Columns[27].Visible = false;
+            dgvDel.Columns[26].Visible = false;
+            dgvDel.Columns[27].HeaderText = "From BID";
             dgvDel.Columns[28].Visible = false;
             dgvDel.Columns[29].Visible = false;
-            dgvDel.Columns[30].HeaderText = "Received By";
-            dgvDel.Columns[31].Visible = false;
+            dgvDel.Columns[30].Visible = false;
+            dgvDel.Columns[31].HeaderText = "Received By";
             dgvDel.Columns[32].Visible = false;
             dgvDel.Columns[33].Visible = false;
             dgvDel.Columns[34].Visible = false;
@@ -203,6 +208,8 @@ namespace Jacam_Merchat
             dgvDel.Columns[37].Visible = false;
             dgvDel.Columns[38].Visible = false;
             dgvDel.Columns[39].Visible = false;
+            dgvDel.Columns[40].Visible = false;
+            
         }
 
         private void showPurchDelStaff()// Jacam Personel
@@ -237,18 +244,18 @@ namespace Jacam_Merchat
             dgvDel.Columns[17].Visible = false;
             dgvDel.Columns[18].Visible = false;
             dgvDel.Columns[19].Visible = false;
-            dgvDel.Columns[20].Visible = false;
+            dgvDel.Columns[20].HeaderText = "PO NO.";
             dgvDel.Columns[21].Visible = false;
-            dgvDel.Columns[22].HeaderText = "Item Description";
-            dgvDel.Columns[23].Visible = false;
+            dgvDel.Columns[22].Visible = false;
+            dgvDel.Columns[23].HeaderText = "Item Description";
             dgvDel.Columns[24].Visible = false;
             dgvDel.Columns[25].Visible = false;
-            dgvDel.Columns[26].HeaderText = "From BID";
-            dgvDel.Columns[27].Visible = false;
+            dgvDel.Columns[26].Visible = false;
+            dgvDel.Columns[27].HeaderText = "From BID";
             dgvDel.Columns[28].Visible = false;
             dgvDel.Columns[29].Visible = false;
-            dgvDel.Columns[30].HeaderText = "Supplier";
-            dgvDel.Columns[31].Visible = false;
+            dgvDel.Columns[30].Visible = false;
+            dgvDel.Columns[31].HeaderText = "Supplier";
             dgvDel.Columns[32].Visible = false;
             dgvDel.Columns[33].Visible = false;
             dgvDel.Columns[34].Visible = false;
@@ -257,6 +264,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[37].Visible = false;
             dgvDel.Columns[38].Visible = false;
             dgvDel.Columns[39].Visible = false;
+            dgvDel.Columns[40].Visible = false;
         }
 
         private void dgvDel_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -267,6 +275,7 @@ namespace Jacam_Merchat
                 if (ri >= 0)
                 {
                     btnView.Text = "Deliver";
+                    btnView.Hide();
                     int id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
                     showDelLineSup(id);
                     offset = 2;
@@ -358,10 +367,10 @@ namespace Jacam_Merchat
                                     conn.Open();
                                     MySqlCommand comm = new MySqlCommand(upd, conn);
                                     comm.ExecuteNonQuery();
-                                    string ins = "INSERT INTO stock_in VALUES(NULL, '" + dgvDel.Rows[ri].Cells[8].Value.ToString() + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', '" + quant + "', '" + user_id + "', '" + dgvDel.Rows[ri].Cells[34].Value.ToString() + "')";
+                                    string ins = "INSERT INTO stock_in VALUES(NULL, '" + dgvDel.Rows[ri].Cells[8].Value.ToString() + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', '" + quant + "', '" + user_id + "', '" + dgvDel.Rows[ri].Cells[35].Value.ToString() + "')";
                                     comm = new MySqlCommand(ins, conn);
                                     comm.ExecuteNonQuery();
-                                    string ser = "SELECT item_id, qty FROM inventory WHERE des = '" + dgvDel.Rows[ri].Cells[35].Value.ToString() + "'";
+                                    string ser = "SELECT item_id, qty FROM inventory WHERE des = '" + dgvDel.Rows[ri].Cells[36].Value.ToString() + "'";
                                     comm = new MySqlCommand(ser, conn);
                                     MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                                     comm.ExecuteNonQuery();
@@ -376,7 +385,7 @@ namespace Jacam_Merchat
                                     }
                                     else
                                     {
-                                        ins = "INSERT INTO inventory VALUES(NULL, '" + dgvDel.Rows[ri].Cells[35].Value.ToString() + "','" + quant + "', NULL)";
+                                        ins = "INSERT INTO inventory VALUES(NULL, '" + dgvDel.Rows[ri].Cells[36].Value.ToString() + "','" + quant + "', NULL)";
                                         comm = new MySqlCommand(ins, conn);
                                         comm.ExecuteNonQuery();
                                     }
@@ -384,6 +393,7 @@ namespace Jacam_Merchat
                                     offset = 1;
                                     if (quant < int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString()))
                                     {
+                                        int excess = int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString()) - quant;
                                         DialogResult res = MessageBox.Show("Do you want to set the date for the damaged items now?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                                         if (DialogResult.OK == res)
                                         {
@@ -391,11 +401,11 @@ namespace Jacam_Merchat
                                             det.del = this;
                                             det.offSet = 1;
                                             det.ShowDialog();
-                                            ins = "INSERT INTO po_return VALUES(NULL, '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "', '" + dtpDate + "', '" + user_id + "', NULL, NULL, NULL)";
+                                            ins = "INSERT INTO po_return VALUES(NULL, '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "', '" + dtpDate + "', '" + user_id + "', NULL, NULL, NULL, '"+excess+"')";
                                         }
                                         else
                                         {
-                                            ins = "INSERT INTO po_return VALUES(NULL, '"+dgvDel.Rows[ri].Cells[0].Value.ToString()+"', NULL, NULL, NULL, NULL)";
+                                            ins = "INSERT INTO po_return VALUES(NULL, '"+dgvDel.Rows[ri].Cells[0].Value.ToString()+ "', NULL, NULL, NULL, NULL , '" + excess + "')";
                                         }
                                         int re = int.Parse(dgvDel.Rows[ri].Cells[9].Value.ToString()) - quant;
                                         MessageBox.Show("Incomplete Items Received Successfully!", "");
@@ -420,8 +430,6 @@ namespace Jacam_Merchat
                             {
                                 MessageBox.Show("You cannot Receive Items Now! Please see Date Delivery Before receiving", "");
                             }
-                            
-                            showPurchDelStaff();
                             offset = 1;
                         }
                     }
