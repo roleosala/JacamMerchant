@@ -229,11 +229,11 @@ namespace Jacam_Merchat
             dgvDel.Columns[2].HeaderText = "Date Delivered";
             dgvDel.Columns[3].HeaderText = "Address";
             dgvDel.Columns[4].Visible = false;
-            dgvDel.Columns[5].Visible = false;
+            dgvDel.Columns[5].HeaderText = "Delivery Receipt";
             dgvDel.Columns[6].Visible = false;
             dgvDel.Columns[7].Visible = false;
-            dgvDel.Columns[8].HeaderText = "Reference NO.";
-            dgvDel.Columns[9].Visible = false;
+            dgvDel.Columns[8].Visible = false;
+            dgvDel.Columns[9].HeaderText = "Reference NO.";
             dgvDel.Columns[10].Visible = false;
             dgvDel.Columns[11].Visible = false;
             dgvDel.Columns[12].Visible = false;
@@ -244,19 +244,19 @@ namespace Jacam_Merchat
             dgvDel.Columns[17].Visible = false;
             dgvDel.Columns[18].Visible = false;
             dgvDel.Columns[19].Visible = false;
-            dgvDel.Columns[20].HeaderText = "PO NO.";
-            dgvDel.Columns[21].Visible = false;
+            dgvDel.Columns[20].Visible = false;
+            dgvDel.Columns[21].HeaderText = "PO NO.";
             dgvDel.Columns[22].Visible = false;
-            dgvDel.Columns[23].HeaderText = "Item Description";
-            dgvDel.Columns[24].Visible = false;
+            dgvDel.Columns[23].Visible = false;
+            dgvDel.Columns[24].HeaderText = "Item Description";
             dgvDel.Columns[25].Visible = false;
             dgvDel.Columns[26].Visible = false;
-            dgvDel.Columns[27].HeaderText = "From BID";
-            dgvDel.Columns[28].Visible = false;
+            dgvDel.Columns[27].Visible = false;
+            dgvDel.Columns[28].HeaderText = "From BID";
             dgvDel.Columns[29].Visible = false;
             dgvDel.Columns[30].Visible = false;
-            dgvDel.Columns[31].HeaderText = "Supplier";
-            dgvDel.Columns[32].Visible = false;
+            dgvDel.Columns[31].Visible = false;
+            dgvDel.Columns[32].HeaderText = "Supplier";
             dgvDel.Columns[33].Visible = false;
             dgvDel.Columns[34].Visible = false;
             dgvDel.Columns[35].Visible = false;
@@ -265,6 +265,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[38].Visible = false;
             dgvDel.Columns[39].Visible = false;
             dgvDel.Columns[40].Visible = false;
+            dgvDel.Columns[41].Visible = false;
         }
 
         private void dgvDel_CellContentClick(object sender, DataGridViewCellEventArgs e)

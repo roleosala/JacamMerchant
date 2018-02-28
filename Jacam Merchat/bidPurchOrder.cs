@@ -41,6 +41,7 @@ namespace Jacam_Merchat
             dgvPO.Columns[1].Visible = false;
             dgvPO.Columns[2].HeaderText = "Date Purchased";
             dgvPO.Columns[3].HeaderText = "Reference Number";
+            dgvPO.ClearSelection();
         }
 
         private void showPurchOrderLine(int id) //staff
@@ -96,6 +97,7 @@ namespace Jacam_Merchat
             dgvPO.Columns[38].HeaderText = "From Bid";
             dgvPO.Columns[39].Visible = false;
             dgvPO.Columns[40].Visible = false;
+            dgvPO.ClearSelection();
         }
 
         private void showSupPurchOrder() //supplier
@@ -114,6 +116,7 @@ namespace Jacam_Merchat
             dgvPO.Columns[2].HeaderText = "Date Purchased";
             dgvPO.Columns[3].HeaderText = "Reference No.";
             dgvPO.Columns[4].HeaderText = "Purchased By";
+            dgvPO.ClearSelection();
         }
 
         private void showSupPurchOrderLine(int id) //supplier
@@ -133,6 +136,7 @@ namespace Jacam_Merchat
             dgvPO.Columns[3].HeaderText = "QTY Bought";
             dgvPO.Columns[4].Visible = false;
             dgvPO.Columns[5].HeaderText = "Item Description";
+            dgvPO.ClearSelection();
         }
 
         private void bidPurchOrder_Load(object sender, EventArgs e)
@@ -254,6 +258,7 @@ namespace Jacam_Merchat
                 {
                     int id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
                     int po_bid_id = int.Parse(dgvPO.Rows[ri].Cells[1].Value.ToString());
+                    int qty = int.Parse(dgvPO.Rows[ri].Cells[3].Value.ToString());
                     if (user_type == 1 || user_type == 5 && offset == 0)
                     {
                         showPurchOrderLine(id);
@@ -281,6 +286,7 @@ namespace Jacam_Merchat
                             purch.user_type = user_type;
                             purch.po_id = id;
                             purch.po_bid_id = po_bid_id;
+                            purch.limit = qty;
                             purch.ShowDialog();
                         }
                     }

@@ -54,7 +54,7 @@ namespace Jacam_Merchat
             this.Close();
         }
 
-        public void selSupId(int item_id)
+        private int selBidId(int item_id)
         {
             string sel = "SELECT b.bid_id FROM bid b LEFT JOIN bid_items bi ON bi.bid_id = b.bid_id where bi.item_id = '"+item_id+"'";
             conn.Open();
@@ -64,7 +64,36 @@ namespace Jacam_Merchat
             conn.Close();
             DataTable dt = new DataTable();
             adp.Fill(dt);
+            if (dt.Rows.Count == 1)
+            {
+                return int.Parse(dt.Rows[0][0].ToString());
+            }else
+            {
+                return 0;
+            }
         }
+
+        private int [] selSup_id()
+        {
+            string sel = "SELECT DISTINCT(bo.user_id) FROM cart c LEFT JOIN bid_offer bo ON c.bid_offer_id = bo.bid_offer_id LEFT JOIN bid_items bi ON bi.item_id = bo.item_id LEFT JOIN profile p ON p.prof_id = bo.user_id LEFT JOIN bid b ON b.bid_id = bi.bid_id WHERE c.status = 0";
+            MySqlCommand comm = new MySqlCommand(sel, conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            comm.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            int[] sup_id = new int[dt.Rows.Count];
+            if (dt.Rows.Count >= 1)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    sup_id[i] = (int.Parse(dt.Rows[i][0].ToString()));
+                }
+            }
+            return sup_id;
+        }
+
+        public int bid_id;
+        public int[] sup_id;
 
         private void btnRem_Click(object sender, EventArgs e)
         {
@@ -74,7 +103,6 @@ namespace Jacam_Merchat
                 
                 string item_id = dgvBid.Rows[ri].Cells[8].Value.ToString();
                 string bo_id = dgvBid.Rows[ri].Cells[7].Value.ToString();
-                selSupId(int.Parse(item_id));
                 string sel = "SELECT qty_offer FROM bid_offer WHERE item_id = '"+item_id+"' AND bid_offer_id = '"+bo_id+"' ";
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand(sel, conn);
@@ -120,20 +148,34 @@ namespace Jacam_Merchat
                 string ins = "INSERT INTO po_bid VALUES(NULL,  '" + user_id + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', '"+rn+"');";
                 comm = new MySqlCommand(ins, conn);
                 comm.ExecuteNonQuery();
-                string sel = "SELECT max(po_bid_id) FROM po_bid";
+                string sel = "SELECT max(pb.po_bid_id), max(po_num) FROM po_bid pb, po_bid_line";
                 comm = new MySqlCommand(sel, conn);
                 adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
+                int[] sup = selSup_id();
                 adp.Fill(dt);
                 if (dt.Rows.Count == 1)
                 {
                     string po_bid_id = dt.Rows[0][0].ToString();
-                    int po_num = int.Parse(dt.Rows[0][0].ToString()) + 1;
+                    int po_num = int.Parse(dt.Rows[0][1].ToString());
+                    int[] pon = new int[sup.Length];
+                    for (int i = 0; i < sup.Length; i++)
+                    {
+                        po_num += 1;
+                        pon[i] = po_num;
+                    }
                     for (int i = 0; i < dgvBid.Rows.Count; i++)
                     {
                         int sup_id = int.Parse(dgvBid.Rows[i].Cells[12].Value.ToString());
                         cart_id = int.Parse(dgvBid.Rows[i].Cells[6].Value.ToString());
                         string item_id = dgvBid.Rows[i].Cells[5].Value.ToString();
+                        for (int j = 0; j < sup.Length; j++)
+                        {
+                            if (sup_id == sup[j])
+                            {
+                                po_num = pon[j];
+                            }
+                        }
                         string po = "INSERT INTO po_bid_line VALUES(NULL, '"+ po_bid_id + "', '" + item_id + "', '"+ dgvBid.Rows[i].Cells[1].Value.ToString()+"', '"+ sup_id + "', '"+po_num+"')";
                         comm = new MySqlCommand(po, conn);
                         comm.ExecuteNonQuery();
@@ -141,13 +183,6 @@ namespace Jacam_Merchat
                         comm = new MySqlCommand(upd, conn);
                         comm.ExecuteNonQuery();
                         int counter = i + 1;
-                        if (counter < dgvBid.Rows.Count)
-                        {
-                            if (sup_id == int.Parse(dgvBid.Rows[counter].Cells[12].Value.ToString()))
-                            {
-                                po_num = po_num + 1;
-                            }
-                        }
                     }
                 }
                 conn.Close();

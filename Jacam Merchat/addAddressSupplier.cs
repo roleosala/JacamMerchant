@@ -19,6 +19,7 @@ namespace Jacam_Merchat
         public int po_id { get; set; }
         public int po_bid_id { get; set; }
         public DataTable dt { get; set; }
+        public int limit;
         public addAddressSupplier()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace Jacam_Merchat
         {
             lblId.Text = po_id.ToString();
             lblpo_bid_id.Text = po_bid_id.ToString();
+            number.Value = limit;
         }
 
         private void btnDelivery_Click(object sender, EventArgs e)
@@ -47,7 +49,22 @@ namespace Jacam_Merchat
             conn.Open();
             if (year >= 0 && tm >= 0 && txtAdd.Text != "")
             {
-                string ins = "INSERT INTO po_del VALUES(NULL, '"+lblpo_bid_id.Text+"','"+date.Value.ToString("yyyy-MM-dd")+"', '"+txtAdd.Text+"', '"+user_id+"')";
+                string se = "SELECT max(dr) FROM po_del";
+                MySqlCommand com = new MySqlCommand(se, conn);
+                MySqlDataAdapter ad = new MySqlDataAdapter(com);
+                com.ExecuteNonQuery();
+                DataTable d = new DataTable();
+                ad.Fill(d);
+                int max;
+                string counter = d.Rows[0][0].ToString();
+                if (counter == null)
+                {
+                    max = 1;
+                }else
+                {
+                    max = int.Parse(d.Rows[0][0].ToString()) + 1;
+                }
+                string ins = "INSERT INTO po_del VALUES(NULL, '"+lblpo_bid_id.Text+"','"+date.Value.ToString("yyyy-MM-dd")+"', '"+txtAdd.Text+"', '"+user_id+"', '"+max+"')";
                 MySqlCommand comm = new MySqlCommand(ins, conn);
                 comm.ExecuteNonQuery();
                 string sel = "SELECT max(po_del_id) FROM po_del";
@@ -60,7 +77,7 @@ namespace Jacam_Merchat
                 {
                     for (int i = 0; i < id.Rows.Count; i++)
                     {
-                        ins = "INSERT INTO po_del_line VALUES(NULL, '" + id.Rows[i][0].ToString() + "', '" + lblId.Text + "', NULL, NULL, NULL)";
+                        ins = "INSERT INTO po_del_line VALUES(NULL, '" + id.Rows[i][0].ToString() + "', '" + lblId.Text + "', NULL, NULL, NULL, '" + number.Value.ToString() +"')";
                         comm = new MySqlCommand(ins, conn);
                         comm.ExecuteNonQuery();
                     }
@@ -76,6 +93,17 @@ namespace Jacam_Merchat
                 MessageBox.Show("Wrong!", "");
             }
             conn.Close();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            if (number.Value < 0)
+            {
+                number.Value = 0;
+            }else if (number.Value >= limit)
+            {
+                number.Value = limit;
+            }
         }
     }
 }

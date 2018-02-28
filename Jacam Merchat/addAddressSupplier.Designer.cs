@@ -34,12 +34,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtAdd = new System.Windows.Forms.TextBox();
             this.lblpo_bid_id = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.number = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.number)).BeginInit();
             this.SuspendLayout();
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(36, 211);
+            this.lblId.Location = new System.Drawing.Point(36, 271);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(120, 21);
             this.lblId.TabIndex = 0;
@@ -55,7 +58,7 @@
             // btnDelivery
             // 
             this.btnDelivery.ActiveControl = null;
-            this.btnDelivery.Location = new System.Drawing.Point(277, 191);
+            this.btnDelivery.Location = new System.Drawing.Point(277, 269);
             this.btnDelivery.Name = "btnDelivery";
             this.btnDelivery.Size = new System.Drawing.Size(84, 41);
             this.btnDelivery.TabIndex = 2;
@@ -82,17 +85,36 @@
             // lblpo_bid_id
             // 
             this.lblpo_bid_id.AutoSize = true;
-            this.lblpo_bid_id.Location = new System.Drawing.Point(36, 232);
+            this.lblpo_bid_id.Location = new System.Drawing.Point(36, 292);
             this.lblpo_bid_id.Name = "lblpo_bid_id";
             this.lblpo_bid_id.Size = new System.Drawing.Size(86, 21);
             this.lblpo_bid_id.TabIndex = 0;
             this.lblpo_bid_id.Text = "po_bid_id";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 199);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(180, 21);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Items to be delivered:";
+            // 
+            // number
+            // 
+            this.number.Location = new System.Drawing.Point(40, 223);
+            this.number.Name = "number";
+            this.number.Size = new System.Drawing.Size(120, 27);
+            this.number.TabIndex = 12;
+            this.number.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // addAddressSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 270);
+            this.ClientSize = new System.Drawing.Size(397, 345);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.number);
             this.Controls.Add(this.txtAdd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDelivery);
@@ -105,6 +127,7 @@
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "Set Delivery Date";
             this.Load += new System.EventHandler(this.addAddressSupplier_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.number)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +141,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAdd;
         private System.Windows.Forms.Label lblpo_bid_id;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown number;
     }
 }

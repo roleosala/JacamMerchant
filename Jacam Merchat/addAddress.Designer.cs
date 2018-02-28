@@ -78,7 +78,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 218);
+            this.label3.Location = new System.Drawing.Point(32, 201);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 21);
             this.label3.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(36, 242);
+            this.txtPostalCode.Location = new System.Drawing.Point(36, 225);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(180, 27);
             this.txtPostalCode.TabIndex = 5;
@@ -94,7 +94,7 @@
             // cmbPer
             // 
             this.cmbPer.FormattingEnabled = true;
-            this.cmbPer.Location = new System.Drawing.Point(36, 319);
+            this.cmbPer.Location = new System.Drawing.Point(32, 279);
             this.cmbPer.Name = "cmbPer";
             this.cmbPer.Size = new System.Drawing.Size(321, 29);
             this.cmbPer.TabIndex = 6;
@@ -102,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 295);
+            this.label4.Location = new System.Drawing.Point(32, 255);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 21);
             this.label4.TabIndex = 7;
