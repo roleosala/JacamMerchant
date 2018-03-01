@@ -89,13 +89,13 @@ namespace Jacam_Merchat
                 int t = 0;
                 for (int i = 0; i < dgvDel.Rows.Count; i++)
                 {
-                    if (dgvDel.Rows[i].Cells[7].Value.ToString() == "")
+                    if (dgvDel.Rows[i].Cells["txt"].Value.ToString() == "")
                     {
                         c++;
                     }
-                    if (int.Parse(dgvDel.Rows[i].Cells[7].Value.ToString()) > int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) && dgvDel.Rows[i].Cells[3].Value.ToString() != "")
+                    if (int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString()) > int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) && dgvDel.Rows[i].Cells["txt"].Value.ToString() != "")
                     {
-                        dgvDel.Rows[i].Cells[7].Value = dgvDel.Rows[i].Cells[3].Value.ToString();
+                        dgvDel.Rows[i].Cells["txt"].Value = dgvDel.Rows[i].Cells[3].Value.ToString();
                         t++;
                     }
                 }
@@ -120,7 +120,8 @@ namespace Jacam_Merchat
                         {
                             if (dgvDel.Rows[i].Cells[7].Value.ToString() != "")
                             {
-                                ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells[7].Value.ToString() + "')";
+                                int qtyRem = int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) - int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString());
+                                ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells[7].Value.ToString() + "', '"+qtyRem+"')";
                                 comm = new MySqlCommand(ins, conn);
                                 comm.ExecuteNonQuery();
                             }

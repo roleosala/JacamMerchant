@@ -229,7 +229,7 @@ namespace Jacam_Merchat
                     }
                     else if (user_type == 4 && dgvPO.Rows.Count > 0)
                     {
-                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_id = '"+po_bid_id+"' AND sup_id = '"+user_id+"')";
+                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_id = '"+po_bid_id+"' AND sup_id = '"+user_id+"' AND qtyRem <> 0)";
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand(ch, conn);
                         MySqlDataAdapter adp = new MySqlDataAdapter(comm);

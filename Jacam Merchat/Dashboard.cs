@@ -63,6 +63,7 @@ namespace Jacam_Merchat
                 btnCompany.Enabled = false;
                 btnDel.Enabled = false;
                 btnInv.Enabled = false;
+                btnPOS.Enabled = false;
                 btnPurchOrd.BackColor = Color.LightGray;
                 btnSupProd.BackColor = Color.LightGray;
                 btnOrder.BackColor = Color.LightGray;
@@ -70,6 +71,7 @@ namespace Jacam_Merchat
                 btnCompany.BackColor = Color.LightGray;
                 btnDel.BackColor = Color.LightGray;
                 btnInv.BackColor = Color.LightGray;
+                btnPOS.BackColor = Color.LightGray;
             }
             else
             {
@@ -232,6 +234,18 @@ namespace Jacam_Merchat
             ret.user_type = user_type;
             ret.Show();
             this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            prevform.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            prevform.Show();
         }
     }
 }

@@ -37,9 +37,10 @@
             this.btnLogin = new MetroFramework.Controls.MetroTile();
             this.btnCancel = new MetroFramework.Controls.MetroTile();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label3 = new System.Windows.Forms.Label();
+            this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -115,11 +116,6 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -129,6 +125,12 @@
             this.label3.Size = new System.Drawing.Size(162, 33);
             this.label3.TabIndex = 7;
             this.label3.Text = "Login Page";
+            // 
+            // metroStyleManager1
+            // 
+            this.metroStyleManager1.Owner = this;
+            this.metroStyleManager1.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // Login
             // 
@@ -149,8 +151,10 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Login";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,7 +169,7 @@
         private MetroFramework.Controls.MetroTile btnLogin;
         private MetroFramework.Controls.MetroTile btnCancel;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label label3;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager1;
     }
 }
