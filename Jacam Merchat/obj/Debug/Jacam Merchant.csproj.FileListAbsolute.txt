@@ -633,3 +633,6 @@ C:\Users\roleosala\Source\Repos\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Mer
 C:\Users\roleosala\Source\Repos\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchant.csproj.CoreCompileInputs.cache
 C:\Users\roleosala\Source\Repos\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchat.exe
 C:\Users\roleosala\Source\Repos\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchat.pdb
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\Jacam Merchat.exe.config
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchat.exe
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchat.pdb
