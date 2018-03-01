@@ -81,7 +81,7 @@ namespace Jacam_Merchat
 
         private void showSupPurchOrderLine(int id) //supplier
         {
-            string sel = "SELECT pbl.*, bi.name FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id WHERE po_bid_id = '" + id+"' AND sup_id = '"+user_id+"'";
+            string sel = "SELECT pbl.*, bi.name, pdlr.qtyRem FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN po_del_line pdl ON pdl.po_bid_line_id = pbl.po_bid_line_id LEFT JOIN po_del_line_rem pdlr ON pdlr.po_del_line_id = pdl.po_del_line_id WHERE po_bid_id = '" + id+"' AND sup_id = '"+user_id+"'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -93,10 +93,11 @@ namespace Jacam_Merchat
             dgvPO.Columns[0].Visible = false;//po_bid_line_id
             dgvPO.Columns[1].Visible = false;//po_bid_id
             dgvPO.Columns[2].Visible = false;//item_id
-            dgvPO.Columns[3].Visible = false;//qt
-            dgvPO.Columns[4].HeaderText = "QTY Bought";
+            dgvPO.Columns[3].HeaderText = "QTY Bought";
+            dgvPO.Columns[4].Visible = false;
             dgvPO.Columns[5].Visible = false;
             dgvPO.Columns[6].HeaderText = "Item Description";
+            dgvPO.Columns[7].HeaderText = "Remaining Items to Delivered";
             dgvPO.ClearSelection();
         }
 
@@ -229,7 +230,7 @@ namespace Jacam_Merchat
                     }
                     else if (user_type == 4 && dgvPO.Rows.Count > 0)
                     {
-                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_id = '"+po_bid_id+"' AND sup_id = '"+user_id+"' AND qtyRem <> 0)";
+                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line pdl LEFT JOIN po_del_line_rem pdlr ON pdlr.po_Del_line_id = pdl.po_del_line_id WHERE po_bid_id = '"+po_bid_id+"' AND sup_id = '"+user_id+"' AND qty = 0 )";
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand(ch, conn);
                         MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -242,38 +243,73 @@ namespace Jacam_Merchat
                             MessageBox.Show("The item you are trying to set a delivery date is already scheduled. Please select another item to be delivered.","Item Already in Delivery!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }else
                         {
-                            DataTable data = new DataTable();
-                            foreach (DataGridViewColumn col in dgvPO.Columns)
-                            {
-                                data.Columns.Add(col.Name);
-                            }
-                            foreach (DataGridViewRow row in dgvPO.Rows)
-                            {
-                                DataRow dRow = data.NewRow();
-                                foreach (DataGridViewCell cell in row.Cells)
-                                {
-                                    dRow[cell.ColumnIndex] = cell.Value;
-                                }
-                                data.Rows.Add(dRow);
-                            }
-                            string sel = "SELECT max(po_del_id) FROM po_del";
                             conn.Open();
-                            comm = new MySqlCommand(sel, conn);
-                            adp = new MySqlDataAdapter(comm);
+                            string items = "SELECT * FROM po_del_line pdl LEFT JOIN po_del_line_rem pdlr ON pdlr.po_del_line_id = pdl.po_del_line_id WHERE po_bid_id = '"+po_bid_id+"'";
+                            MySqlCommand comm2 = new MySqlCommand(items, conn);
+                            MySqlDataAdapter adp2 = new MySqlDataAdapter(comm2);
                             comm.ExecuteNonQuery();
-                            dt = new DataTable();
+                            DataTable dt2 = new DataTable();
+                            adp.Fill(dt2);
                             conn.Close();
-                            adp.Fill(dt);
-                            if (dt.Rows.Count == 1)
+                            if (dt.Rows.Count > 0)
                             {
-                                string po_del_id = dt.Rows[0][0].ToString();
-                                addAddressSupplier purch = new addAddressSupplier();
-                                purch.user_id = user_id;
-                                purch.user_type = user_type;
-                                purch.po_id = id;
-                                purch.po_bid_id = po_bid_id;
-                                purch.dt = data;
-                                purch.ShowDialog();
+                                string sel = "SELECT max(po_del_id) FROM po_del";
+                                conn.Open();
+                                comm = new MySqlCommand(sel, conn);
+                                adp = new MySqlDataAdapter(comm);
+                                comm.ExecuteNonQuery();
+                                dt = new DataTable();
+                                conn.Close();
+                                adp.Fill(dt);
+                                if (dt.Rows.Count >= 1)
+                                {
+                                    string po_del_id = dt.Rows[0][0].ToString();
+                                    addAddressSupplier purch = new addAddressSupplier();
+                                    purch.user_id = user_id;
+                                    purch.user_type = user_type;
+                                    purch.po_id = id;
+                                    purch.po_bid_id = po_bid_id;
+                                    purch.dt = dt;
+                                    purch.offSet = 0;
+                                    purch.ShowDialog();
+                                }
+                            }
+                            else
+                            {
+                                DataTable data = new DataTable();
+                                foreach (DataGridViewColumn col in dgvPO.Columns)
+                                {
+                                    data.Columns.Add(col.Name);
+                                }
+                                foreach (DataGridViewRow row in dgvPO.Rows)
+                                {
+                                    DataRow dRow = data.NewRow();
+                                    foreach (DataGridViewCell cell in row.Cells)
+                                    {
+                                        dRow[cell.ColumnIndex] = cell.Value;
+                                    }
+                                    data.Rows.Add(dRow);
+                                }
+                                string sel = "SELECT max(po_del_id) FROM po_del";
+                                conn.Open();
+                                comm = new MySqlCommand(sel, conn);
+                                adp = new MySqlDataAdapter(comm);
+                                comm.ExecuteNonQuery();
+                                dt = new DataTable();
+                                conn.Close();
+                                adp.Fill(dt);
+                                if (dt.Rows.Count == 1)
+                                {
+                                    string po_del_id = dt.Rows[0][0].ToString();
+                                    addAddressSupplier purch = new addAddressSupplier();
+                                    purch.user_id = user_id;
+                                    purch.user_type = user_type;
+                                    purch.po_id = id;
+                                    purch.po_bid_id = po_bid_id;
+                                    purch.dt = data;
+                                    purch.offSet = 1;
+                                    purch.ShowDialog();
+                                }
                             }
                         }
                     }

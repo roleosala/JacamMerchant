@@ -56,7 +56,7 @@ namespace Jacam_Merchat
 
         private void showDelLineSupRec(int id)// po_bid_line Receive
         {
-            string sel = "SELECT pdl.*, pbl.*, p.name, s.name , bi.name , bo.offer_price FROM jacammerchant.po_del_line pdl LEFT JOIN po_bid_line pbl ON pbl.po_bid_line_id = pdl.po_bid_line_id LEFT JOIN profile p ON p.prof_id = pdl.prof_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN bid_offer bo ON bo.item_id = bi.item_id WHERE po_del_id = '" + id + "'";
+            string sel = "SELECT pdl.*, pbl.*, p.name, s.name , bi.name , bo.offer_price, pdlr.qtyRem FROM jacammerchant.po_del_line pdl LEFT JOIN po_bid_line pbl ON pbl.po_bid_line_id = pdl.po_bid_line_id LEFT JOIN profile p ON p.prof_id = pdl.prof_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN bid_offer bo ON bo.item_id = bi.item_id LEFT JOIN po_del_line_rem pdlr ON pdlr.po_del_line_id = pdl.po_del_line_id WHERE po_del_id = '" + id + "'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -84,6 +84,7 @@ namespace Jacam_Merchat
             dgvDel.Columns[16].Visible = false;
             dgvDel.Columns[17].HeaderText = "Item Description";
             dgvDel.Columns[18].HeaderText = "Price Offered";
+            dgvDel.Columns[19].HeaderText = "QTY Remaining to be Delivered";
             dgvDel.ClearSelection();
         }
 

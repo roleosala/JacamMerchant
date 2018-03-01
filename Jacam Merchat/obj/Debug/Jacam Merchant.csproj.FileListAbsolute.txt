@@ -636,3 +636,44 @@ C:\Users\roleosala\Source\Repos\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Mer
 D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\Jacam Merchat.exe.config
 D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchat.exe
 D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchat.pdb
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\Jacam Merchat.exe
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\Jacam Merchat.pdb
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\MetroFramework.Design.dll
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\MetroFramework.dll
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\MetroFramework.Fonts.dll
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\MySql.Data.dll
+D:\SAD\JacamMerchant2\Jacam Merchat\bin\Debug\MySql.Data.xml
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchant.csprojResolveAssemblyReference.cache
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addAddress.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addAddressSupplier.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addBidInfo.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addBidItems.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addComControl.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addCompany.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addCredentials.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addDate.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addProfile.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addQuantity.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addRepresentative.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.addSupProd.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.biddedItems.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.bidPurchOrder.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Bids.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Company.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Dashboard.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Delivery.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.delStatus.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Inventory.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Login.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.OrderList.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.POS.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Profile.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Properties.Resources.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.PurcharseOrder.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.purchaseOrderDelivery.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Returns.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.selCustomer.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Settings.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Supplier_Supplies.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Sale.resources
+D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchant.csproj.GenerateResource.Cache

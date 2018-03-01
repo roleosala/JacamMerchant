@@ -19,6 +19,7 @@ namespace Jacam_Merchat
         public int po_id { get; set; }
         public int po_bid_id { get; set; }
         public DataTable dt { get; set; }
+        public int offSet { get; set; }
         public addAddressSupplier()
         {
             InitializeComponent();
@@ -121,7 +122,16 @@ namespace Jacam_Merchat
                             if (dgvDel.Rows[i].Cells[7].Value.ToString() != "")
                             {
                                 int qtyRem = int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) - int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString());
-                                ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells[7].Value.ToString() + "', '"+qtyRem+"')";
+                                ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells[7].Value.ToString() + "')";
+                                comm = new MySqlCommand(ins, conn);
+                                comm.ExecuteNonQuery();
+                                sel = "SELECT max(po_del_line_id) FROM po_del_line";
+                                comm = new MySqlCommand(sel, conn);
+                                adp = new MySqlDataAdapter(comm);
+                                comm.ExecuteNonQuery();
+                                DataTable dt = new DataTable();
+                                adp.Fill(dt);
+                                ins = "INSERT INTO po_del_line_rem VALUES(NULL,'" + dt.Rows[0][0].ToString() + "' ,'" + qtyRem + "')";
                                 comm = new MySqlCommand(ins, conn);
                                 comm.ExecuteNonQuery();
                             }
