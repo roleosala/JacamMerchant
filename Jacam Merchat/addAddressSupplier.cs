@@ -85,29 +85,62 @@ namespace Jacam_Merchat
                 {
                     max = int.Parse(d.Rows[0][0].ToString()) + 1;
                 }
-                string ins = "INSERT INTO po_del VALUES(NULL, '"+lblpo_del_id.Text+"','"+date.Value.ToString("yyyy-MM-dd")+"', '"+txtAdd.Text+"', '"+user_id+"', '"+max+"')";
-                MySqlCommand comm = new MySqlCommand(ins, conn);
-                comm.ExecuteNonQuery();
-                string sel = "SELECT max(po_del_id) FROM po_del";
-                comm = new MySqlCommand(sel, conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                comm.ExecuteNonQuery();
-                DataTable id = new DataTable();
-                adp.Fill(id);
-                if (id.Rows.Count >= 0)
+                int c = 0;
+                int t = 0;
+                for (int i = 0; i < dgvDel.Rows.Count; i++)
                 {
-                    for (int i = 0; i < dgvDel.Rows.Count; i++)
+                    if (dgvDel.Rows[i].Cells[7].Value.ToString() == "")
                     {
-                        ins = "INSERT INTO po_del_line VALUES(NULL,'"+lblpo_del_id.Text+"' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '"+ dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL)";
-                        comm = new MySqlCommand(ins, conn);
-                        comm.ExecuteNonQuery();
+                        c++;
                     }
-                    conn.Close();
-                    MessageBox.Show("Successfully Set!", "");
-                    this.Close();
-                }else
+                    if (int.Parse(dgvDel.Rows[i].Cells[7].Value.ToString()) > int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) && dgvDel.Rows[i].Cells[3].Value.ToString() != "")
+                    {
+                        dgvDel.Rows[i].Cells[7].Value = dgvDel.Rows[i].Cells[3].Value.ToString();
+                        t++;
+                    }
+                }
+                if (t > 0)
                 {
-                    MessageBox.Show("Error! No Data Found", "");
+                    MessageBox.Show("You have delivered more items that the qty bought. Automatically set it to maximum deliverable items to the qty bought.","Delivered more items", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+                if (c != dgvDel.Rows.Count)
+                {
+                    string ins = "INSERT INTO po_del VALUES(NULL, '" + lblpo_del_id.Text + "','" + date.Value.ToString("yyyy-MM-dd") + "', '" + txtAdd.Text + "', '" + user_id + "', '" + max + "')";
+                    MySqlCommand comm = new MySqlCommand(ins, conn);
+                    comm.ExecuteNonQuery();
+                    string sel = "SELECT max(po_del_id) FROM po_del";
+                    comm = new MySqlCommand(sel, conn);
+                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                    comm.ExecuteNonQuery();
+                    DataTable id = new DataTable();
+                    adp.Fill(id);
+                    if (id.Rows.Count >= 0)
+                    {
+                        for (int i = 0; i < dgvDel.Rows.Count; i++)
+                        {
+                            if (dgvDel.Rows[i].Cells[7].Value.ToString() != "")
+                            {
+                                ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells[7].Value.ToString() + "')";
+                                comm = new MySqlCommand(ins, conn);
+                                comm.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                c++;
+                            }
+                        }
+                        conn.Close();
+                        MessageBox.Show("Successfully Set!", "");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error! No Data Found", "");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please Deliver 1 or more items","Deliver 1 or more items", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }else
             {
@@ -123,11 +156,7 @@ namespace Jacam_Merchat
 
         private void dgvDel_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDel.CurrentCell.ColumnIndex == 7)
-            {
-                int curCol = dgvDel.CurrentCell.RowIndex;
-                string number = dgvDel.Rows[curCol].Cells[7].Value.ToString();
-            }
+            
         }
     }
 }
