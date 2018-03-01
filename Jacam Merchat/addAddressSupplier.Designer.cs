@@ -33,16 +33,15 @@
             this.btnDelivery = new MetroFramework.Controls.MetroTile();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAdd = new System.Windows.Forms.TextBox();
-            this.lblpo_bid_id = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.number = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.number)).BeginInit();
+            this.lblpo_del_id = new System.Windows.Forms.Label();
+            this.dgvDel = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).BeginInit();
             this.SuspendLayout();
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(36, 271);
+            this.lblId.Location = new System.Drawing.Point(367, 165);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(120, 21);
             this.lblId.TabIndex = 0;
@@ -58,7 +57,7 @@
             // btnDelivery
             // 
             this.btnDelivery.ActiveControl = null;
-            this.btnDelivery.Location = new System.Drawing.Point(277, 269);
+            this.btnDelivery.Location = new System.Drawing.Point(703, 582);
             this.btnDelivery.Name = "btnDelivery";
             this.btnDelivery.Size = new System.Drawing.Size(84, 41);
             this.btnDelivery.TabIndex = 2;
@@ -82,44 +81,42 @@
             this.txtAdd.Size = new System.Drawing.Size(321, 27);
             this.txtAdd.TabIndex = 4;
             // 
-            // lblpo_bid_id
+            // lblpo_del_id
             // 
-            this.lblpo_bid_id.AutoSize = true;
-            this.lblpo_bid_id.Location = new System.Drawing.Point(36, 292);
-            this.lblpo_bid_id.Name = "lblpo_bid_id";
-            this.lblpo_bid_id.Size = new System.Drawing.Size(86, 21);
-            this.lblpo_bid_id.TabIndex = 0;
-            this.lblpo_bid_id.Text = "po_bid_id";
+            this.lblpo_del_id.AutoSize = true;
+            this.lblpo_del_id.Location = new System.Drawing.Point(367, 106);
+            this.lblpo_del_id.Name = "lblpo_del_id";
+            this.lblpo_del_id.Size = new System.Drawing.Size(85, 21);
+            this.lblpo_del_id.TabIndex = 0;
+            this.lblpo_del_id.Text = "po_del_id";
             // 
-            // label5
+            // dgvDel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 199);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(180, 21);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Items to be delivered:";
-            // 
-            // number
-            // 
-            this.number.Location = new System.Drawing.Point(40, 223);
-            this.number.Name = "number";
-            this.number.Size = new System.Drawing.Size(120, 27);
-            this.number.TabIndex = 12;
-            this.number.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.dgvDel.AllowUserToAddRows = false;
+            this.dgvDel.AllowUserToDeleteRows = false;
+            this.dgvDel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDel.Location = new System.Drawing.Point(40, 207);
+            this.dgvDel.MultiSelect = false;
+            this.dgvDel.Name = "dgvDel";
+            this.dgvDel.RowHeadersVisible = false;
+            this.dgvDel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDel.Size = new System.Drawing.Size(747, 369);
+            this.dgvDel.TabIndex = 14;
+            this.dgvDel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellContentClick);
+            this.dgvDel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellValueChanged);
             // 
             // addAddressSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 345);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.number);
+            this.ClientSize = new System.Drawing.Size(823, 658);
+            this.Controls.Add(this.dgvDel);
             this.Controls.Add(this.txtAdd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDelivery);
             this.Controls.Add(this.date);
-            this.Controls.Add(this.lblpo_bid_id);
+            this.Controls.Add(this.lblpo_del_id);
             this.Controls.Add(this.lblId);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -127,7 +124,7 @@
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "Set Delivery Date";
             this.Load += new System.EventHandler(this.addAddressSupplier_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.number)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,8 +137,7 @@
         private MetroFramework.Controls.MetroTile btnDelivery;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAdd;
-        private System.Windows.Forms.Label lblpo_bid_id;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown number;
+        private System.Windows.Forms.Label lblpo_del_id;
+        private System.Windows.Forms.DataGridView dgvDel;
     }
 }

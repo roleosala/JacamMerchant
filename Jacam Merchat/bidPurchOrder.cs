@@ -23,6 +23,7 @@ namespace Jacam_Merchat
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
             lblRn.Hide();
             label1.Hide();
+            lblPo_Bid_id.Hide();
         }
 
         private void showPurchOrder() //staff
@@ -46,7 +47,7 @@ namespace Jacam_Merchat
 
         private void showPurchOrderLine(int id) //staff
         {
-            string sel = "SELECT * FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id LEFT JOIN po_bid pb ON pb.po_bid_id = pbl.po_bid_id LEFT JOIN profile p ON p.prof_id = pb.prof_id JOIN bid b ON b.bid_id = bi.bid_id WHERE pbl.po_bid_id = '" + id+"'";
+            string sel = "SELECT pbl.*, bi.name, bo.offer_price, s.name, b.title FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN bid_offer bo ON bo.item_id = pbl.item_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id LEFT JOIN po_bid pb ON pb.po_bid_id = pbl.po_bid_id JOIN bid b ON b.bid_id = bi.bid_id WHERE pbl.po_bid_id = '" + id+"'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -56,48 +57,7 @@ namespace Jacam_Merchat
             adp.Fill(dt);
             dgvPO.DataSource = dt;
             dgvPO.ClearSelection();
-            dgvPO.Columns[0].Visible = false;
-            dgvPO.Columns[1].Visible = false;
-            dgvPO.Columns[2].Visible = false;
-            dgvPO.Columns[3].HeaderText = "Purchased Quantity";
-            dgvPO.Columns[4].Visible = false;
-            dgvPO.Columns[5].HeaderText = "PO No.";
-            dgvPO.Columns[6].Visible = false;
-            dgvPO.Columns[7].Visible = false;
-            dgvPO.Columns[8].HeaderText = "Item Description";
-            dgvPO.Columns[9].Visible = false;
-            dgvPO.Columns[10].Visible = false;
-            dgvPO.Columns[11].Visible = false;
-            dgvPO.Columns[12].HeaderText = "Offered By";
-            dgvPO.Columns[13].Visible = false;
-            dgvPO.Columns[14].Visible = false;
-            dgvPO.Columns[15].Visible = false;
-            dgvPO.Columns[16].Visible = false;
-            dgvPO.Columns[17].Visible = false;
-            dgvPO.Columns[18].Visible = false;
-            dgvPO.Columns[19].Visible = false;
-            dgvPO.Columns[20].Visible = false;
-            dgvPO.Columns[21].Visible = false;
-            dgvPO.Columns[22].Visible = false;
-            dgvPO.Columns[23].Visible = false;
-            dgvPO.Columns[24].Visible = false;
-            dgvPO.Columns[25].Visible = false;
-            dgvPO.Columns[26].Visible = false;
-            dgvPO.Columns[27].HeaderText = "Purchased By";
-            dgvPO.Columns[28].Visible = false;
-            dgvPO.Columns[29].Visible = false;
-            dgvPO.Columns[30].Visible = false;
-            dgvPO.Columns[31].Visible = false;
-            dgvPO.Columns[32].Visible = false;
-            dgvPO.Columns[33].Visible = false;
-            dgvPO.Columns[34].Visible = false;
-            dgvPO.Columns[35].Visible = false;
-            dgvPO.Columns[36].Visible = false;
-            dgvPO.Columns[37].Visible = false;
-            dgvPO.Columns[38].HeaderText = "From Bid";
-            dgvPO.Columns[39].Visible = false;
-            dgvPO.Columns[40].Visible = false;
-            dgvPO.ClearSelection();
+            
         }
 
         private void showSupPurchOrder() //supplier
@@ -130,12 +90,13 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvPO.DataSource = dt;
-            dgvPO.Columns[0].Visible = false;
-            dgvPO.Columns[1].Visible = false;
-            dgvPO.Columns[2].Visible = false;
-            dgvPO.Columns[3].HeaderText = "QTY Bought";
-            dgvPO.Columns[4].Visible = false;
-            dgvPO.Columns[5].HeaderText = "Item Description";
+            dgvPO.Columns[0].Visible = false;//po_bid_line_id
+            dgvPO.Columns[1].Visible = false;//po_bid_id
+            dgvPO.Columns[2].Visible = false;//item_id
+            dgvPO.Columns[3].Visible = false;//qt
+            dgvPO.Columns[4].HeaderText = "QTY Bought";
+            dgvPO.Columns[5].Visible = false;
+            dgvPO.Columns[6].HeaderText = "Item Description";
             dgvPO.ClearSelection();
         }
 
@@ -166,6 +127,7 @@ namespace Jacam_Merchat
             int ri = dgvPO.CurrentRow.Index;
             if (ri >= 0 && offset == 0)
             {
+                lblPo_Bid_id.Text = dgvPO.Rows[ri].Cells[0].Value.ToString();
                 int id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
                 if (user_type == 1 || user_type == 5)
                 {
@@ -234,6 +196,7 @@ namespace Jacam_Merchat
             int ri = dgvPO.CurrentRow.Index;
             if (ri >= 0 && offset == 0)
             {
+                lblPo_Bid_id.Text = dgvPO.Rows[ri].Cells[0].Value.ToString();
                 int id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
                 if (user_type == 1 || user_type == 5)
                 {
@@ -243,6 +206,7 @@ namespace Jacam_Merchat
                     btnDelRec.Hide();
                     lblRn.Show();
                     label1.Show();
+                    
                 }
                 else if (user_type == 4)
                 {
@@ -251,24 +215,21 @@ namespace Jacam_Merchat
                 }
             }
             else
-            {
-                dgvPO.ClearSelection();
+            { 
                 ri = dgvPO.CurrentRow.Index;
                 if (ri >= 0)
                 {
                     int id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
-                    int po_bid_id = int.Parse(dgvPO.Rows[ri].Cells[1].Value.ToString());
-                    int qty = int.Parse(dgvPO.Rows[ri].Cells[3].Value.ToString());
+                    int po_bid_id = int.Parse(lblPo_Bid_id.Text);
                     if (user_type == 1 || user_type == 5 && offset == 0)
                     {
                         showPurchOrderLine(id);
                         offset = 1;
                         btnDelRec.Hide();
                     }
-                    else if (user_type == 4)
+                    else if (user_type == 4 && dgvPO.Rows.Count > 0)
                     {
-                        int po_bid_line_id = int.Parse(dgvPO.Rows[ri].Cells[0].Value.ToString());
-                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_line_id = '"+po_bid_line_id+"')";
+                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line WHERE po_bid_id = '"+po_bid_id+"' AND sup_id = '"+user_id+"')";
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand(ch, conn);
                         MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -281,13 +242,39 @@ namespace Jacam_Merchat
                             MessageBox.Show("The item you are trying to set a delivery date is already scheduled. Please select another item to be delivered.","Item Already in Delivery!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }else
                         {
-                            addAddressSupplier purch = new addAddressSupplier();
-                            purch.user_id = user_id;
-                            purch.user_type = user_type;
-                            purch.po_id = id;
-                            purch.po_bid_id = po_bid_id;
-                            purch.limit = qty;
-                            purch.ShowDialog();
+                            DataTable data = new DataTable();
+                            foreach (DataGridViewColumn col in dgvPO.Columns)
+                            {
+                                data.Columns.Add(col.Name);
+                            }
+                            foreach (DataGridViewRow row in dgvPO.Rows)
+                            {
+                                DataRow dRow = data.NewRow();
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    dRow[cell.ColumnIndex] = cell.Value;
+                                }
+                                data.Rows.Add(dRow);
+                            }
+                            string sel = "SELECT max(po_del_id) FROM po_del";
+                            conn.Open();
+                            comm = new MySqlCommand(sel, conn);
+                            adp = new MySqlDataAdapter(comm);
+                            comm.ExecuteNonQuery();
+                            dt = new DataTable();
+                            conn.Close();
+                            adp.Fill(dt);
+                            if (dt.Rows.Count == 1)
+                            {
+                                string po_del_id = dt.Rows[0][0].ToString();
+                                addAddressSupplier purch = new addAddressSupplier();
+                                purch.user_id = user_id;
+                                purch.user_type = user_type;
+                                purch.po_id = id;
+                                purch.po_bid_id = po_bid_id;
+                                purch.dt = data;
+                                purch.ShowDialog();
+                            }
                         }
                     }
                 }

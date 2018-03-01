@@ -545,3 +545,47 @@ C:\Users\RiShye\Source\Repos\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat
 C:\Users\RiShye\Source\Repos\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Supplier_Supplies.resources
 C:\Users\RiShye\Source\Repos\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Sale.resources
 C:\Users\RiShye\Source\Repos\JacamMerchant\Jacam Merchat\obj\Debug\Jacam Merchant.csproj.GenerateResource.Cache
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\Jacam Merchat.exe.config
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam Merchat.exe
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam Merchat.pdb
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\Jacam Merchat.exe
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\Jacam Merchat.pdb
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\MetroFramework.Design.dll
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\MetroFramework.dll
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\MySql.Data.dll
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\bin\Debug\MySql.Data.xml
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam Merchant.csprojResolveAssemblyReference.cache
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addAddress.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addAddressSupplier.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addBidInfo.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addBidItems.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addComControl.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addCompany.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addCredentials.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addDate.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addProfile.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addQuantity.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addRepresentative.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.addSupProd.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.biddedItems.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.bidPurchOrder.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Bids.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Company.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Dashboard.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Delivery.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.delStatus.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Inventory.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Login.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.OrderList.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.POS.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Profile.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Properties.Resources.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.PurcharseOrder.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.purchaseOrderDelivery.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Returns.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.selCustomer.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Settings.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Supplier_Supplies.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam_Merchat.Sale.resources
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant3\Jacam Merchat\obj\Debug\Jacam Merchant.csproj.GenerateResource.Cache

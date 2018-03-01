@@ -158,7 +158,7 @@ namespace Jacam_Merchat
 
         private void showDelSup()// show supplier side po_id_del
         {
-            string sel = "SELECT * FROM po_del pd LEFT JOIN po_bid po ON po.po_bid_id = pd.po_bid_id LEFT JOIN po_del_line pdl ON pdl.po_del_id = pd.po_del_id LEFT JOIN po_bid_line pbl ON pbl.po_bid_line_id = pdl.po_bid_line_id LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN bid b ON b.bid_id = bi.bid_id LEFT JOIN profile p ON p.prof_id = pdl.prof_id WHERE pd.sup_id = '" + user_id+"' ";
+            string sel = "SELECT * FROM po_Del pd WHERE pd.sup_id = '" + user_id+"' ";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -173,48 +173,12 @@ namespace Jacam_Merchat
             dgvDel.Columns[2].HeaderText = "Date Delivered";
             dgvDel.Columns[3].HeaderText = "Address";
             dgvDel.Columns[4].Visible = false;
-            dgvDel.Columns[5].Visible = false;
-            dgvDel.Columns[6].Visible = false;
-            dgvDel.Columns[7].HeaderText = "Date Received";
-            dgvDel.Columns[8].HeaderText = "Reference NO.";
-            dgvDel.Columns[9].Visible = false;
-            dgvDel.Columns[10].Visible = false;
-            dgvDel.Columns[11].Visible = false;
-            dgvDel.Columns[12].Visible = false;
-            dgvDel.Columns[13].Visible = false;
-            dgvDel.Columns[14].Visible = false;
-            dgvDel.Columns[15].Visible = false;
-            dgvDel.Columns[16].Visible = false;
-            dgvDel.Columns[17].Visible = false;
-            dgvDel.Columns[18].Visible = false;
-            dgvDel.Columns[19].Visible = false;
-            dgvDel.Columns[20].HeaderText = "PO NO.";
-            dgvDel.Columns[21].Visible = false;
-            dgvDel.Columns[22].Visible = false;
-            dgvDel.Columns[23].HeaderText = "Item Description";
-            dgvDel.Columns[24].Visible = false;
-            dgvDel.Columns[25].Visible = false;
-            dgvDel.Columns[26].Visible = false;
-            dgvDel.Columns[27].HeaderText = "From BID";
-            dgvDel.Columns[28].Visible = false;
-            dgvDel.Columns[29].Visible = false;
-            dgvDel.Columns[30].Visible = false;
-            dgvDel.Columns[31].HeaderText = "Received By";
-            dgvDel.Columns[32].Visible = false;
-            dgvDel.Columns[33].Visible = false;
-            dgvDel.Columns[34].Visible = false;
-            dgvDel.Columns[35].Visible = false;
-            dgvDel.Columns[36].Visible = false;
-            dgvDel.Columns[37].Visible = false;
-            dgvDel.Columns[38].Visible = false;
-            dgvDel.Columns[39].Visible = false;
-            dgvDel.Columns[40].Visible = false;
-            
+            dgvDel.Columns[5].HeaderText = "Delivery receipt";
         }
 
         private void showPurchDelStaff()// Jacam Personel
         {
-            string sel = "SELECT * FROM po_del pd LEFT JOIN po_bid po ON po.po_bid_id = pd.po_bid_id LEFT JOIN po_del_line pdl ON pdl.po_del_id = pd.po_del_id LEFT JOIN po_bid_line pbl ON pbl.po_bid_line_id = pdl.po_bid_line_id LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN bid b ON b.bid_id = bi.bid_id LEFT JOIN profile p ON p.prof_id = pd.sup_id";
+            string sel = "SELECT pd.*, p.name FROM po_del pd LEFT JOIN po_bid po ON po.po_bid_id = pd.po_bid_id LEFT JOIN profile p ON p.prof_id = pd.sup_id";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -229,43 +193,8 @@ namespace Jacam_Merchat
             dgvDel.Columns[2].HeaderText = "Date Delivered";
             dgvDel.Columns[3].HeaderText = "Address";
             dgvDel.Columns[4].Visible = false;
-            dgvDel.Columns[5].HeaderText = "Delivery Receipt";
-            dgvDel.Columns[6].Visible = false;
-            dgvDel.Columns[7].Visible = false;
-            dgvDel.Columns[8].Visible = false;
-            dgvDel.Columns[9].HeaderText = "Reference NO.";
-            dgvDel.Columns[10].Visible = false;
-            dgvDel.Columns[11].Visible = false;
-            dgvDel.Columns[12].Visible = false;
-            dgvDel.Columns[13].Visible = false;
-            dgvDel.Columns[14].Visible = false;
-            dgvDel.Columns[15].Visible = false;
-            dgvDel.Columns[16].Visible = false;
-            dgvDel.Columns[17].Visible = false;
-            dgvDel.Columns[18].Visible = false;
-            dgvDel.Columns[19].Visible = false;
-            dgvDel.Columns[20].Visible = false;
-            dgvDel.Columns[21].HeaderText = "PO NO.";
-            dgvDel.Columns[22].Visible = false;
-            dgvDel.Columns[23].Visible = false;
-            dgvDel.Columns[24].HeaderText = "Item Description";
-            dgvDel.Columns[25].Visible = false;
-            dgvDel.Columns[26].Visible = false;
-            dgvDel.Columns[27].Visible = false;
-            dgvDel.Columns[28].HeaderText = "From BID";
-            dgvDel.Columns[29].Visible = false;
-            dgvDel.Columns[30].Visible = false;
-            dgvDel.Columns[31].Visible = false;
-            dgvDel.Columns[32].HeaderText = "Supplier";
-            dgvDel.Columns[33].Visible = false;
-            dgvDel.Columns[34].Visible = false;
-            dgvDel.Columns[35].Visible = false;
-            dgvDel.Columns[36].Visible = false;
-            dgvDel.Columns[37].Visible = false;
-            dgvDel.Columns[38].Visible = false;
-            dgvDel.Columns[39].Visible = false;
-            dgvDel.Columns[40].Visible = false;
-            dgvDel.Columns[41].Visible = false;
+            dgvDel.Columns[5].HeaderText = "Delivery receipt";
+            dgvDel.Columns[6].HeaderText = "From Supplier";
         }
 
         private void dgvDel_CellContentClick(object sender, DataGridViewCellEventArgs e)

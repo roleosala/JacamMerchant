@@ -19,21 +19,42 @@ namespace Jacam_Merchat
         public int po_id { get; set; }
         public int po_bid_id { get; set; }
         public DataTable dt { get; set; }
-        public int limit;
         public addAddressSupplier()
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
             lblId.Hide();
-            lblpo_bid_id.Hide();
+            lblpo_del_id.Hide();
         }
 
         private void addAddressSupplier_Load(object sender, EventArgs e)
         {
             lblId.Text = po_id.ToString();
-            lblpo_bid_id.Text = po_bid_id.ToString();
-            number.Value = limit;
+            lblpo_del_id.Text = po_bid_id.ToString();
+            show();
         }
+
+        private void show()
+        {
+            dgvDel.DataSource = dt;
+            dgvDel.Columns[0].Visible = false;//po_bid_line_id
+            dgvDel.Columns[1].Visible = false;//po_bid_id
+            dgvDel.Columns[2].Visible = false;//item_id
+            dgvDel.Columns[3].HeaderText = "QTY Bought";
+            dgvDel.Columns[4].Visible = false;//sup_id
+            dgvDel.Columns[5].Visible = false;//po_num
+            dgvDel.Columns[6].HeaderText = "Item Description";
+            DataGridViewTextBoxColumn txt = new DataGridViewTextBoxColumn();
+            txt.Name = "txt";
+            txt.HeaderText = "Items to be Delivered";
+            dgvDel.Columns.Add(txt);
+            dgvDel.ClearSelection();
+            dgvDel.Columns[3].ReadOnly = true;
+            dgvDel.Columns[6].ReadOnly = true;
+            dgvDel.Columns["txt"].ReadOnly = false;
+            //dgvDel.Columns[7].txt_TextChange += new DataGridViewCellEventHandler(txt_TextChange);
+        }
+        
 
         private void btnDelivery_Click(object sender, EventArgs e)
         {
@@ -64,7 +85,7 @@ namespace Jacam_Merchat
                 {
                     max = int.Parse(d.Rows[0][0].ToString()) + 1;
                 }
-                string ins = "INSERT INTO po_del VALUES(NULL, '"+lblpo_bid_id.Text+"','"+date.Value.ToString("yyyy-MM-dd")+"', '"+txtAdd.Text+"', '"+user_id+"', '"+max+"')";
+                string ins = "INSERT INTO po_del VALUES(NULL, '"+lblpo_del_id.Text+"','"+date.Value.ToString("yyyy-MM-dd")+"', '"+txtAdd.Text+"', '"+user_id+"', '"+max+"')";
                 MySqlCommand comm = new MySqlCommand(ins, conn);
                 comm.ExecuteNonQuery();
                 string sel = "SELECT max(po_del_id) FROM po_del";
@@ -75,9 +96,9 @@ namespace Jacam_Merchat
                 adp.Fill(id);
                 if (id.Rows.Count >= 0)
                 {
-                    for (int i = 0; i < id.Rows.Count; i++)
+                    for (int i = 0; i < dgvDel.Rows.Count; i++)
                     {
-                        ins = "INSERT INTO po_del_line VALUES(NULL, '" + id.Rows[i][0].ToString() + "', '" + lblId.Text + "', NULL, NULL, NULL, '" + number.Value.ToString() +"')";
+                        ins = "INSERT INTO po_del_line VALUES(NULL,'"+lblpo_del_id.Text+"' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '"+ dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL)";
                         comm = new MySqlCommand(ins, conn);
                         comm.ExecuteNonQuery();
                     }
@@ -94,15 +115,18 @@ namespace Jacam_Merchat
             }
             conn.Close();
         }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        
+        private void dgvDel_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (number.Value < 0)
+            
+        }
+
+        private void dgvDel_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDel.CurrentCell.ColumnIndex == 7)
             {
-                number.Value = 0;
-            }else if (number.Value >= limit)
-            {
-                number.Value = limit;
+                int curCol = dgvDel.CurrentCell.RowIndex;
+                string number = dgvDel.Rows[curCol].Cells[7].Value.ToString();
             }
         }
     }
