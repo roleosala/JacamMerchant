@@ -81,7 +81,7 @@ namespace Jacam_Merchat
 
         private void showSupPurchOrderLine(int id) //supplier
         {
-            string sel = "SELECT pbl.*, bi.name, pdlr.qtyRem FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN po_del_line pdl ON pdl.po_bid_line_id = pbl.po_bid_line_id LEFT JOIN po_del_line_rem pdlr ON pdlr.po_bid_line_id = pbl.po_bid_line_id WHERE po_bid_id = '" + id+"' AND sup_id = '"+user_id+"'";
+            string sel = "SELECT pbl.*, bi.name FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id WHERE po_bid_id = '" + id+"' AND sup_id = '"+user_id+"'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -96,8 +96,8 @@ namespace Jacam_Merchat
             dgvPO.Columns[3].HeaderText = "QTY Bought";
             dgvPO.Columns[4].Visible = false;
             dgvPO.Columns[5].Visible = false;
-            dgvPO.Columns[6].HeaderText = "Item Description";
-            dgvPO.Columns[7].HeaderText = "Remaining Items to Delivered";
+            dgvPO.Columns[6].HeaderText = "Remaining QTY to be delivered";
+            dgvPO.Columns[7].HeaderText = "Item Description";
             dgvPO.ClearSelection();
         }
 
@@ -310,6 +310,7 @@ namespace Jacam_Merchat
                                     purch.offSet = 1;
                                     purch.ShowDialog();
                                 }
+                                showSupPurchOrderLine(po_bid_id);
                             }
                         }
                     }

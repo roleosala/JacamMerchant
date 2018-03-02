@@ -37,14 +37,15 @@ namespace Jacam_Merchat
 
         private void show()
         {
-            dgvDel.DataSource = dt;
+            dgvDel.DataSource = this.dt;
             dgvDel.Columns[0].Visible = false;//po_bid_line_id
             dgvDel.Columns[1].Visible = false;//po_bid_id
             dgvDel.Columns[2].Visible = false;//item_id
             dgvDel.Columns[3].HeaderText = "QTY Bought";
             dgvDel.Columns[4].Visible = false;//sup_id
             dgvDel.Columns[5].Visible = false;//po_num
-            dgvDel.Columns[6].HeaderText = "Item Description";
+            dgvDel.Columns[6].HeaderText = "QTY Rem";
+            dgvDel.Columns[7].HeaderText = "Item Description";
             DataGridViewTextBoxColumn txt = new DataGridViewTextBoxColumn();
             txt.Name = "txt";
             txt.HeaderText = "Items to be Delivered";
@@ -91,7 +92,7 @@ namespace Jacam_Merchat
                 int t = 0;
                 for (int i = 0; i < dgvDel.Rows.Count; i++)
                 {
-                    if (dgvDel.Rows[i].Cells["txt"].Value.ToString() == "")
+                    if (dgvDel.Rows[i].Cells["txt"].Value.ToString() == null || dgvDel.Rows[i].Cells["txt"].Value.ToString() == "")
                     {
                         c++;
                     }
@@ -107,6 +108,7 @@ namespace Jacam_Merchat
                 }
                 if (c != dgvDel.Rows.Count)
                 {
+                    string ins2 = "walay sulod";
                     string ins = "INSERT INTO po_del VALUES(NULL, '" + lblpo_del_id.Text + "','" + date.Value.ToString("yyyy-MM-dd") + "', '" + txtAdd.Text + "', '" + user_id + "', '" + max + "')";
                     MySqlCommand comm = new MySqlCommand(ins, conn);
                     comm.ExecuteNonQuery();
@@ -116,33 +118,50 @@ namespace Jacam_Merchat
                     comm.ExecuteNonQuery();
                     DataTable id = new DataTable();
                     adp.Fill(id);
+                    int k = 0;
                     if (id.Rows.Count >= 0)
                     {
+                        string ch = "walay query";
                         for (int i = 0; i < dgvDel.Rows.Count; i++)
                         {
                             if (dgvDel.Rows[i].Cells[7].Value.ToString() != "")
                             {
                                 int qtyRem = int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) - int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString());
-                                ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells[7].Value.ToString() + "')";
+                                ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells["txt"].Value.ToString() + "')";
                                 comm = new MySqlCommand(ins, conn);
                                 comm.ExecuteNonQuery();
-                                sel = "SELECT qtyRem FROM po_del_line_rem WHERE po_bid_line_id = '"+ dgvDel.Rows[i].Cells[0].ToString() + "'";
-                                comm = new MySqlCommand(sel, conn);
+                                ch = "SELECT qtyRem FROM po_bid_line WHERE po_bid_line_id = '"+ dgvDel.Rows[i].Cells[0].Value.ToString() + "'";
+                                comm = new MySqlCommand(ch, conn);
                                 adp = new MySqlDataAdapter(comm);
                                 comm.ExecuteNonQuery();
                                 DataTable dt = new DataTable();
                                 adp.Fill(dt);
-                                MessageBox.Show(dt.Rows.Count.ToString());
-                                if (dt.Rows.Count == 0)
+                                if (dt.Rows.Count == 1)
                                 {
-                                    ins = "INSERT INTO po_del_line_rem VALUES(NULL,'" + dgvDel.Rows[i].Cells[0].ToString() + "' ,'" + qtyRem + "')";
-                                }else
-                                {
-                                    qtyRem = int.Parse(dt.Rows[0][0].ToString());
-                                    ins = "UPDATE po_Del_line_rem SET qtyRem = '"+qtyRem+"' WHERE po_bid_line_id = '"+ dgvDel.Rows[i].Cells[0].ToString() + "'";
+                                    if (dt.Rows[0][0].ToString() == null || dt.Rows[0][0].ToString() == "")
+                                    {
+                                        string upd = "UPDATE po_bid_line SET qtyRem = '"+qtyRem+"' WHERE po_bid_line_id = '"+ dgvDel.Rows[i].Cells[0].Value.ToString() + "'";
+                                        comm = new MySqlCommand(upd, conn);
+                                        comm.ExecuteNonQuery();
+                                    }
+                                    else
+                                    {
+                                        qtyRem = int.Parse(dt.Rows[0][0].ToString()) - int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString());
+                                        if (qtyRem >= 0)
+                                        {
+                                            string upd = "UPDATE po_bid_line SET qtyRem = '" + qtyRem + "' WHERE po_bid_line_id = '" + dgvDel.Rows[i].Cells[0].Value.ToString() + "'";
+                                            comm = new MySqlCommand(upd, conn);
+                                            comm.ExecuteNonQuery();
+                                        }
+                                        else
+                                        {
+                                            qtyRem = 0;
+                                            string upd = "UPDATE po_bid_line SET qtyRem = '" + qtyRem + "' WHERE po_bid_line_id = '" + dgvDel.Rows[i].Cells[0].Value.ToString() + "'";
+                                            comm = new MySqlCommand(upd, conn);
+                                            comm.ExecuteNonQuery();
+                                        }
+                                    }
                                 }
-                                comm = new MySqlCommand(ins, conn);
-                                comm.ExecuteNonQuery();
                             }
                             else
                             {
@@ -150,7 +169,7 @@ namespace Jacam_Merchat
                             }
                         }
                         conn.Close();
-                        MessageBox.Show("Successfully Set!", "");
+                        MessageBox.Show("Successfully Set! " + ins2 + ch + ins,  "");
                         this.Close();
                     }
                     else
