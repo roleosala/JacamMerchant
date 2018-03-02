@@ -677,3 +677,66 @@ D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Settings.resources
 D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Supplier_Supplies.resources
 D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam_Merchat.Sale.resources
 D:\SAD\JacamMerchant2\Jacam Merchat\obj\Debug\Jacam Merchant.csproj.GenerateResource.Cache
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\Jacam Merchat.exe.config
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam Merchat.exe
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam Merchat.pdb
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\Jacam Merchat.exe
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\Jacam Merchat.pdb
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\MetroFramework.Design.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\MetroFramework.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\MySql.Data.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\MySql.Data.xml
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam Merchant.csprojResolveAssemblyReference.cache
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addAddress.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addAddressSupplier.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addBidInfo.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addBidItems.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addComControl.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addCompany.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addCredentials.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addDate.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addProfile.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addQuantity.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addRepresentative.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.addSupProd.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.biddedItems.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.bidPurchOrder.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Bids.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Company.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Dashboard.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Delivery.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.delStatus.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Inventory.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Login.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.OrderList.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.POS.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Profile.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Properties.Resources.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.PurcharseOrder.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.purchaseOrderDelivery.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Returns.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.selCustomer.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Settings.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Supplier_Supplies.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.Sale.resources
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam Merchant.csproj.GenerateResource.Cache
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\FlashControlV71.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\ShockwaveFlashObjects.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\stdole.dll

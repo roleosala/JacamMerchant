@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblRn = new System.Windows.Forms.Label();
             this.lblPo_Bid_id = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPO)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,11 +108,21 @@
             this.lblPo_Bid_id.TabIndex = 7;
             this.lblPo_Bid_id.Text = "po_bid_id";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(818, 100);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 30);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
             // bidPurchOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 732);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.lblPo_Bid_id);
             this.Controls.Add(this.lblRn);
             this.Controls.Add(this.label1);
@@ -139,5 +150,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblRn;
         private System.Windows.Forms.Label lblPo_Bid_id;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

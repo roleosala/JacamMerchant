@@ -52,6 +52,7 @@ namespace Jacam_Merchat
             dgvDel.ClearSelection();
             dgvDel.Columns[3].ReadOnly = true;
             dgvDel.Columns[6].ReadOnly = true;
+            dgvDel.Columns[7].ReadOnly = true;
             dgvDel.Columns["txt"].ReadOnly = false;
             //dgvDel.Columns[7].txt_TextChange += new DataGridViewCellEventHandler(txt_TextChange);
         }
@@ -79,7 +80,7 @@ namespace Jacam_Merchat
                 ad.Fill(d);
                 int max;
                 string counter = d.Rows[0][0].ToString();
-                if (counter == null)
+                if (d.Rows.Count == 0)
                 {
                     max = 1;
                 }else
@@ -125,13 +126,21 @@ namespace Jacam_Merchat
                                 ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells[7].Value.ToString() + "')";
                                 comm = new MySqlCommand(ins, conn);
                                 comm.ExecuteNonQuery();
-                                sel = "SELECT max(po_del_line_id) FROM po_del_line";
+                                sel = "SELECT qtyRem FROM po_del_line_rem WHERE po_bid_line_id = '"+ dgvDel.Rows[i].Cells[0].ToString() + "'";
                                 comm = new MySqlCommand(sel, conn);
                                 adp = new MySqlDataAdapter(comm);
                                 comm.ExecuteNonQuery();
                                 DataTable dt = new DataTable();
                                 adp.Fill(dt);
-                                ins = "INSERT INTO po_del_line_rem VALUES(NULL,'" + dt.Rows[0][0].ToString() + "' ,'" + qtyRem + "')";
+                                MessageBox.Show(dt.Rows.Count.ToString());
+                                if (dt.Rows.Count == 0)
+                                {
+                                    ins = "INSERT INTO po_del_line_rem VALUES(NULL,'" + dgvDel.Rows[i].Cells[0].ToString() + "' ,'" + qtyRem + "')";
+                                }else
+                                {
+                                    qtyRem = int.Parse(dt.Rows[0][0].ToString());
+                                    ins = "UPDATE po_Del_line_rem SET qtyRem = '"+qtyRem+"' WHERE po_bid_line_id = '"+ dgvDel.Rows[i].Cells[0].ToString() + "'";
+                                }
                                 comm = new MySqlCommand(ins, conn);
                                 comm.ExecuteNonQuery();
                             }

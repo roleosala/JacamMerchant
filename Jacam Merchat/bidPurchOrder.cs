@@ -81,7 +81,7 @@ namespace Jacam_Merchat
 
         private void showSupPurchOrderLine(int id) //supplier
         {
-            string sel = "SELECT pbl.*, bi.name, pdlr.qtyRem FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN po_del_line pdl ON pdl.po_bid_line_id = pbl.po_bid_line_id LEFT JOIN po_del_line_rem pdlr ON pdlr.po_del_line_id = pdl.po_del_line_id WHERE po_bid_id = '" + id+"' AND sup_id = '"+user_id+"'";
+            string sel = "SELECT pbl.*, bi.name, pdlr.qtyRem FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN po_del_line pdl ON pdl.po_bid_line_id = pbl.po_bid_line_id LEFT JOIN po_del_line_rem pdlr ON pdlr.po_bid_line_id = pbl.po_bid_line_id WHERE po_bid_id = '" + id+"' AND sup_id = '"+user_id+"'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -230,7 +230,7 @@ namespace Jacam_Merchat
                     }
                     else if (user_type == 4 && dgvPO.Rows.Count > 0)
                     {
-                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT po_bid_line_id FROM po_del_line pdl LEFT JOIN po_del_line_rem pdlr ON pdlr.po_Del_line_id = pdl.po_del_line_id WHERE po_bid_id = '"+po_bid_id+"' AND sup_id = '"+user_id+"' AND qty = 0 )";
+                        string ch = "SELECT * FROM po_bid_line WHERE po_bid_line_id IN (SELECT pdl.po_bid_line_id FROM po_del_line pdl LEFT JOIN po_del_line_rem pdlr ON pdlr.po_bid_line_id = pdl.po_bid_line_id WHERE po_bid_id = '" + po_bid_id+"' AND sup_id = '"+user_id+"' AND qtyRem = 0)";
                         conn.Open();
                         MySqlCommand comm = new MySqlCommand(ch, conn);
                         MySqlDataAdapter adp = new MySqlDataAdapter(comm);
