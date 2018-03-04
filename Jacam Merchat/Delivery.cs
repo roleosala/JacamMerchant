@@ -128,6 +128,24 @@ namespace Jacam_Merchat
             {
                 sales();
             }
+            int ri = 0;
+            if (ri >= 0 && user_type == 1)
+            {
+                string ch = "SELECT * FROM delivery WHERE order_id = '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "'";
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand(ch, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                comm.ExecuteNonQuery();
+                conn.Close();
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (dt.Rows.Count == 1)
+                {
+                    btnAdd.Enabled = false;
+                    btnAdd.BackColor = Color.LightGray;
+                    btnAdd.ForeColor = Color.White;
+                }
+            }
             dgvDel.ClearSelection();
         }
 

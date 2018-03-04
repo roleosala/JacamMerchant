@@ -740,3 +740,4 @@ C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisi
 C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\bin\Debug\stdole.dll
+C:\Users\Chardee Faye\Source\JacamMerchant\Jacam Merchat\obj\Debug\Jacam_Merchat.PrintPO.resources

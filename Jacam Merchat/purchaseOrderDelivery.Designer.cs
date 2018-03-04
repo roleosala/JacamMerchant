@@ -32,6 +32,7 @@
             this.btnView = new MetroFramework.Controls.MetroTile();
             this.btnBack = new System.Windows.Forms.Button();
             this.lbldate = new System.Windows.Forms.Label();
+            this.lblPO_del_id = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,11 +89,21 @@
             this.lbldate.TabIndex = 4;
             this.lbldate.Text = "Date Today";
             // 
+            // lblPO_del_id
+            // 
+            this.lblPO_del_id.AutoSize = true;
+            this.lblPO_del_id.Location = new System.Drawing.Point(325, 29);
+            this.lblPO_del_id.Name = "lblPO_del_id";
+            this.lblPO_del_id.Size = new System.Drawing.Size(85, 21);
+            this.lblPO_del_id.TabIndex = 5;
+            this.lblPO_del_id.Text = "po_del_id";
+            // 
             // purchaseOrderDelivery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 732);
+            this.Controls.Add(this.lblPO_del_id);
             this.Controls.Add(this.lbldate);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnView);
@@ -116,5 +127,6 @@
         private MetroFramework.Controls.MetroTile btnView;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lbldate;
+        private System.Windows.Forms.Label lblPO_del_id;
     }
 }

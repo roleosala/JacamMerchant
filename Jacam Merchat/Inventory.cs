@@ -163,6 +163,7 @@ namespace Jacam_Merchat
             e.Graphics.DrawString("From Bid", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 170, y );
             x = 50;
             y = 130;
+            int c = 0;
             for (int i=0; i < dgvSI.Rows.Count; i++)
             {
                 e.Graphics.DrawString(dgvSI.Rows[i].Cells[0].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x, y);
@@ -172,6 +173,7 @@ namespace Jacam_Merchat
                 e.Graphics.DrawString(dgvSI.Rows[i].Cells[4].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
                 x = 50;
                 y += 25;
+                c++;
             }
         }
 

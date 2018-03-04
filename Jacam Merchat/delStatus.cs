@@ -52,7 +52,7 @@ namespace Jacam_Merchat
 
         private void se()
         {
-            string sh = "SELECT o.*, c.prof_id ,c.name, d.*, p.prof_id ,p.name FROM jacammerchant.orders o LEFT JOIN profile c ON c.prof_id = o.user_id LEFT JOIN delivery d ON d.order_id = o.order_id LEFT JOIN profile p ON p.prof_id = d.prof_id WHERE d.order_id = '" + order_id + "'";
+            string sh = "SELECT o.*, c.prof_id ,c.name, d.*, p.prof_id ,p.name FROM jacammerchant.order o LEFT JOIN profile c ON c.prof_id = o.prof_id LEFT JOIN delivery d ON d.order_id = o.order_id LEFT JOIN profile p ON p.prof_id = d.prof_id WHERE d.order_id = '" + order_id + "'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sh, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -64,16 +64,21 @@ namespace Jacam_Merchat
             {
                 lblDelId.Text = dt.Rows[0]["del_id"].ToString();
                 lbldr.Text = dt.Rows[0]["dr"].ToString();
-                if (dt.Rows[0][6].ToString() == "1")
+                if (dt.Rows[0]["status"].ToString() == "1")
                 {
                     lblStat.Text = "On Delivery";
+                    lblStat.ForeColor = Color.Red;
+                }else
+                {
+                    lblStat.Text = "Delivered";
+                    lblStat.ForeColor = Color.Green;
                 }
                 lblAdd.Text = dt.Rows[0]["address"].ToString();
-                lblClient.Text = dt.Rows[0][8].ToString();
-                lblDelBy.Text = dt.Rows[0][18].ToString();
+                lblClient.Text = dt.Rows[0][7].ToString();
+                lblDelBy.Text = dt.Rows[0]["name1"].ToString();
                 lblPC.Text = dt.Rows[0]["postal"].ToString();
                 lblOrder.Text = dt.Rows[0]["rn"].ToString();
-                lblDelDate.Text = DateTime.Parse(dt.Rows[0][16].ToString()).ToString("yyyy-MM-dd");
+                lblDelDate.Text = DateTime.Parse(dt.Rows[0]["del_date"].ToString()).ToString("yyyy-MM-dd");
             }
         }
 

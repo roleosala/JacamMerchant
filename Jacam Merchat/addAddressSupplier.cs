@@ -55,6 +55,10 @@ namespace Jacam_Merchat
             dgvDel.Columns[6].ReadOnly = true;
             dgvDel.Columns[7].ReadOnly = true;
             dgvDel.Columns["txt"].ReadOnly = false;
+            for (int i = 0; i <dgvDel.Rows.Count; i++)
+            {
+                dgvDel.Rows[i].Cells["txt"].Value = 0;
+            }
             //dgvDel.Columns[7].txt_TextChange += new DataGridViewCellEventHandler(txt_TextChange);
         }
         
@@ -81,7 +85,7 @@ namespace Jacam_Merchat
                 ad.Fill(d);
                 int max;
                 string counter = d.Rows[0][0].ToString();
-                if (d.Rows.Count == 0)
+                if (d.Rows.Count == 0 || d.Rows[0][0].ToString() == "" || d.Rows[0][0].ToString() == null)
                 {
                     max = 1;
                 }else
@@ -108,7 +112,6 @@ namespace Jacam_Merchat
                 }
                 if (c != dgvDel.Rows.Count)
                 {
-                    string ins2 = "walay sulod";
                     string ins = "INSERT INTO po_del VALUES(NULL, '" + lblpo_del_id.Text + "','" + date.Value.ToString("yyyy-MM-dd") + "', '" + txtAdd.Text + "', '" + user_id + "', '" + max + "')";
                     MySqlCommand comm = new MySqlCommand(ins, conn);
                     comm.ExecuteNonQuery();
@@ -124,7 +127,7 @@ namespace Jacam_Merchat
                         string ch = "walay query";
                         for (int i = 0; i < dgvDel.Rows.Count; i++)
                         {
-                            if (dgvDel.Rows[i].Cells[7].Value.ToString() != "")
+                            if (int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString()) != 0)
                             {
                                 int qtyRem = int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) - int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString());
                                 ins = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells["txt"].Value.ToString() + "')";
@@ -169,7 +172,7 @@ namespace Jacam_Merchat
                             }
                         }
                         conn.Close();
-                        MessageBox.Show("Successfully Set! " + ins2 + ch + ins,  "");
+                        MessageBox.Show("Successfully Set! ", "");
                         this.Close();
                     }
                     else
@@ -183,7 +186,7 @@ namespace Jacam_Merchat
                 }
             }else
             {
-                MessageBox.Show("Wrong!", "");
+                MessageBox.Show("Please Check The Date you want to deliver or the address to continue!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             conn.Close();
         }

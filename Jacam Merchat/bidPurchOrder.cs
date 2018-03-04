@@ -238,7 +238,15 @@ namespace Jacam_Merchat
                         conn.Close();
                         DataTable dt = new DataTable();
                         adp.Fill(dt);
-                        if (dt.Rows.Count >= 1)
+                        int t = 0;
+                        for (int i = 0; i < dgvPO.Rows.Count; i++)
+                        {
+                            if (int.Parse(dgvPO.Rows[i].Cells[6].Value.ToString()) != 0)
+                            {
+                                t++;
+                            }
+                        }
+                        if (t == 0)
                         {
                             MessageBox.Show("The item you are trying to set a delivery date is already scheduled. Please select another item to be delivered.","Item Already in Delivery!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }else
@@ -276,6 +284,13 @@ namespace Jacam_Merchat
                             }
                             else
                             {
+                                for (int i = 0; i < dgvPO.Rows.Count; i++)
+                                {
+                                    if (int.Parse(dgvPO.Rows[i].Cells[6].Value.ToString()) == 0)
+                                    {
+                                        dgvPO.Rows.RemoveAt(i);
+                                    }
+                                }
                                 DataTable data = new DataTable();
                                 foreach (DataGridViewColumn col in dgvPO.Columns)
                                 {

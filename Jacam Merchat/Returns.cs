@@ -49,7 +49,7 @@ namespace Jacam_Merchat
             }
             else if (user_type == 1)
             {
-                string sel = "SELECT bi.name, pr.qty ,pb.ref_num ,p.name, pr.return_id, pr.return_date, s.name, pr.date_rec FROM jacammerchant.po_return pr LEFT JOIN po_del_line pdl ON pdl.line_id = pr.po_del_line_id LEFT JOIN po_bid_line pbl ON pbl.po_bid_line_id = pdl.po_bid_line_id LEFT JOIN po_bid pb ON pb.po_bid_id = pbl.po_bid_id LEFT JOIN bid_items bi ON pbl.item_id = bi.item_id LEFT JOIN profile p ON p.prof_id = pr.prof_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id;";
+                string sel = "SELECT bi.name, pr.qty ,pb.ref_num ,p.name, pr.return_id, pr.return_date, s.name, pr.date_rec FROM jacammerchant.po_return pr LEFT JOIN po_del_line pdl ON pdl.po_del_line_id = pr.po_del_line_id LEFT JOIN po_bid_line pbl ON pbl.po_bid_line_id = pdl.po_bid_line_id LEFT JOIN po_bid pb ON pb.po_bid_id = pbl.po_bid_id LEFT JOIN bid_items bi ON pbl.item_id = bi.item_id LEFT JOIN profile p ON p.prof_id = pr.prof_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id;";
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand(sel, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -81,12 +81,21 @@ namespace Jacam_Merchat
                 btnUpdDate.Text = "Recieve";
                 showReturnStaff();
             }
-            string detdet = dgvRet.Rows[0].Cells[6].Value.ToString();
-            if (detdet == "")
+            if (dgvRet.Rows.Count > 0)
             {
-                btnUpdDate.Enabled = true;
-                btnUpdDate.BackColor = Color.DeepSkyBlue;
-                btnUpdDate.ForeColor = Color.White;
+                string detdet = dgvRet.Rows[0].Cells[6].Value.ToString();
+                if (detdet == "")
+                {
+                    btnUpdDate.Enabled = true;
+                    btnUpdDate.BackColor = Color.DeepSkyBlue;
+                    btnUpdDate.ForeColor = Color.White;
+                }
+                else
+                {
+                    btnUpdDate.Enabled = false;
+                    btnUpdDate.BackColor = Color.LightGray;
+                    btnUpdDate.ForeColor = Color.White;
+                }
             }
             else
             {
@@ -94,6 +103,7 @@ namespace Jacam_Merchat
                 btnUpdDate.BackColor = Color.LightGray;
                 btnUpdDate.ForeColor = Color.White;
             }
+
         }
 
         private void Returns_FormClosing(object sender, FormClosingEventArgs e)

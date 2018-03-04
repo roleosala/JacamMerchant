@@ -144,20 +144,40 @@ namespace Jacam_Merchat
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dtRn = new DataTable();
                 adp.Fill(dtRn);
-                int rn =  int.Parse(DateTime.Now.ToString("yyyyMMdd")) + int.Parse(dtRn.Rows[0][0].ToString());
+                int rn = 0;
+                if (dtRn.Rows.Count == 0 || dtRn.Rows[0][0].ToString() == "" || dtRn.Rows[0][0].ToString() == null)
+                {
+                    rn = int.Parse(DateTime.Now.ToString("yyyyMMdd")) + 1;
+                }else
+                {
+                    rn = int.Parse(DateTime.Now.ToString("yyyyMMdd")) + int.Parse(dtRn.Rows[0][0].ToString());
+                }
                 string ins = "INSERT INTO po_bid VALUES(NULL,  '" + user_id + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "', '"+rn+"');";
                 comm = new MySqlCommand(ins, conn);
                 comm.ExecuteNonQuery();
-                string sel = "SELECT max(pb.po_bid_id), max(po_num) FROM po_bid pb, po_bid_line";
+                string sel = "SELECT max(po_num) FROM po_bid_line";
                 comm = new MySqlCommand(sel, conn);
                 adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 int[] sup = selSup_id();
                 adp.Fill(dt);
+                string po = "";
+                string sel2 = "SELECT max(pb.po_bid_id) FROM po_bid pb;";
+                comm = new MySqlCommand(sel2, conn);
+                adp = new MySqlDataAdapter(comm);
+                DataTable dt2 = new DataTable();
+                adp.Fill(dt2);
                 if (dt.Rows.Count == 1)
                 {
-                    string po_bid_id = dt.Rows[0][0].ToString();
-                    int po_num = int.Parse(dt.Rows[0][1].ToString());
+                    int po_num = 0;
+                    if (dt.Rows[0][0].ToString() == "" || dt.Rows[0][0].ToString() == null)
+                    {
+                        po_num = 1;
+                    }else
+                    {
+                        po_num = int.Parse(dt.Rows[0][0].ToString());
+                    }
+                    string po_bid_id = dt2.Rows[0][0].ToString();
                     int[] pon = new int[sup.Length];
                     for (int i = 0; i < sup.Length; i++)
                     {
@@ -176,7 +196,7 @@ namespace Jacam_Merchat
                                 po_num = pon[j];
                             }
                         }
-                        string po = "INSERT INTO po_bid_line VALUES(NULL, '"+ po_bid_id + "', '" + item_id + "', '"+ dgvBid.Rows[i].Cells[1].Value.ToString()+"', '"+ sup_id + "', '"+po_num+"')";
+                        po = "INSERT INTO po_bid_line VALUES(NULL, '"+ po_bid_id + "', '" + item_id + "', '"+ dgvBid.Rows[i].Cells[1].Value.ToString()+"', '"+ sup_id + "', '"+po_num+"', '"+ dgvBid.Rows[i].Cells[1].Value.ToString() + "')";
                         comm = new MySqlCommand(po, conn);
                         comm.ExecuteNonQuery();
                         string upd = "UPDATE cart SET status = 1 WHERE cart_id = '" + cart_id + "'";
