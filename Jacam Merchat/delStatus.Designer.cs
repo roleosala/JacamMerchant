@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +49,8 @@
             this.lblDelId = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblDelDate = new System.Windows.Forms.Label();
+            this.btnUp = new MetroFramework.Controls.MetroTile();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,14 +171,14 @@
             this.dgvItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvItems.GridColor = System.Drawing.Color.Black;
             this.dgvItems.Location = new System.Drawing.Point(36, 326);
             this.dgvItems.MultiSelect = false;
@@ -230,9 +232,9 @@
             this.lblDelId.AutoSize = true;
             this.lblDelId.Location = new System.Drawing.Point(36, 58);
             this.lblDelId.Name = "lblDelId";
-            this.lblDelId.Size = new System.Drawing.Size(57, 21);
+            this.lblDelId.Size = new System.Drawing.Size(73, 21);
             this.lblDelId.TabIndex = 15;
-            this.lblDelId.Text = "label9";
+            this.lblDelId.Text = "order_id";
             // 
             // label9
             // 
@@ -252,13 +254,39 @@
             this.lblDelDate.TabIndex = 17;
             this.lblDelDate.Text = "label10";
             // 
+            // btnUp
+            // 
+            this.btnUp.ActiveControl = null;
+            this.btnUp.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnUp.ForeColor = System.Drawing.Color.White;
+            this.btnUp.Location = new System.Drawing.Point(644, 572);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(131, 47);
+            this.btnUp.TabIndex = 18;
+            this.btnUp.Text = "Update Status";
+            this.btnUp.UseCustomBackColor = true;
+            this.btnUp.UseCustomForeColor = true;
+            this.btnUp.UseSelectable = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(427, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 21);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "del_id";
+            // 
             // delStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 601);
+            this.ClientSize = new System.Drawing.Size(815, 654);
+            this.Controls.Add(this.btnUp);
             this.Controls.Add(this.lblDelDate);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.lblDelId);
             this.Controls.Add(this.btnUpd);
             this.Controls.Add(this.label8);
@@ -312,5 +340,7 @@
         private System.Windows.Forms.Label lblDelId;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblDelDate;
+        private MetroFramework.Controls.MetroTile btnUp;
+        private System.Windows.Forms.Label label10;
     }
 }

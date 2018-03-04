@@ -22,7 +22,8 @@ namespace Jacam_Merchat
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
-            //lblDelId.Hide();
+            lblDelId.Hide();
+            label10.Hide();
             dgvItems.EnableHeadersVisualStyles = false;
             dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
         }
@@ -62,7 +63,8 @@ namespace Jacam_Merchat
             conn.Close();
             if (dt.Rows.Count == 1)
             {
-                lblDelId.Text = dt.Rows[0]["del_id"].ToString();
+                //lblDelId.Text = dt.Rows[0][8].ToString();
+                label10.Text = dt.Rows[0][8].ToString();
                 lbldr.Text = dt.Rows[0]["dr"].ToString();
                 if (dt.Rows[0]["status"].ToString() == "1")
                 {
@@ -72,6 +74,9 @@ namespace Jacam_Merchat
                 {
                     lblStat.Text = "Delivered";
                     lblStat.ForeColor = Color.Green;
+                    btnUp.BackColor = Color.LightGray;
+                    btnUp.Enabled = false;
+                    btnUp.ForeColor = Color.White;
                 }
                 lblAdd.Text = dt.Rows[0]["address"].ToString();
                 lblClient.Text = dt.Rows[0][7].ToString();
@@ -97,6 +102,34 @@ namespace Jacam_Merchat
         private void dgvItems_SelectionChanged(object sender, EventArgs e)
         {
             dgvItems.ClearSelection();
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            string sel = "SELECT status FROM delivery WHERE del_id = '"+ label10.Text+"'";
+            MySqlCommand comm = new MySqlCommand(sel , conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            comm.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            if (dt.Rows.Count == 1)
+            {
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+                    string upd = "UPDATE delivery SET status = 0 WHERE del_id = '" + label10.Text + "'";
+                    comm = new MySqlCommand(upd, conn);
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("You have successfully updated the status to DELIVERED!", "Succesful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblStat.Text = "Delivered";
+                    lblStat.ForeColor = Color.Green;
+                }
+                else
+                {
+                    MessageBox.Show("This has already been delivered.","", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            conn.Close();
         }
     }
 }

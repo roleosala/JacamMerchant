@@ -55,13 +55,13 @@
             // btnAdd
             // 
             this.btnAdd.ActiveControl = null;
-            this.btnAdd.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnAdd.BackColor = System.Drawing.Color.Coral;
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(645, 655);
+            this.btnAdd.Location = new System.Drawing.Point(665, 655);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(139, 42);
+            this.btnAdd.Size = new System.Drawing.Size(119, 42);
             this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Add Address";
+            this.btnAdd.Text = "Deliver";
             this.btnAdd.UseCustomBackColor = true;
             this.btnAdd.UseCustomForeColor = true;
             this.btnAdd.UseSelectable = true;

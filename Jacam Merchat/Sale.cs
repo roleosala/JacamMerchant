@@ -124,6 +124,9 @@ namespace Jacam_Merchat
                     btnDeliver.Show();
                     btnDeliver.Location = new Point(558, 100);
                 }
+            }else if(user_type == 5 || user_type == 3 || user_type == 1)
+            {
+
             }
         }
 

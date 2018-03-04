@@ -183,7 +183,7 @@ namespace Jacam_Merchat
                     int order_id = int.Parse(dt.Rows[0][0].ToString());
                         for (int i = 0; i < dgvCart.Rows.Count; i++)
                         {
-                            string ol = "INSERT INTO order_line VALUES(NULL, '" + order_id + "', '" + dgvCart.Rows[i].Cells[0].Value.ToString() + "', '" + dgvCart.Rows[i].Cells[2].Value.ToString() + "', '" + dgvCart.Rows[i].Cells[3].Value.ToString() + "')";
+                            string ol = "INSERT INTO order_line VALUES(NULL, '" + order_id + "', '" + dgvCart.Rows[i].Cells[0].Value.ToString() + "', '" + dgvCart.Rows[i].Cells[2].Value.ToString() + "', '" + dgvCart.Rows[i].Cells[3].Value.ToString() + "', '"+ dgvCart.Rows[i].Cells[2].Value.ToString() + "')";
                             MySqlCommand comm = new MySqlCommand(ol, conn);
                             comm.ExecuteNonQuery();
                         }

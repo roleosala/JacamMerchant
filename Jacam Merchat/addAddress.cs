@@ -34,7 +34,7 @@ namespace Jacam_Merchat
 
         private void show()
         {
-            string sel = "SELECT prof_id, name FROM profile WHERE user_type = 5";
+            string sel = "SELECT p.prof_id, name FROM profile p LEFT JOIN delivery d ON d.prof_id = p.prof_id WHERE user_type = 5 OR d.prof_id = null AND d.status <> 1";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
