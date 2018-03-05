@@ -16,14 +16,14 @@ namespace Jacam_Merchat {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class po_bid : ReportClass {
+    public class generateSepPO : ReportClass {
         
-        public po_bid() {
+        public generateSepPO() {
         }
         
         public override string ResourceName {
             get {
-                return "po_bid.rpt";
+                return "generateSepPO.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Jacam_Merchat {
         
         public override string FullResourceName {
             get {
-                return "Jacam_Merchat.po_bid.rpt";
+                return "Jacam_Merchat.generateSepPO.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Jacam_Merchat {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cachedpo_bid : Component, ICachedReport {
+    public class CachedgenerateSepPO : Component, ICachedReport {
         
-        public Cachedpo_bid() {
+        public CachedgenerateSepPO() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Jacam_Merchat {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            po_bid rpt = new po_bid();
+            generateSepPO rpt = new generateSepPO();
             rpt.Site = this.Site;
             return rpt;
         }

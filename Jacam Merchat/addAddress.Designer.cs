@@ -39,6 +39,8 @@
             this.btnConfirm = new MetroFramework.Controls.MetroTile();
             this.btnCancel = new MetroFramework.Controls.MetroTile();
             this.lblId = new System.Windows.Forms.Label();
+            this.dgvItems = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
             // txtStreet
@@ -94,7 +96,7 @@
             // cmbPer
             // 
             this.cmbPer.FormattingEnabled = true;
-            this.cmbPer.Location = new System.Drawing.Point(32, 279);
+            this.cmbPer.Location = new System.Drawing.Point(36, 279);
             this.cmbPer.Name = "cmbPer";
             this.cmbPer.Size = new System.Drawing.Size(321, 29);
             this.cmbPer.TabIndex = 6;
@@ -111,7 +113,7 @@
             // btnConfirm
             // 
             this.btnConfirm.ActiveControl = null;
-            this.btnConfirm.Location = new System.Drawing.Point(552, 369);
+            this.btnConfirm.Location = new System.Drawing.Point(552, 641);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(110, 41);
             this.btnConfirm.TabIndex = 8;
@@ -123,7 +125,7 @@
             // 
             this.btnCancel.ActiveControl = null;
             this.btnCancel.BackColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(436, 369);
+            this.btnCancel.Location = new System.Drawing.Point(436, 641);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 41);
             this.btnCancel.TabIndex = 8;
@@ -141,11 +143,26 @@
             this.lblId.TabIndex = 9;
             this.lblId.Text = "id";
             // 
+            // dgvItems
+            // 
+            this.dgvItems.AllowUserToAddRows = false;
+            this.dgvItems.AllowUserToDeleteRows = false;
+            this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItems.Location = new System.Drawing.Point(36, 314);
+            this.dgvItems.MultiSelect = false;
+            this.dgvItems.Name = "dgvItems";
+            this.dgvItems.RowHeadersVisible = false;
+            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvItems.Size = new System.Drawing.Size(626, 321);
+            this.dgvItems.TabIndex = 10;
+            // 
             // addAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 450);
+            this.ClientSize = new System.Drawing.Size(699, 717);
+            this.Controls.Add(this.dgvItems);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
@@ -163,6 +180,7 @@
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "addAddress";
             this.Load += new System.EventHandler(this.addAddress_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +199,6 @@
         private MetroFramework.Controls.MetroTile btnConfirm;
         private MetroFramework.Controls.MetroTile btnCancel;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.DataGridView dgvItems;
     }
 }

@@ -33,6 +33,8 @@
             this.btnSupBack = new System.Windows.Forms.Button();
             this.btnDeliver = new MetroFramework.Controls.MetroTile();
             this.btnView = new MetroFramework.Controls.MetroTile();
+            this.lblorder_id = new System.Windows.Forms.Label();
+            this.lblRn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,11 +101,31 @@
             this.btnView.UseSelectable = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
+            // lblorder_id
+            // 
+            this.lblorder_id.AutoSize = true;
+            this.lblorder_id.Location = new System.Drawing.Point(434, 61);
+            this.lblorder_id.Name = "lblorder_id";
+            this.lblorder_id.Size = new System.Drawing.Size(77, 21);
+            this.lblorder_id.TabIndex = 3;
+            this.lblorder_id.Text = "Order_id";
+            // 
+            // lblRn
+            // 
+            this.lblRn.AutoSize = true;
+            this.lblRn.Location = new System.Drawing.Point(434, 40);
+            this.lblRn.Name = "lblRn";
+            this.lblRn.Size = new System.Drawing.Size(25, 21);
+            this.lblRn.TabIndex = 4;
+            this.lblRn.Text = "rn";
+            // 
             // Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 615);
+            this.Controls.Add(this.lblRn);
+            this.Controls.Add(this.lblorder_id);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnDeliver);
             this.Controls.Add(this.dgvSales);
@@ -118,6 +140,7 @@
             this.Load += new System.EventHandler(this.supSale_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -128,5 +151,7 @@
         private System.Windows.Forms.Button btnSupBack;
         private MetroFramework.Controls.MetroTile btnDeliver;
         private MetroFramework.Controls.MetroTile btnView;
+        private System.Windows.Forms.Label lblorder_id;
+        private System.Windows.Forms.Label lblRn;
     }
 }

@@ -19,12 +19,15 @@ namespace Jacam_Merchat
         private int id;
         private DataTable dt2;
         public Dashboard prevform { get; set; }
+        public int offset = 0;
         public Sale()
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
             btnSupBack.Hide();
             btnDeliver.Hide();
+            lblorder_id.Hide();
+            lblRn.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,6 +90,28 @@ namespace Jacam_Merchat
             dgvSales.Columns[2].HeaderText = "Sold To";
             dgvSales.Columns[3].HeaderText = "Date Sold";
             dgvSales.Columns[4].HeaderText = "Total";
+            dgvSales.Columns[5].HeaderText = "Reference Number";
+        }
+
+        public void showOrderLine(string id)
+        {
+            string sel = "SELECT i.des, ol.* FROM order_line ol LEFT JOIN inventory i ON i.item_id = ol.item_id WHERE ol.order_id = '"+id+"'";
+            conn.Open();
+            MySqlCommand comm = new MySqlCommand(sel, conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            comm.ExecuteNonQuery();
+            conn.Close();
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dgvSales.DataSource = null;
+            dgvSales.DataSource = dt;
+            dgvSales.Columns[0].HeaderText = "Item Description";
+            dgvSales.Columns[1].Visible = false;
+            dgvSales.Columns[2].Visible = false;
+            dgvSales.Columns[3].Visible = false;
+            dgvSales.Columns[4].HeaderText = "Qty Bought";
+            dgvSales.Columns[5].HeaderText = "Price";
+            dgvSales.Columns[6].HeaderText = "Deliverables";
         }
 
         private void supSale_Load(object sender, EventArgs e)
@@ -132,24 +157,45 @@ namespace Jacam_Merchat
 
         private void btnSupBack_Click(object sender, EventArgs e)
         {
+            if (user_type == 4)
+            {
+                showSup();
+            }
+            else
+            {
+                showSales();
+            }
             btnBack.Show();
             btnSupBack.Hide();
             btnDeliver.Hide();
             btnView.Show();
-            showSup();
+            
         }
 
         private void btnDeliver_Click(object sender, EventArgs e)
         {
-           int ri = dgvSales.CurrentRow.Index;
+            int ri = dgvSales.CurrentRow.Index;
             if(ri >= 0)
             {
-                addAddressSupplier add = new addAddressSupplier();
-                add.po_id = id;
-                add.user_id = user_id;
-                add.user_type = user_type;
-                add.dt = dt2;
-                add.ShowDialog();
+                if (user_type == 4)
+                {
+                    /*addAddressSupplier add = new addAddressSupplier();
+                    add.po_id = id;
+                    add.user_id = user_id;
+                    add.user_type = user_type;
+                    add.dt = dt2;
+                    add.ShowDialog();
+                    offset = 1;*/
+                }
+                else if(user_type == 1|| user_type == 3 || user_type == 5)
+                {
+                    addAddress add = new addAddress();
+                    add.order_id = lblorder_id.Text;
+                    add.user_id = user_id;
+                    add.user_type = user_type;
+                    add.rn = lblRn.Text;
+                    add.ShowDialog();
+                }
             }
         }
 
@@ -165,8 +211,19 @@ namespace Jacam_Merchat
                 btnDeliver.Show();
                 btnDeliver.Location = new Point(558, 100);
                 id = int.Parse(dgvSales.Rows[ri].Cells[0].Value.ToString());
+                string rn = dgvSales.Rows[ri].Cells["rn"].Value.ToString();
                 dgvSales.DataSource = null;
-                showBid(id);
+                if (user_type == 4)
+                {
+                    showBid(id);
+                    btnDeliver.Hide();
+                }else
+                {
+                    lblorder_id.Text = id.ToString();
+                    lblRn.Text = rn;
+                    showOrderLine(id.ToString());
+                }
+                offset = 1;
             }
         }
     }

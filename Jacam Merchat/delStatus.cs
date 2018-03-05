@@ -18,19 +18,20 @@ namespace Jacam_Merchat
         public int user_id { get; set; }
         public int user_type { get; set; }
         public int order_id { get; set; }
+        public string del_id { get; set; }
         public delStatus()
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
-            lblDelId.Hide();
-            label10.Hide();
+            lblOrder_id.Hide();
+            lbl_Del_id.Hide();
             dgvItems.EnableHeadersVisualStyles = false;
             dgvItems.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
         }
 
         private void show()
         {
-            string sh = "SELECT * FROM order_line ol LEFT JOIN inventory i ON i.item_id = ol.item_id WHERE ol.order_id = '"+order_id+"'";
+            string sh = "select i.des,dl.*,  ol.qtyRem from delivery_line dl LEFT JOIN delivery d ON d.del_id = dl.del_id LEFT JOIN order_line ol ON ol.order_line_id = dl.order_line_id LEFT JOIN inventory i ON i.item_id = dl.item_id WHERE d.del_id = '" + del_id+"'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sh, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -39,21 +40,19 @@ namespace Jacam_Merchat
             adp.Fill(dt);
             conn.Close();
             dgvItems.DataSource = dt;
-            dgvItems.Columns[0].Visible = false;
+            dgvItems.Columns[0].HeaderText = "Item Description";
             dgvItems.Columns[1].Visible = false;
             dgvItems.Columns[2].Visible = false;
-            dgvItems.Columns[3].HeaderText = "QTY Bought";
-            dgvItems.Columns[4].Visible = false;
+            dgvItems.Columns[3].Visible = false;
+            dgvItems.Columns[4].HeaderText = "Delivered QTYs";
             dgvItems.Columns[5].Visible = false;
-            dgvItems.Columns[6].HeaderText = "Item Description";
-            dgvItems.Columns[7].Visible = false;
-            dgvItems.Columns[8].HeaderText = "Price";
+            dgvItems.Columns[6].HeaderText = "Deliverables";
             dgvItems.ClearSelection();
         }
 
         private void se()
         {
-            string sh = "SELECT o.*, c.prof_id ,c.name, d.*, p.prof_id ,p.name FROM jacammerchant.order o LEFT JOIN profile c ON c.prof_id = o.prof_id LEFT JOIN delivery d ON d.order_id = o.order_id LEFT JOIN profile p ON p.prof_id = d.prof_id WHERE d.order_id = '" + order_id + "'";
+            string sh = "SELECT d.*, o.*, del.name, c.name FROM jacammerchant.delivery d LEFT JOIN jacammerchant.order o ON o.order_id = d.order_id LEFT JOIN profile del ON del.prof_id = d.prof_id LEFT JOIN profile c ON c.prof_id = o.prof_id WHERE d.del_id = '" + del_id + "'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sh, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -64,7 +63,7 @@ namespace Jacam_Merchat
             if (dt.Rows.Count == 1)
             {
                 //lblDelId.Text = dt.Rows[0][8].ToString();
-                label10.Text = dt.Rows[0][8].ToString();
+                lbl_Del_id.Text = dt.Rows[0]["del_id"].ToString();
                 lbldr.Text = dt.Rows[0]["dr"].ToString();
                 if (dt.Rows[0]["status"].ToString() == "1")
                 {
@@ -79,8 +78,8 @@ namespace Jacam_Merchat
                     btnUp.ForeColor = Color.White;
                 }
                 lblAdd.Text = dt.Rows[0]["address"].ToString();
-                lblClient.Text = dt.Rows[0][7].ToString();
-                lblDelBy.Text = dt.Rows[0]["name1"].ToString();
+                lblClient.Text = dt.Rows[0]["name1"].ToString();
+                lblDelBy.Text = dt.Rows[0]["name"].ToString();
                 lblPC.Text = dt.Rows[0]["postal"].ToString();
                 lblOrder.Text = dt.Rows[0]["rn"].ToString();
                 lblDelDate.Text = DateTime.Parse(dt.Rows[0]["del_date"].ToString()).ToString("yyyy-MM-dd");
@@ -91,7 +90,7 @@ namespace Jacam_Merchat
         {
             show();
             se();
-            lblDelId.Text = order_id.ToString();
+            lblOrder_id.Text = order_id.ToString();
         }
 
         private void delStatus_FormClosing(object sender, FormClosingEventArgs e)
@@ -106,30 +105,34 @@ namespace Jacam_Merchat
 
         private void btnUp_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            string sel = "SELECT status FROM delivery WHERE del_id = '"+ label10.Text+"'";
-            MySqlCommand comm = new MySqlCommand(sel , conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            comm.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            if (dt.Rows.Count == 1)
+            DialogResult res = MessageBox.Show("Are you sure you want to updated delivery status to DELIVERED?","", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (DialogResult.Yes == res)
             {
-                if (dt.Rows[0][0].ToString() == "1")
+                conn.Open();
+                string sel = "SELECT status FROM delivery WHERE del_id = '" + lbl_Del_id.Text + "'";
+                MySqlCommand comm = new MySqlCommand(sel, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                comm.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (dt.Rows.Count == 1)
                 {
-                    string upd = "UPDATE delivery SET status = 0 WHERE del_id = '" + label10.Text + "'";
-                    comm = new MySqlCommand(upd, conn);
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show("You have successfully updated the status to DELIVERED!", "Succesful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    lblStat.Text = "Delivered";
-                    lblStat.ForeColor = Color.Green;
+                    if (dt.Rows[0][0].ToString() == "1")
+                    {
+                        string upd = "UPDATE delivery SET status = 0 WHERE del_id = '" + lbl_Del_id.Text + "'";
+                        comm = new MySqlCommand(upd, conn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show("You have successfully updated the status to DELIVERED!", "Succesful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lblStat.Text = "Delivered";
+                        lblStat.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        MessageBox.Show("This has already been delivered.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("This has already been delivered.","", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                conn.Close();
             }
-            conn.Close();
         }
     }
 }

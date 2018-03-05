@@ -21,11 +21,11 @@ namespace Jacam_Merchat
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
-            
+            btnAdd.Hide();
         }
         public void sales() //Jacam
         {
-            string sel = "SELECT o.order_id, p.name, c.name, o.order_date, o.total, o.rn FROM jacammerchant.order o LEFT JOIN profile p ON o.user_id = p.prof_id LEFT JOIN profile c ON c.prof_id = o.prof_id LEFT JOIN delivery d ON d.order_id = o.order_id";
+            string sel = "SELECT d.*, o.rn FROM delivery d LEFT JOIN jacammerchant.order o ON o.order_id = d.order_id";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -35,11 +35,14 @@ namespace Jacam_Merchat
             adp.Fill(dt);
             dgvDel.DataSource = dt;
             dgvDel.Columns[0].Visible = false;
-            dgvDel.Columns[1].HeaderText = "Sold by";
-            dgvDel.Columns[2].HeaderText = "Sold to";
-            dgvDel.Columns[3].HeaderText = "Date Sold";
-            dgvDel.Columns[4].HeaderText = "Total";
-            dgvDel.Columns[5].HeaderText = "Reference NO.";
+            dgvDel.Columns[1].Visible = false;
+            dgvDel.Columns[2].Visible = false;
+            dgvDel.Columns[3].HeaderText = "Address";
+            dgvDel.Columns[4].HeaderText = "Postal Code";
+            dgvDel.Columns[5].HeaderText = "Status";
+            dgvDel.Columns[6].HeaderText = "Delivery Receipt";
+            dgvDel.Columns[7].HeaderText = "Date Delivered";
+            dgvDel.Columns[8].HeaderText = "Reference Number";
             dgvDel.ClearSelection();
         }
         public void showDel() // sup
@@ -160,14 +163,46 @@ namespace Jacam_Merchat
             if (ri >= 0)
             {
                 delStatus stat = new delStatus();
-                stat.order_id = int.Parse(dgvDel.Rows[ri].Cells[0].Value.ToString());
+                stat.order_id = int.Parse(dgvDel.Rows[ri].Cells["order_id"].Value.ToString());
                 stat.del = this;
                 stat.user_id = user_id;
                 stat.user_type = user_type;
+                stat.del_id = dgvDel.Rows[ri].Cells[0].Value.ToString();
                 this.Hide();
                 stat.Show();
             }
-            
+            if (user_type == 5)
+            {
+                showDel();
+            }
+            else if (user_type == 3 || user_type == 1)
+            {
+                sales();
+            }
+            else
+            {
+                sales();
+            }
+            ri = 0;
+            if (ri >= 0 && user_type == 1)
+            {
+                string ch = "SELECT * FROM delivery WHERE order_id = '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "'";
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand(ch, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                comm.ExecuteNonQuery();
+                conn.Close();
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (dt.Rows.Count == 1)
+                {
+                    btnAdd.Enabled = false;
+                    btnAdd.BackColor = Color.LightGray;
+                    btnAdd.ForeColor = Color.White;
+                }
+            }
+            dgvDel.ClearSelection();
+
         }
 
         private void dgvDel_CellContentClick(object sender, DataGridViewCellEventArgs e)

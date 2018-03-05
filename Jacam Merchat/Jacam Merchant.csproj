@@ -145,6 +145,18 @@
     <Compile Include="biddedItems.Designer.cs">
       <DependentUpon>biddedItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="bidItemsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bidItemsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bidOfferItems.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bidOfferItems.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="bidPurchOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +168,12 @@
     </Compile>
     <Compile Include="Bids.Designer.cs">
       <DependentUpon>Bids.cs</DependentUpon>
+    </Compile>
+    <Compile Include="biPOs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>biPOs.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Company.cs">
       <SubType>Form</SubType>
@@ -181,10 +199,16 @@
     <Compile Include="delStatus.Designer.cs">
       <DependentUpon>delStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="po_bid.cs">
+    <Compile Include="bidReports.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>po_bid.rpt</DependentUpon>
+      <DependentUpon>bidReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="generateSepPO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generateSepPO.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PrintPO.cs">
@@ -306,11 +330,23 @@
     <EmbeddedResource Include="biddedItems.resx">
       <DependentUpon>biddedItems.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="bidItemsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>bidItemsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bidOfferItems.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>bidOfferItems.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="bidPurchOrder.resx">
       <DependentUpon>bidPurchOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bids.resx">
       <DependentUpon>Bids.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="biPOs.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>biPOs.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Company.resx">
       <DependentUpon>Company.cs</DependentUpon>
@@ -324,9 +360,13 @@
     <EmbeddedResource Include="delStatus.resx">
       <DependentUpon>delStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="po_bid.rpt">
+    <EmbeddedResource Include="bidReports.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>po_bid.cs</LastGenOutput>
+      <LastGenOutput>bidReports.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="generateSepPO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>generateSepPO.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintPO.resx">
       <DependentUpon>PrintPO.cs</DependentUpon>
