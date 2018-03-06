@@ -88,6 +88,7 @@
             this.Name = "addDate";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "Select Date";
+            this.Load += new System.EventHandler(this.addDate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

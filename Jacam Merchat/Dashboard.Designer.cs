@@ -33,9 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.btnProfMan = new MetroFramework.Controls.MetroTile();
-            this.btnSupProd = new MetroFramework.Controls.MetroTile();
-            this.btnPurchOrd = new MetroFramework.Controls.MetroTile();
-            this.btnOrder = new MetroFramework.Controls.MetroTile();
             this.btnSettings = new MetroFramework.Controls.MetroTile();
             this.btnDel = new MetroFramework.Controls.MetroTile();
             this.btnReturns = new MetroFramework.Controls.MetroTile();
@@ -50,6 +47,7 @@
             this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnPOReturns = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -93,62 +91,14 @@
             this.btnProfMan.UseTileImage = true;
             this.btnProfMan.Click += new System.EventHandler(this.btnProfMan_Click);
             // 
-            // btnSupProd
-            // 
-            this.btnSupProd.ActiveControl = null;
-            this.btnSupProd.BackColor = System.Drawing.Color.Coral;
-            this.btnSupProd.ForeColor = System.Drawing.Color.White;
-            this.btnSupProd.Location = new System.Drawing.Point(214, 163);
-            this.btnSupProd.Name = "btnSupProd";
-            this.btnSupProd.Size = new System.Drawing.Size(168, 155);
-            this.btnSupProd.TabIndex = 2;
-            this.btnSupProd.Text = "Supplier Products";
-            this.btnSupProd.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.btnSupProd.UseCustomBackColor = true;
-            this.btnSupProd.UseCustomForeColor = true;
-            this.btnSupProd.UseSelectable = true;
-            this.btnSupProd.Click += new System.EventHandler(this.btnSupProd_Click);
-            // 
-            // btnPurchOrd
-            // 
-            this.btnPurchOrd.ActiveControl = null;
-            this.btnPurchOrd.BackColor = System.Drawing.Color.Coral;
-            this.btnPurchOrd.ForeColor = System.Drawing.Color.White;
-            this.btnPurchOrd.Location = new System.Drawing.Point(40, 324);
-            this.btnPurchOrd.Name = "btnPurchOrd";
-            this.btnPurchOrd.Size = new System.Drawing.Size(342, 155);
-            this.btnPurchOrd.TabIndex = 2;
-            this.btnPurchOrd.Text = "Purchase Order";
-            this.btnPurchOrd.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.btnPurchOrd.UseCustomBackColor = true;
-            this.btnPurchOrd.UseCustomForeColor = true;
-            this.btnPurchOrd.UseSelectable = true;
-            this.btnPurchOrd.Click += new System.EventHandler(this.btnPurchOrd_Click);
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.ActiveControl = null;
-            this.btnOrder.BackColor = System.Drawing.Color.Coral;
-            this.btnOrder.ForeColor = System.Drawing.Color.White;
-            this.btnOrder.Location = new System.Drawing.Point(388, 163);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(168, 77);
-            this.btnOrder.TabIndex = 2;
-            this.btnOrder.Text = "Order List";
-            this.btnOrder.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.btnOrder.UseCustomBackColor = true;
-            this.btnOrder.UseCustomForeColor = true;
-            this.btnOrder.UseSelectable = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
-            // 
             // btnSettings
             // 
             this.btnSettings.ActiveControl = null;
             this.btnSettings.BackColor = System.Drawing.Color.Coral;
             this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Location = new System.Drawing.Point(562, 163);
+            this.btnSettings.Location = new System.Drawing.Point(214, 163);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(168, 77);
+            this.btnSettings.Size = new System.Drawing.Size(168, 72);
             this.btnSettings.TabIndex = 2;
             this.btnSettings.Text = "Settings";
             this.btnSettings.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
@@ -162,7 +112,7 @@
             this.btnDel.ActiveControl = null;
             this.btnDel.BackColor = System.Drawing.Color.Coral;
             this.btnDel.ForeColor = System.Drawing.Color.White;
-            this.btnDel.Location = new System.Drawing.Point(562, 246);
+            this.btnDel.Location = new System.Drawing.Point(736, 329);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(168, 72);
             this.btnDel.TabIndex = 2;
@@ -178,7 +128,7 @@
             this.btnReturns.ActiveControl = null;
             this.btnReturns.BackColor = System.Drawing.Color.Coral;
             this.btnReturns.ForeColor = System.Drawing.Color.White;
-            this.btnReturns.Location = new System.Drawing.Point(388, 246);
+            this.btnReturns.Location = new System.Drawing.Point(736, 407);
             this.btnReturns.Name = "btnReturns";
             this.btnReturns.Size = new System.Drawing.Size(168, 72);
             this.btnReturns.TabIndex = 2;
@@ -194,7 +144,7 @@
             this.btnCompany.ActiveControl = null;
             this.btnCompany.BackColor = System.Drawing.Color.Coral;
             this.btnCompany.ForeColor = System.Drawing.Color.White;
-            this.btnCompany.Location = new System.Drawing.Point(388, 324);
+            this.btnCompany.Location = new System.Drawing.Point(40, 324);
             this.btnCompany.Name = "btnCompany";
             this.btnCompany.Size = new System.Drawing.Size(168, 155);
             this.btnCompany.TabIndex = 2;
@@ -210,7 +160,7 @@
             this.btnBid.ActiveControl = null;
             this.btnBid.BackColor = System.Drawing.Color.Coral;
             this.btnBid.ForeColor = System.Drawing.Color.White;
-            this.btnBid.Location = new System.Drawing.Point(562, 324);
+            this.btnBid.Location = new System.Drawing.Point(214, 241);
             this.btnBid.Name = "btnBid";
             this.btnBid.Size = new System.Drawing.Size(168, 77);
             this.btnBid.TabIndex = 2;
@@ -226,7 +176,7 @@
             this.btnInv.ActiveControl = null;
             this.btnInv.BackColor = System.Drawing.Color.Coral;
             this.btnInv.ForeColor = System.Drawing.Color.White;
-            this.btnInv.Location = new System.Drawing.Point(562, 407);
+            this.btnInv.Location = new System.Drawing.Point(388, 163);
             this.btnInv.Name = "btnInv";
             this.btnInv.Size = new System.Drawing.Size(168, 72);
             this.btnInv.TabIndex = 2;
@@ -242,11 +192,11 @@
             this.btnSale.ActiveControl = null;
             this.btnSale.BackColor = System.Drawing.Color.Coral;
             this.btnSale.ForeColor = System.Drawing.Color.White;
-            this.btnSale.Location = new System.Drawing.Point(736, 163);
+            this.btnSale.Location = new System.Drawing.Point(562, 163);
             this.btnSale.Name = "btnSale";
             this.btnSale.Size = new System.Drawing.Size(168, 155);
             this.btnSale.TabIndex = 2;
-            this.btnSale.Text = "Sale";
+            this.btnSale.Text = "Sales";
             this.btnSale.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.btnSale.UseCustomBackColor = true;
             this.btnSale.UseCustomForeColor = true;
@@ -258,7 +208,7 @@
             this.btnPOS.ActiveControl = null;
             this.btnPOS.BackColor = System.Drawing.Color.Coral;
             this.btnPOS.ForeColor = System.Drawing.Color.White;
-            this.btnPOS.Location = new System.Drawing.Point(736, 324);
+            this.btnPOS.Location = new System.Drawing.Point(562, 324);
             this.btnPOS.Name = "btnPOS";
             this.btnPOS.Size = new System.Drawing.Size(168, 155);
             this.btnPOS.TabIndex = 2;
@@ -274,9 +224,9 @@
             this.btnPurchOrderDel.ActiveControl = null;
             this.btnPurchOrderDel.BackColor = System.Drawing.Color.Coral;
             this.btnPurchOrderDel.ForeColor = System.Drawing.Color.White;
-            this.btnPurchOrderDel.Location = new System.Drawing.Point(910, 163);
+            this.btnPurchOrderDel.Location = new System.Drawing.Point(214, 407);
             this.btnPurchOrderDel.Name = "btnPurchOrderDel";
-            this.btnPurchOrderDel.Size = new System.Drawing.Size(168, 155);
+            this.btnPurchOrderDel.Size = new System.Drawing.Size(342, 72);
             this.btnPurchOrderDel.TabIndex = 2;
             this.btnPurchOrderDel.Text = "Purchase Order Delivery";
             this.btnPurchOrderDel.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
@@ -290,9 +240,9 @@
             this.btnBidPO.ActiveControl = null;
             this.btnBidPO.BackColor = System.Drawing.Color.Coral;
             this.btnBidPO.ForeColor = System.Drawing.Color.White;
-            this.btnBidPO.Location = new System.Drawing.Point(910, 324);
+            this.btnBidPO.Location = new System.Drawing.Point(214, 324);
             this.btnBidPO.Name = "btnBidPO";
-            this.btnBidPO.Size = new System.Drawing.Size(168, 155);
+            this.btnBidPO.Size = new System.Drawing.Size(342, 77);
             this.btnBidPO.TabIndex = 2;
             this.btnBidPO.Text = "Bidding Purchase Order";
             this.btnBidPO.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
@@ -317,7 +267,7 @@
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(1036, 79);
+            this.pictureBox1.Location = new System.Drawing.Point(862, 109);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(42, 39);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -329,31 +279,45 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Location = new System.Drawing.Point(961, 97);
+            this.label2.Location = new System.Drawing.Point(787, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 21);
             this.label2.TabIndex = 4;
             this.label2.Text = "Log out";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // btnPOReturns
+            // 
+            this.btnPOReturns.ActiveControl = null;
+            this.btnPOReturns.BackColor = System.Drawing.Color.Coral;
+            this.btnPOReturns.ForeColor = System.Drawing.Color.White;
+            this.btnPOReturns.Location = new System.Drawing.Point(388, 241);
+            this.btnPOReturns.Name = "btnPOReturns";
+            this.btnPOReturns.Size = new System.Drawing.Size(168, 77);
+            this.btnPOReturns.TabIndex = 2;
+            this.btnPOReturns.Text = "Bidding PO Returns";
+            this.btnPOReturns.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.btnPOReturns.UseCustomBackColor = true;
+            this.btnPOReturns.UseCustomForeColor = true;
+            this.btnPOReturns.UseSelectable = true;
+            this.btnPOReturns.Click += new System.EventHandler(this.btnPOReturns_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 529);
+            this.ClientSize = new System.Drawing.Size(942, 529);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnPurchOrd);
             this.Controls.Add(this.btnReturns);
             this.Controls.Add(this.btnPOS);
             this.Controls.Add(this.btnBidPO);
             this.Controls.Add(this.btnPurchOrderDel);
             this.Controls.Add(this.btnSale);
             this.Controls.Add(this.btnSettings);
-            this.Controls.Add(this.btnSupProd);
+            this.Controls.Add(this.btnPOReturns);
             this.Controls.Add(this.btnInv);
             this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.btnBid);
             this.Controls.Add(this.btnCompany);
             this.Controls.Add(this.btnProfMan);
@@ -379,9 +343,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
         private MetroFramework.Controls.MetroTile btnProfMan;
-        private MetroFramework.Controls.MetroTile btnSupProd;
-        private MetroFramework.Controls.MetroTile btnPurchOrd;
-        private MetroFramework.Controls.MetroTile btnOrder;
         private MetroFramework.Controls.MetroTile btnSettings;
         private MetroFramework.Controls.MetroTile btnDel;
         private MetroFramework.Controls.MetroTile btnReturns;
@@ -396,5 +357,6 @@
         public MetroFramework.Components.MetroStyleExtender metroStyleExtender1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private MetroFramework.Controls.MetroTile btnPOReturns;
     }
 }

@@ -33,6 +33,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.lbldate = new System.Windows.Forms.Label();
             this.lblPO_del_id = new System.Windows.Forms.Label();
+            this.btnRet = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,11 +99,23 @@
             this.lblPO_del_id.TabIndex = 5;
             this.lblPO_del_id.Text = "po_del_id";
             // 
+            // btnRet
+            // 
+            this.btnRet.ActiveControl = null;
+            this.btnRet.Location = new System.Drawing.Point(708, 655);
+            this.btnRet.Name = "btnRet";
+            this.btnRet.Size = new System.Drawing.Size(85, 42);
+            this.btnRet.TabIndex = 6;
+            this.btnRet.Text = "Return";
+            this.btnRet.UseSelectable = true;
+            this.btnRet.Click += new System.EventHandler(this.btnRet_Click);
+            // 
             // purchaseOrderDelivery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 732);
+            this.Controls.Add(this.btnRet);
             this.Controls.Add(this.lblPO_del_id);
             this.Controls.Add(this.lbldate);
             this.Controls.Add(this.btnBack);
@@ -128,5 +141,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lbldate;
         private System.Windows.Forms.Label lblPO_del_id;
+        private MetroFramework.Controls.MetroTile btnRet;
     }
 }

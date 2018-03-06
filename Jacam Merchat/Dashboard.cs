@@ -27,27 +27,16 @@ namespace Jacam_Merchat
             lblName.Text = name;
             if (user_type == 1 || user_type == 2)
             {
-                btnPurchOrd.Enabled = false;
-                btnSupProd.Enabled = false;
-                btnOrder.Enabled = false;
-                btnPurchOrd.BackColor = Color.LightGray;
-                btnSupProd.BackColor = Color.LightGray;
-                btnOrder.BackColor = Color.LightGray;
+
             }
 
             else if (user_type == 3)
             {
-                btnPurchOrd.Enabled = false;
-                btnSupProd.Enabled = false;
-                btnOrder.Enabled = false;
                 btnPurchOrderDel.Enabled = false;
                 btnReturns.Enabled = false;
                 btnBidPO.Enabled = false;
                 btnCompany.Enabled = false;
                 btnProfMan.Enabled = false;
-                btnPurchOrd.BackColor = Color.LightGray;
-                btnSupProd.BackColor = Color.LightGray;
-                btnOrder.BackColor = Color.LightGray;
                 btnPurchOrderDel.BackColor = Color.LightGray;
                 btnReturns.BackColor = Color.LightGray;
                 btnBidPO.BackColor = Color.LightGray;
@@ -56,17 +45,11 @@ namespace Jacam_Merchat
             }
             else if(user_type == 4)
             {
-                btnPurchOrd.Enabled = false;
-                btnSupProd.Enabled = false;
-                btnOrder.Enabled = false;
                 btnProfMan.Enabled = false;
                 btnCompany.Enabled = false;
                 btnDel.Enabled = false;
                 btnInv.Enabled = false;
                 btnPOS.Enabled = false;
-                btnPurchOrd.BackColor = Color.LightGray;
-                btnSupProd.BackColor = Color.LightGray;
-                btnOrder.BackColor = Color.LightGray;
                 btnProfMan.BackColor = Color.LightGray;
                 btnCompany.BackColor = Color.LightGray;
                 btnDel.BackColor = Color.LightGray;
@@ -75,20 +58,12 @@ namespace Jacam_Merchat
             }
             else
             {
-                btnPurchOrd.Enabled = false;
-                btnSupProd.Enabled = false;
-                btnOrder.Enabled = false;
                 btnProfMan.Enabled = false;
                 btnCompany.Enabled = false;
                 btnDel.Enabled = false;
                 btnInv.Enabled = false;
                 btnPOS.Enabled = false;
-                btnPurchOrd.Enabled = false;
                 btnPurchOrderDel.Enabled = false;
-                btnPurchOrd.BackColor = Color.LightGray;
-                btnPurchOrd.BackColor = Color.LightGray;
-                btnSupProd.BackColor = Color.LightGray;
-                btnOrder.BackColor = Color.LightGray;
                 btnProfMan.BackColor = Color.LightGray;
                 btnCompany.BackColor = Color.LightGray;
                 btnDel.BackColor = Color.LightGray;
@@ -246,6 +221,16 @@ namespace Jacam_Merchat
         {
             this.Close();
             prevform.Show();
+        }
+
+        private void btnPOReturns_Click(object sender, EventArgs e)
+        {
+            poBIdReturns ret = new poBIdReturns();
+            ret.user_id = user_id;
+            ret.user_type = user_type;
+            ret.prevform = this;
+            ret.Show();
+            this.Hide();
         }
     }
 }
