@@ -24,6 +24,7 @@ namespace Jacam_Merchat
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
             lbldate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             lbldate.Hide();
+            btnRet.Hide();
         }
 
         private void showPoBid()
@@ -99,7 +100,33 @@ namespace Jacam_Merchat
             dgvDel.Columns[17].Visible = false;
             dgvDel.Columns[18].HeaderText = "Item Description";
             dgvDel.Columns[19].Visible = false;
+            dgvDel.Columns[4].ReadOnly = true;
+            dgvDel.Columns[5].ReadOnly = true;
+            dgvDel.Columns[6].ReadOnly = true;
+            dgvDel.Columns[8].ReadOnly = true;
+            dgvDel.Columns[14].ReadOnly = true;
+            dgvDel.Columns[15].ReadOnly = true;
+            dgvDel.Columns[18].ReadOnly = true;
             dgvDel.ClearSelection();
+            int c = 0;
+            for (int i = 0; i < dgvDel.Rows.Count; i++)
+            {
+                if (dgvDel.Rows[i].Cells[15].Value.ToString() != "")
+                {
+                    c++;
+                }
+            }
+            if (c > 0)
+            {
+                DataGridViewTextBoxColumn txt = new DataGridViewTextBoxColumn();
+                txt.Name = "txt";
+                txt.HeaderText = "Items to be Returned";
+                dgvDel.Columns.Add(txt);
+                for (int i = 0; i < dgvDel.Rows.Count; i++)
+                {
+                    dgvDel.Rows[i].Cells["txt"].Value = 0;
+                }
+            }
         }
 
         private void showDelSup()// show supplier side po_id_del
@@ -194,7 +221,7 @@ namespace Jacam_Merchat
                             showDelLineSupRec(id);
                             btnView.Text = "Receive All";
                             offset = 2;
-
+                            btnRet.Show();
                         }
                         else if (user_type == 4 && btnView.Text == "View")
                         {
@@ -356,6 +383,7 @@ namespace Jacam_Merchat
                     dgvDel.DataSource = null;
                     showPurchDelStaff();
                     btnView.Text = "View";
+                    btnRet.Hide();
                 }
                 else if (user_type == 4)
                 {

@@ -49,7 +49,6 @@
             this.dgvDel.Location = new System.Drawing.Point(38, 140);
             this.dgvDel.Margin = new System.Windows.Forms.Padding(5);
             this.dgvDel.Name = "dgvDel";
-            this.dgvDel.ReadOnly = true;
             this.dgvDel.RowHeadersVisible = false;
             this.dgvDel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDel.Size = new System.Drawing.Size(855, 507);

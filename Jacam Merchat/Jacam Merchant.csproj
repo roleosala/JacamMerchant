@@ -133,6 +133,12 @@
     <Compile Include="addRepresentative.Designer.cs">
       <DependentUpon>addRepresentative.cs</DependentUpon>
     </Compile>
+    <Compile Include="addReturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addReturns.Designer.cs">
+      <DependentUpon>addReturns.cs</DependentUpon>
+    </Compile>
     <Compile Include="addSupProd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addRepresentative.resx">
       <DependentUpon>addRepresentative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addReturns.resx">
+      <DependentUpon>addReturns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="addSupProd.resx">
       <DependentUpon>addSupProd.cs</DependentUpon>
