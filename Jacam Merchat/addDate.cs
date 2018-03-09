@@ -15,6 +15,7 @@ namespace Jacam_Merchat
     {
         MySqlConnection conn;
         public purchaseOrderDelivery del { get; set; }
+        public purchaseOrderDelivery delRet { get; set; }
         public Returns ret { get; set; }
         public int offSet { get; set; }
         public string date { get; set; }
@@ -32,6 +33,11 @@ namespace Jacam_Merchat
             if (offSet == 3)
             {
                 poRet.det = dtpDate.Value.ToString("yyyy-MM-dd");
+                this.Close();
+            }
+            else if (offSet == 4)
+            {
+                delRet.det = dtpDate.Value.ToString("yyyy-MM-dd");
                 this.Close();
             }
             else

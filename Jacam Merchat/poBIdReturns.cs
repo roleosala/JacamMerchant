@@ -25,6 +25,21 @@ namespace Jacam_Merchat
 
         private int offSet;
 
+        private void showSup()
+        {
+            dgvRet.DataSource = null;
+            string sh = "SELECT * FROM po_return WHERE del_id IN (SELECT po_del_id FROM po_del WHERE sup_id = '"+user_id+"')";
+            conn.Open();
+            MySqlCommand comm = new MySqlCommand(sh, conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            comm.ExecuteNonQuery();
+            conn.Close();
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dgvRet.DataSource = dt;
+            offSet = 0;
+        }
+
         private void show()
         {
             dgvRet.DataSource = null;
@@ -40,10 +55,10 @@ namespace Jacam_Merchat
             offSet = 0;
         }
 
-        private void showLine(string del_id)
+        private void showLine(string ret_id)
         {
             dgvRet.DataSource = null;
-            string sh = "SELECT * FROM jacammerchant.po_return_line prl LEFT JOIN po_del_line pdl ON pdl.po_del_line_id = prl.po_del_line_id;";
+            string sh = "SELECT * FROM jacammerchant.po_return_line prl LEFT JOIN po_del_line pdl ON pdl.po_del_line_id = prl.po_del_line_id WHERE prl.ret_id = '"+ret_id+"';";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sh, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -52,20 +67,18 @@ namespace Jacam_Merchat
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dgvRet.DataSource = dt;
-            DataGridViewTextBoxColumn txt = new DataGridViewTextBoxColumn();
-            txt.Name = "txt";
-            txt.HeaderText = "Items to be Returned";
-            dgvRet.Columns.Add(txt);
-            for (int i = 0; i < dgvRet.Rows.Count; i++)
-            {
-                dgvRet.Rows[i].Cells["txt"].Value = 0;
-            }
             offSet = 1;
         }
 
         private void poBIdReturns_Load(object sender, EventArgs e)
         {
-            show();
+            if (user_type == 4)
+            {
+                showSup();
+            }else if (user_type == 1)
+            {
+                show();
+            }
         }
 
         public string det { get; set; }
@@ -77,48 +90,30 @@ namespace Jacam_Merchat
                 int ri = dgvRet.CurrentRow.Index;
                 if (ri >= 0)
                 {
-                    lblDelId.Text = dgvRet.Rows[ri].Cells[0].Value.ToString();
-                    showLine(lblDelId.Text);
-                    btnViewRet.Text = "Return";
+                    lblRetId.Text = dgvRet.Rows[ri].Cells[0].Value.ToString();
+                    showLine(lblRetId.Text);
+                    btnViewRet.Text = "Receive";
                 }
             }else if (offSet == 1)
             {
-                addDate add = new addDate();
-                add.offSet = 3;
-                add.poRet = this;
-                add.ShowDialog();
-                DialogResult res = MessageBox.Show("Are you sure you want to return the item/s on this date: "+det+"?","",MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (DialogResult.Yes == res)
+                conn.Open();
+                string ch = "SELECT sup_id FROM po_return WHERE ret_id = '"+lblRetId.Text+"'";
+                MySqlCommand comm = new MySqlCommand(ch, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                comm.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "")
                 {
-                    string ins = "INSERT INTO po_return VALUES(NULL, '" + lblDelId.Text + "', '" + det + "', '" + user_id + "')";
-                    conn.Open();
-                    MySqlCommand comm = new MySqlCommand(ins, conn);
+                    string upd = "UPDATE po_return SET date_rec = '" + DateTime.Now.ToString("yyyy-MM-dd") + "', sup_id = '" + user_id + "' WHERE ret_id = '" + lblRetId.Text + "'";
+                    comm = new MySqlCommand(upd, conn);
                     comm.ExecuteNonQuery();
-                    string sel = "SELECT MAX(ret_id) FROM po_return";
-                    comm = new MySqlCommand(sel, conn);
-                    MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                    comm.ExecuteNonQuery();
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    for (int i = 0; dgvRet.Rows.Count > i;i++)
-                    {
-                        if (dgvRet.Rows[i].Cells["txt"].Value.ToString() != "0")
-                        {
-                            ins = "INSERT INTO po_return_line VALUES (NULL, '" + dt.Rows[0][0].ToString() + "', '" + dgvRet.Rows[i].Cells["po_del_line_id"].Value.ToString() + "', '" + dgvRet.Rows[i].Cells["item_id"].Value.ToString() + "', '"+ dgvRet.Rows[i].Cells["txt"].Value.ToString() + "');";
-                            comm = new MySqlCommand(ins, conn);
-                            comm.ExecuteNonQuery();
-                        }
-                    }
-                    conn.Close();
-                    showLine(lblDelId.Text);
-                }
-                else
+                    MessageBox.Show("Successfully Received all Item/s.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }else
                 {
-                    add = new addDate();
-                    add.offSet = 3;
-                    add.poRet = this;
-                    add.ShowDialog();
+                    MessageBox.Show("You have Already Received this Return.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                conn.Close();
             }
         }
 

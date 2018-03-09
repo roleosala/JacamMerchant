@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvRet = new System.Windows.Forms.DataGridView();
-            this.lblDelId = new System.Windows.Forms.Label();
+            this.lblRetId = new System.Windows.Forms.Label();
             this.btnViewRet = new MetroFramework.Controls.MetroTile();
             this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRet)).BeginInit();
@@ -52,14 +52,14 @@
             this.dgvRet.Size = new System.Drawing.Size(751, 485);
             this.dgvRet.TabIndex = 0;
             // 
-            // lblDelId
+            // lblRetId
             // 
-            this.lblDelId.AutoSize = true;
-            this.lblDelId.Location = new System.Drawing.Point(688, 55);
-            this.lblDelId.Name = "lblDelId";
-            this.lblDelId.Size = new System.Drawing.Size(56, 21);
-            this.lblDelId.TabIndex = 1;
-            this.lblDelId.Text = "del_id";
+            this.lblRetId.AutoSize = true;
+            this.lblRetId.Location = new System.Drawing.Point(688, 55);
+            this.lblRetId.Name = "lblRetId";
+            this.lblRetId.Size = new System.Drawing.Size(54, 21);
+            this.lblRetId.TabIndex = 1;
+            this.lblRetId.Text = "ret_id";
             // 
             // btnViewRet
             // 
@@ -90,7 +90,7 @@
             this.ClientSize = new System.Drawing.Size(823, 704);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnViewRet);
-            this.Controls.Add(this.lblDelId);
+            this.Controls.Add(this.lblRetId);
             this.Controls.Add(this.dgvRet);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -108,7 +108,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvRet;
-        private System.Windows.Forms.Label lblDelId;
+        private System.Windows.Forms.Label lblRetId;
         private MetroFramework.Controls.MetroTile btnViewRet;
         private System.Windows.Forms.Button btnBack;
     }
