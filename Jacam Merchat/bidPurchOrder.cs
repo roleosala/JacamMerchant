@@ -24,6 +24,7 @@ namespace Jacam_Merchat
             lblRn.Hide();
             label1.Hide();
             lblPo_Bid_id.Hide();
+            sup_id.Hide();
         }
 
         private void showPurchOrder() //staff
@@ -47,7 +48,7 @@ namespace Jacam_Merchat
 
         private void showPurchOrderLine(int id) //staff
         {
-            string sel = "SELECT pbl.*, bi.name, bo.offer_price, s.name, b.title FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN bid_offer bo ON bo.item_id = pbl.item_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id LEFT JOIN po_bid pb ON pb.po_bid_id = pbl.po_bid_id JOIN bid b ON b.bid_id = bi.bid_id WHERE pbl.po_bid_id = '" + id+"'";
+            string sel = "SELECT pbl.*, bi.name, bo.offer_price, s.name, b.title FROM po_bid_line pbl LEFT JOIN bid_items bi ON bi.item_id = pbl.item_id LEFT JOIN bid_offer bo ON bo.item_id = pbl.item_id LEFT JOIN profile s ON s.prof_id = pbl.sup_id LEFT JOIN po_bid pb ON pb.po_bid_id = pbl.po_bid_id JOIN bid b ON b.bid_id = bi.bid_id WHERE pbl.po_bid_id = '" + id+ "' AND pbl.sup_id = bo.user_id";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -57,7 +58,29 @@ namespace Jacam_Merchat
             adp.Fill(dt);
             dgvPO.DataSource = dt;
             dgvPO.ClearSelection();
-            
+            dgvPO.Columns[0].Visible = false;//po_bid_line_id
+            dgvPO.Columns[1].Visible = false;//po_bid_id
+            dgvPO.Columns[2].Visible = false;//item_id
+            dgvPO.Columns[3].HeaderText = "QTY Bought";
+            dgvPO.Columns[4].Visible = false;
+            dgvPO.Columns[5].Visible = false;
+            dgvPO.Columns[6].HeaderText = "Deliverables";
+            dgvPO.Columns[7].HeaderText = "Item Description";
+            dgvPO.Columns[8].HeaderText = "Price";
+            dgvPO.Columns[9].HeaderText = "Supplier";
+            dgvPO.Columns[10].HeaderText = "From Bid";
+            sel = "SELECT DISTINCT(name) FROM profile p LEFT JOIN po_bid_line pbl ON pbl.sup_id = p.prof_id WHERE pbl.sup_id = p.prof_id";
+            conn.Open();
+            comm = new MySqlCommand(sel, conn);
+            adp = new MySqlDataAdapter(comm);
+            comm.ExecuteNonQuery();
+            conn.Close();
+            dt = new DataTable();
+            adp.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                cmbSup.Items.Add(dt.Rows[i][0].ToString());
+            }
         }
 
         private void showSupPurchOrder() //supplier
@@ -332,6 +355,77 @@ namespace Jacam_Merchat
                 }
                 dgvPO.ClearSelection();
             }
+        }
+
+        public DataTable data;
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (user_type == 4)
+            {
+
+            }
+            else if(user_type == 1)
+            {
+                printDialog1.Document = printDocument1;
+                if (printDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument1.Print();
+                }
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int x = 50;
+            int y = 50;
+            e.Graphics.DrawString("Purchase Order", new Font("Times New Roman", 18, FontStyle.Bold), Brushes.Black, x, y);
+            e.Graphics.DrawString("Date Printed:" + DateTime.Today.ToString("yyyy-MM-dd"), new Font("Times New Roman", 12, FontStyle.Italic), Brushes.Black, x += 550, 50);
+           // x = 50;
+           // y = 50;
+            //e.Graphics.DrawString("Purchase Order No.", new Font("Times New Roman", 14, FontStyle.Bold), Brushes.Black, x, y+=50);
+            //e.Graphics.DrawString("number ni siya", new Font("Times New Roman", 14, FontStyle.Bold), Brushes.Black, x + 50, y);
+            x = 50;
+            y = 100;
+            e.Graphics.DrawString("Description", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x, y);
+            e.Graphics.DrawString("QTY Bought", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 150, y);
+            e.Graphics.DrawString("Offered Price", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 150, y);
+            e.Graphics.DrawString("Supplier", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 170, y);
+            e.Graphics.DrawString("From Bid", new Font("Times New Roman", 12, FontStyle.Bold), Brushes.Black, x += 170, y);
+            x = 50;
+            y = 130;
+            int c = 0;
+            for (int i = 0; i < dgvPO.Rows.Count; i++)
+            {
+                if (dgvPO.Rows[i].Cells[9].Value.ToString() == cmbSup.Text)
+                {
+                    double price = (double)Convert.ToDouble(dgvPO.Rows[i].Cells[8].Value.ToString());
+                    e.Graphics.DrawString(dgvPO.Rows[i].Cells[7].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x, y);
+                    e.Graphics.DrawString(dgvPO.Rows[i].Cells[3].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
+                    e.Graphics.DrawString(price.ToString("c"), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 150, y);
+                    e.Graphics.DrawString(dgvPO.Rows[i].Cells[9].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 150, y);
+                    e.Graphics.DrawString(dgvPO.Rows[i].Cells[10].Value.ToString(), new Font("Times New Roman", 12, FontStyle.Regular), Brushes.Black, x += 170, y);
+                    x = 50;
+                    y += 25;
+                    c++;
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            conn.Open();
+            string sel = "SELECT prof_id FROM profile WHERE name = '"+cmbSup.Text+"'";
+            MySqlCommand comm = new MySqlCommand(sel, conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            comm.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            if (dt.Rows.Count == 1)
+            {
+                sup_id.Text = dt.Rows[0][0].ToString();
+            }
+            conn.Close();
         }
     }
 }

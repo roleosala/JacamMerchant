@@ -48,6 +48,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPOReturns = new MetroFramework.Controls.MetroTile();
+            this.btnDelRet = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -112,9 +113,9 @@
             this.btnDel.ActiveControl = null;
             this.btnDel.BackColor = System.Drawing.Color.Coral;
             this.btnDel.ForeColor = System.Drawing.Color.White;
-            this.btnDel.Location = new System.Drawing.Point(736, 329);
+            this.btnDel.Location = new System.Drawing.Point(736, 324);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(168, 72);
+            this.btnDel.Size = new System.Drawing.Size(168, 77);
             this.btnDel.TabIndex = 2;
             this.btnDel.Text = "Delivery";
             this.btnDel.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
@@ -192,7 +193,7 @@
             this.btnSale.ActiveControl = null;
             this.btnSale.BackColor = System.Drawing.Color.Coral;
             this.btnSale.ForeColor = System.Drawing.Color.White;
-            this.btnSale.Location = new System.Drawing.Point(562, 163);
+            this.btnSale.Location = new System.Drawing.Point(736, 163);
             this.btnSale.Name = "btnSale";
             this.btnSale.Size = new System.Drawing.Size(168, 155);
             this.btnSale.TabIndex = 2;
@@ -302,6 +303,22 @@
             this.btnPOReturns.UseSelectable = true;
             this.btnPOReturns.Click += new System.EventHandler(this.btnPOReturns_Click);
             // 
+            // btnDelRet
+            // 
+            this.btnDelRet.ActiveControl = null;
+            this.btnDelRet.BackColor = System.Drawing.Color.Coral;
+            this.btnDelRet.ForeColor = System.Drawing.Color.White;
+            this.btnDelRet.Location = new System.Drawing.Point(562, 163);
+            this.btnDelRet.Name = "btnDelRet";
+            this.btnDelRet.Size = new System.Drawing.Size(168, 155);
+            this.btnDelRet.TabIndex = 2;
+            this.btnDelRet.Text = "Delivery Returns";
+            this.btnDelRet.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.btnDelRet.UseCustomBackColor = true;
+            this.btnDelRet.UseCustomForeColor = true;
+            this.btnDelRet.UseSelectable = true;
+            this.btnDelRet.Click += new System.EventHandler(this.btnDelRet_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -313,6 +330,7 @@
             this.Controls.Add(this.btnPOS);
             this.Controls.Add(this.btnBidPO);
             this.Controls.Add(this.btnPurchOrderDel);
+            this.Controls.Add(this.btnDelRet);
             this.Controls.Add(this.btnSale);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnPOReturns);
@@ -358,5 +376,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MetroFramework.Controls.MetroTile btnPOReturns;
+        private MetroFramework.Controls.MetroTile btnDelRet;
     }
 }

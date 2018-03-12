@@ -874,3 +874,4 @@ C:\Users\Chardee Faye\Source\Repos\JacamMerchant4\Jacam Merchat\obj\Debug\Jacam_
 C:\Users\Chardee Faye\Source\Repos\JacamMerchant4\Jacam Merchat\obj\Debug\Jacam_Merchat.Supplier_Supplies.resources
 C:\Users\Chardee Faye\Source\Repos\JacamMerchant4\Jacam Merchat\obj\Debug\Jacam_Merchat.Sale.resources
 C:\Users\Chardee Faye\Source\Repos\JacamMerchant4\Jacam Merchat\obj\Debug\Jacam Merchant.csproj.GenerateResource.Cache
+C:\Users\Chardee Faye\Source\Repos\JacamMerchant4\Jacam Merchat\obj\Debug\Jacam_Merchat.poDeliveryReturn.resources

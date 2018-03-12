@@ -232,5 +232,15 @@ namespace Jacam_Merchat
             ret.Show();
             this.Hide();
         }
+
+        private void btnDelRet_Click(object sender, EventArgs e)
+        {
+            poDeliveryReturn ret = new poDeliveryReturn();
+            ret.user_id = user_id;
+            ret.user_type = user_type;
+            ret.prevform = this;
+            ret.Show();
+            this.Hide();
+        }
     }
 }

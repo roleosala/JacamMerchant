@@ -223,6 +223,12 @@
     <Compile Include="poBIdReturns.Designer.cs">
       <DependentUpon>poBIdReturns.cs</DependentUpon>
     </Compile>
+    <Compile Include="poDeliveryReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="poDeliveryReturn.Designer.cs">
+      <DependentUpon>poDeliveryReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrintPO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="poBIdReturns.resx">
       <DependentUpon>poBIdReturns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="poDeliveryReturn.resx">
+      <DependentUpon>poDeliveryReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintPO.resx">
       <DependentUpon>PrintPO.cs</DependentUpon>

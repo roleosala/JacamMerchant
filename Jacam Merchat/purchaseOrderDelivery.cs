@@ -223,7 +223,7 @@ namespace Jacam_Merchat
                         if (user_type == 5 || user_type == 1 && user_type != 4)
                         {
                             showDelLineSupRec(id);
-                            btnView.Text = "Receive All";
+                            btnView.Text = "Receive Items";
                             offset = 2;
                         }
                         else if (user_type == 4 && btnView.Text == "View")
@@ -354,9 +354,6 @@ namespace Jacam_Merchat
                 if (c > 0)
                 {
                     MessageBox.Show("Already Received! Cannot Receive again", "Please Choose another Item!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnView.Enabled = false;
-                    btnView.BackColor = Color.LightGray;
-                    btnView.ForeColor = Color.White;
                 }
                 else
                 {
@@ -364,7 +361,10 @@ namespace Jacam_Merchat
                 }
                 if (user_type == 5 || user_type == 1 && user_type != 4)
                 {
-                    showDelLineSupRec(int.Parse(lblPO_del_id.Text));
+                    showPurchDelStaff();
+                    btnView.Text = "View";
+                    btnRet.Hide();
+                    offset = 0;
                 }
                 else if (user_type == 4 && btnView.Text == "View")
                 {
@@ -399,6 +399,7 @@ namespace Jacam_Merchat
                     MessageBox.Show("Walay User do!");
                 }
                 offset = 0;
+                dgvDel.Columns.Remove("txt");
             }
             else
             {
@@ -435,34 +436,54 @@ namespace Jacam_Merchat
 
         private void btnRet_Click(object sender, EventArgs e)
         {
-            addDate add = new addDate();
-            add.offSet = 4;
-            add.delRet = this;
-            add.ShowDialog();
-            string ins = "INSERT INTO po_return VALUES(NULL, '"+ lblPO_del_id.Text + "', '"+det+"', '"+user_id+"');";
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand(ins, conn);
-            comm.ExecuteNonQuery();
-            string sel = "SELECT max(ret_id) FROM po_return";
-            comm = new MySqlCommand(sel, conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            comm.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-            MessageBox.Show(dt.Rows[0][0].ToString());
-            for (int i= 0; i< dgvDel.Rows.Count; i++)
+            int c = 0;
+            for (int i = 0; i < dgvDel.Rows.Count; i++)
             {
                 if (int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString()) != 0 || dgvDel.Rows[i].Cells["txt"].Value.ToString() == "")
                 {
-                    ins = "INSERT INTO po_return_line VALUES(NULL, '"+dt.Rows[0][0].ToString()+"', '"+dgvDel.Rows[i].Cells["po_del_line_id"].Value.ToString()+"', '"+ dgvDel.Rows[i].Cells["item_id"].Value.ToString() + "', '"+ dgvDel.Rows[i].Cells["txt"].Value.ToString() + "')";
-                    comm = new MySqlCommand(ins, conn);
-                    comm.ExecuteNonQuery();
-                    MessageBox.Show(ins);
+                    c++;
                 }
             }
-            MessageBox.Show("Successfully Returned!","",MessageBoxButtons.OK, MessageBoxIcon.Information);
-            conn.Close();
-            showDelLineSupRec(int.Parse(lblPO_del_id.Text));
+            if (c > 0)
+            {
+                addDate add = new addDate();
+                add.offSet = 4;
+                add.delRet = this;
+                add.ShowDialog();
+                string ins = "INSERT INTO po_return VALUES(NULL, '" + lblPO_del_id.Text + "', '" + det + "', '" + user_id + "');";
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand(ins, conn);
+                comm.ExecuteNonQuery();
+                string sel = "SELECT max(ret_id) FROM po_return";
+                comm = new MySqlCommand(sel, conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                comm.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                MessageBox.Show(dt.Rows[0][0].ToString());
+                for (int i = 0; i < dgvDel.Rows.Count; i++)
+                {
+                    if (int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString()) != 0 || dgvDel.Rows[i].Cells["txt"].Value.ToString() == "")
+                    {
+                        ins = "INSERT INTO po_return_line VALUES(NULL, '" + dt.Rows[0][0].ToString() + "', '" + dgvDel.Rows[i].Cells["po_del_line_id"].Value.ToString() + "', '" + dgvDel.Rows[i].Cells["item_id"].Value.ToString() + "', '" + dgvDel.Rows[i].Cells["txt"].Value.ToString() + "')";
+                        comm = new MySqlCommand(ins, conn);
+                        comm.ExecuteNonQuery();
+                        MessageBox.Show(ins);
+                    }
+                }
+                MessageBox.Show("Successfully Returned!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+                showDelLineSupRec(int.Parse(lblPO_del_id.Text));
+            }
+            else
+            {
+                MessageBox.Show("You must return more than 0 items!","", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
