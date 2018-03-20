@@ -36,6 +36,7 @@
             // 
             this.dgvRet.AllowUserToAddRows = false;
             this.dgvRet.AllowUserToDeleteRows = false;
+            this.dgvRet.BackgroundColor = System.Drawing.Color.White;
             this.dgvRet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRet.Location = new System.Drawing.Point(36, 100);
             this.dgvRet.Name = "dgvRet";
@@ -51,10 +52,11 @@
             this.ClientSize = new System.Drawing.Size(810, 581);
             this.Controls.Add(this.dgvRet);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "addReturns";
             this.Padding = new System.Windows.Forms.Padding(33, 97, 33, 32);
             this.Text = "addReturns";
+            this.Load += new System.EventHandler(this.addReturns_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRet)).EndInit();
             this.ResumeLayout(false);
 

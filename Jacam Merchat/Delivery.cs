@@ -21,7 +21,6 @@ namespace Jacam_Merchat
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
-            btnAdd.Hide();
         }
         public void sales() //Jacam
         {
@@ -43,6 +42,21 @@ namespace Jacam_Merchat
             dgvDel.Columns[6].HeaderText = "Delivery Receipt";
             dgvDel.Columns[7].HeaderText = "Date Delivered";
             dgvDel.Columns[8].HeaderText = "Reference Number";
+            dgvDel.Columns[8].HeaderText = "Delivery Cost";
+            for (int i = 0;i < dgvDel.Rows.Count; i++)
+            {
+                if (int.Parse(dgvDel.Rows[i].Cells[5].Value.ToString()) == 0)
+                {
+                    dgvDel.Rows[i].Cells[5].Value = "Delivered";
+                    dgvDel.Rows[i].Cells[5].Style.ForeColor = Color.Green;
+                }
+                else
+                {
+                    dgvDel.Rows[i].Cells[5].Value = "On Delivery";
+                    dgvDel.Rows[i].Cells[5].Style.ForeColor = Color.Red;
+                }
+                    
+            }
             dgvDel.ClearSelection();
         }
         public void showDel() // sup
@@ -86,29 +100,10 @@ namespace Jacam_Merchat
             int ri = dgvDel.CurrentRow.Index;
             if (ri >= 0 && user_type == 1)
             {
-                string ch = "SELECT * FROM delivery WHERE order_id = '"+ dgvDel.Rows[ri].Cells[0].Value.ToString() +"'";
-                conn.Open();
-                MySqlCommand comm = new MySqlCommand(ch, conn);
-                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-                comm.ExecuteNonQuery();
-                conn.Close();
-                DataTable dt = new DataTable();
-                adp.Fill(dt);
-                if (dt.Rows.Count == 0)
-                {
-                    addAddress add = new addAddress();
-                    add.user_id = user_id;
-                    add.user_type = user_type;
-                    add.order_id = dgvDel.Rows[ri].Cells[0].Value.ToString();
-                    add.rn = dgvDel.Rows[ri].Cells[5].Value.ToString();
-                    add.ShowDialog();
-                }else
-                {
-                    MessageBox.Show("This order is already on delivery please select another order to be delivered","Delivered!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnAdd.Enabled = false;
-                    btnAdd.BackColor = Color.LightGray;
-                    btnAdd.ForeColor = Color.White;
-                }
+                addReturns add = new addReturns();
+                add.del_id = dgvDel.Rows[ri].Cells[0].ToString();
+                add.del = this;
+                add.ShowDialog();
             }
         }
 
@@ -132,7 +127,7 @@ namespace Jacam_Merchat
                 sales();
             }
             int ri = 0;
-            if (ri >= 0 && user_type == 1)
+            if (ri >= 0 && user_type == 1 && dgvDel.Rows.Count > 0)
             {
                 string ch = "SELECT * FROM delivery WHERE order_id = '" + dgvDel.Rows[ri].Cells[0].Value.ToString() + "'";
                 conn.Open();

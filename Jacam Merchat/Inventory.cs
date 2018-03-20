@@ -28,6 +28,7 @@ namespace Jacam_Merchat
             showSO();
             showSI();
             lblId.Hide();
+            showSOR();
         }
         private void showInv()
         {
@@ -78,6 +79,25 @@ namespace Jacam_Merchat
             dgvSI.Columns[3].HeaderText = "Date Added";
             dgvSI.Columns[4].HeaderText = "From Bid";
             dgvSI.ClearSelection();
+        }
+
+        private void showSOR()
+        {
+            string sel = "SELECT i.des, so.qty, p.name, so.date, pr.rn FROM stock_out_ret so LEFT JOIN inventory i ON i.item_id = so.item_id LEFT JOIN profile p ON p.prof_id = so.prof_id LEFT JOIN po_return pr ON pr.ret_id = so.ret_id;";
+            conn.Open();
+            MySqlCommand comm = new MySqlCommand(sel, conn);
+            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+            comm.ExecuteNonQuery();
+            conn.Close();
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dgvSoR.DataSource = dt;
+            dgvSoR.Columns[0].HeaderText = "Description";
+            dgvSoR.Columns[1].HeaderText = "Returned QTY";
+            dgvSoR.Columns[2].HeaderText = "Returned BY";
+            dgvSoR.Columns[3].HeaderText = "Date Returned";
+            dgvSoR.Columns[4].HeaderText = "Reference No.";
+            dgvSoR.ClearSelection();
         }
 
         private void Inventory_FormClosing(object sender, FormClosingEventArgs e)
@@ -209,6 +229,16 @@ namespace Jacam_Merchat
                 x = 50;
                 y += 25;
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

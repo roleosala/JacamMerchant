@@ -47,7 +47,7 @@
             this.dgvRet.ReadOnly = true;
             this.dgvRet.RowHeadersVisible = false;
             this.dgvRet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRet.Size = new System.Drawing.Size(996, 633);
+            this.dgvRet.Size = new System.Drawing.Size(847, 454);
             this.dgvRet.TabIndex = 0;
             this.dgvRet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRet_CellContentClick);
             // 
@@ -56,9 +56,9 @@
             this.btnUpdDate.ActiveControl = null;
             this.btnUpdDate.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnUpdDate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdDate.Location = new System.Drawing.Point(907, 739);
+            this.btnUpdDate.Location = new System.Drawing.Point(757, 560);
             this.btnUpdDate.Name = "btnUpdDate";
-            this.btnUpdDate.Size = new System.Drawing.Size(125, 46);
+            this.btnUpdDate.Size = new System.Drawing.Size(126, 46);
             this.btnUpdDate.TabIndex = 1;
             this.btnUpdDate.Text = "Update Date";
             this.btnUpdDate.UseCustomBackColor = true;
@@ -70,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 780);
+            this.ClientSize = new System.Drawing.Size(925, 641);
             this.Controls.Add(this.btnUpdDate);
             this.Controls.Add(this.dgvRet);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

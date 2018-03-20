@@ -37,7 +37,7 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblSup = new System.Windows.Forms.Label();
             this.cmbSup = new System.Windows.Forms.ComboBox();
             this.sup_id = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPO)).BeginInit();
@@ -51,6 +51,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPO.BackgroundColor = System.Drawing.Color.White;
             this.dgvPO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPO.Location = new System.Drawing.Point(38, 138);
             this.dgvPO.Margin = new System.Windows.Forms.Padding(5);
@@ -132,14 +133,14 @@
             this.printDocument1.DocumentName = global::Jacam_Merchat.Properties.Settings.Default.PurchaseOderNo;
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // label2
+            // lblSup
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(497, 108);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 21);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Supplier";
+            this.lblSup.AutoSize = true;
+            this.lblSup.Location = new System.Drawing.Point(497, 108);
+            this.lblSup.Name = "lblSup";
+            this.lblSup.Size = new System.Drawing.Size(71, 21);
+            this.lblSup.TabIndex = 9;
+            this.lblSup.Text = "Supplier";
             // 
             // cmbSup
             // 
@@ -166,7 +167,7 @@
             this.ClientSize = new System.Drawing.Size(931, 732);
             this.Controls.Add(this.sup_id);
             this.Controls.Add(this.cmbSup);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblSup);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.lblPo_Bid_id);
             this.Controls.Add(this.lblRn);
@@ -198,7 +199,7 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSup;
         private System.Windows.Forms.ComboBox cmbSup;
         private System.Windows.Forms.Label sup_id;
     }

@@ -45,6 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDel.BackgroundColor = System.Drawing.Color.White;
             this.dgvDel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDel.Location = new System.Drawing.Point(38, 140);
             this.dgvDel.Margin = new System.Windows.Forms.Padding(5);
@@ -101,6 +102,7 @@
             // btnRet
             // 
             this.btnRet.ActiveControl = null;
+            this.btnRet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRet.Location = new System.Drawing.Point(708, 655);
             this.btnRet.Name = "btnRet";
             this.btnRet.Size = new System.Drawing.Size(85, 42);

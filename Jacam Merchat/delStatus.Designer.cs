@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClient = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,6 +51,8 @@
             this.lblDelDate = new System.Windows.Forms.Label();
             this.btnUp = new MetroFramework.Controls.MetroTile();
             this.lbl_Del_id = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblDateRec = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,16 +95,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(427, 171);
+            this.label3.Location = new System.Drawing.Point(427, 204);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 21);
             this.label3.TabIndex = 2;
             this.label3.Text = "Status:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblStat
             // 
             this.lblStat.AutoSize = true;
-            this.lblStat.Location = new System.Drawing.Point(496, 171);
+            this.lblStat.Location = new System.Drawing.Point(496, 204);
             this.lblStat.Name = "lblStat";
             this.lblStat.Size = new System.Drawing.Size(85, 21);
             this.lblStat.TabIndex = 3;
@@ -171,14 +174,14 @@
             this.dgvItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvItems.GridColor = System.Drawing.Color.Black;
             this.dgvItems.Location = new System.Drawing.Point(36, 326);
             this.dgvItems.MultiSelect = false;
@@ -278,13 +281,33 @@
             this.lbl_Del_id.TabIndex = 15;
             this.lbl_Del_id.Text = "del_id";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(427, 169);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(153, 21);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Delivery Received:";
+            // 
+            // lblDateRec
+            // 
+            this.lblDateRec.AutoSize = true;
+            this.lblDateRec.Location = new System.Drawing.Point(586, 169);
+            this.lblDateRec.Name = "lblDateRec";
+            this.lblDateRec.Size = new System.Drawing.Size(42, 21);
+            this.lblDateRec.TabIndex = 17;
+            this.lblDateRec.Text = "N/A";
+            // 
             // delStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 654);
             this.Controls.Add(this.btnUp);
+            this.Controls.Add(this.lblDateRec);
             this.Controls.Add(this.lblDelDate);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lbl_Del_id);
             this.Controls.Add(this.lblOrder_id);
@@ -342,5 +365,7 @@
         private System.Windows.Forms.Label lblDelDate;
         private MetroFramework.Controls.MetroTile btnUp;
         private System.Windows.Forms.Label lbl_Del_id;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblDateRec;
     }
 }

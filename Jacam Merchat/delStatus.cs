@@ -83,6 +83,14 @@ namespace Jacam_Merchat
                 lblPC.Text = dt.Rows[0]["postal"].ToString();
                 lblOrder.Text = dt.Rows[0]["rn"].ToString();
                 lblDelDate.Text = DateTime.Parse(dt.Rows[0]["del_date"].ToString()).ToString("yyyy-MM-dd");
+                if (dt.Rows[0]["rec_date"].ToString() == "")
+                {
+                    lblDateRec.Text = "N/A";
+                }
+                else
+                {
+                    lblDateRec.Text = Convert.ToDateTime(dt.Rows[0]["rec_date"].ToString()).ToString("yyyy-MM-dd");
+                }
             }
         }
 
@@ -119,7 +127,7 @@ namespace Jacam_Merchat
                 {
                     if (dt.Rows[0][0].ToString() == "1")
                     {
-                        string upd = "UPDATE delivery SET status = 0 WHERE del_id = '" + lbl_Del_id.Text + "'";
+                        string upd = "UPDATE delivery SET status = 0, rec_date = '"+DateTime.Today.ToString("yyyy-MM-dd")+"' WHERE del_id = '" + lbl_Del_id.Text + "'";
                         comm = new MySqlCommand(upd, conn);
                         comm.ExecuteNonQuery();
                         MessageBox.Show("You have successfully updated the status to DELIVERED!", "Succesful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -132,7 +140,18 @@ namespace Jacam_Merchat
                     }
                 }
                 conn.Close();
+                se();
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

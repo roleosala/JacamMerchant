@@ -32,6 +32,8 @@
             this.btnRem = new MetroFramework.Controls.MetroTile();
             this.btnCheckOut = new MetroFramework.Controls.MetroTile();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBid.BackgroundColor = System.Drawing.Color.White;
             this.dgvBid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBid.Location = new System.Drawing.Point(38, 151);
             this.dgvBid.Margin = new System.Windows.Forms.Padding(5);
@@ -51,7 +54,7 @@
             this.dgvBid.ReadOnly = true;
             this.dgvBid.RowHeadersVisible = false;
             this.dgvBid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBid.Size = new System.Drawing.Size(623, 478);
+            this.dgvBid.Size = new System.Drawing.Size(623, 449);
             this.dgvBid.TabIndex = 0;
             // 
             // btnRem
@@ -92,11 +95,33 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(463, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 21);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Total:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(522, 40);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(57, 21);
+            this.lblTotal.TabIndex = 5;
+            this.lblTotal.Text = "label2";
+            this.lblTotal.Click += new System.EventHandler(this.label2_Click);
+            // 
             // biddedItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 666);
+            this.ClientSize = new System.Drawing.Size(699, 637);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.btnRem);
@@ -109,6 +134,7 @@
             this.Load += new System.EventHandler(this.biddedItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,5 +144,7 @@
         private MetroFramework.Controls.MetroTile btnRem;
         private MetroFramework.Controls.MetroTile btnCheckOut;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

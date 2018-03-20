@@ -43,6 +43,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRet.BackgroundColor = System.Drawing.Color.White;
             this.dgvRet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRet.Location = new System.Drawing.Point(36, 136);
             this.dgvRet.MultiSelect = false;
@@ -51,6 +52,7 @@
             this.dgvRet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRet.Size = new System.Drawing.Size(751, 485);
             this.dgvRet.TabIndex = 0;
+            this.dgvRet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRet_CellContentClick);
             // 
             // lblRetId
             // 

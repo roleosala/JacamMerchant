@@ -129,7 +129,7 @@ namespace Jacam_Merchat
                             if (int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString()) != 0)
                             {
                                 int qtyRem = int.Parse(dgvDel.Rows[i].Cells[3].Value.ToString()) - int.Parse(dgvDel.Rows[i].Cells["txt"].Value.ToString());
-                                string ins2 = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells["txt"].Value.ToString() + "')";
+                                string ins2 = "INSERT INTO po_del_line VALUES(NULL,'" + id.Rows[0][0].ToString() + "' ,'" + dgvDel.Rows[i].Cells[0].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[2].Value.ToString() + "', '" + dgvDel.Rows[i].Cells[3].Value.ToString() + "', NULL, NULL, NULL, '" + dgvDel.Rows[i].Cells["txt"].Value.ToString() + "', '"+ dgvDel.Rows[i].Cells["txt"].Value.ToString() + "')";
                                 MySqlCommand comm3 = new MySqlCommand(ins2, conn);
                                 comm3.ExecuteNonQuery();
                                 ch = "SELECT qtyRem FROM po_bid_line WHERE po_bid_line_id = '"+ dgvDel.Rows[i].Cells[0].Value.ToString() + "'";

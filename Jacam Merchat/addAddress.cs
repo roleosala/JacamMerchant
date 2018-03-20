@@ -18,11 +18,13 @@ namespace Jacam_Merchat
         public int user_type { get; set; }
         public string order_id { get; set; }
         public string rn { get; set; }
+        public int offSet { get; set; }
         public addAddress()
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
-            lblId.Hide(); 
+            lblId.Hide();
+            txtCharge.Text = "0";
         }
 
         private void addAddress_Load(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace Jacam_Merchat
 
         private void show()
         {
-            string sel = "SELECT DISTINCT(p.prof_id), name FROM profile p LEFT JOIN delivery d ON d.prof_id = p.prof_id WHERE user_type = 5 AND (d.prof_id = p.prof_id OR d.status = 0)";
+            string sel = "SELECT p.name, p.prof_id FROM profile p WHERE user_type = 5";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sel, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -44,7 +46,7 @@ namespace Jacam_Merchat
             conn.Close();
             for (int i = 0; dt.Rows.Count > i; i++)
             {
-                cmbPer.Items.Add(dt.Rows[i][1].ToString());
+                cmbPer.Items.Add(dt.Rows[i][0].ToString());
             }
         }
 
@@ -81,7 +83,7 @@ namespace Jacam_Merchat
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (txtStreet.Text != "" && txtPostalCode.Text != "" && cmbPer.Text != "" && lblId.Text != "id" && lblRn.Text != "Number XOXO")
+            if (txtStreet.Text != "" && txtPostalCode.Text != "" && cmbPer.Text != "" && lblId.Text != "id" && lblRn.Text != "Number XOXO" && txtCharge.Text != "")
             {
                 string sel = "SELECT prof_id, name FROM profile WHERE user_type = 5";
                 conn.Open();
@@ -107,8 +109,15 @@ namespace Jacam_Merchat
                     comm.ExecuteNonQuery();
                     dt = new DataTable();
                     adp.Fill(dt);
-                    int dr = int.Parse(dt.Rows[0][0].ToString()) + 1;
-                    string ins = "INSERT INTO delivery VALUES(NULL, '" + id + "', '" + order_id + "', '"+txtStreet.Text+"', '"+txtPostalCode.Text+"', '1', '"+dr+"', '"+DateTime.Now.ToString("yyyy-MM-dd")+"')";
+                    int dr;
+                    if (dt.Rows[0][0].ToString() == "" || dt.Rows[0][0].ToString() == null)
+                    {
+                        dr = 1;
+                    }else
+                    {
+                        dr = int.Parse(dt.Rows[0][0].ToString()) + 1;
+                    }
+                    string ins = "INSERT INTO delivery VALUES(NULL, '" + id + "', '" + order_id + "', '"+txtStreet.Text+"', '"+txtPostalCode.Text+"', '1', '"+dr+"', '"+DateTime.Now.ToString("yyyy-MM-dd")+"', NULL, '"+txtCharge.Text+"')";
                     comm = new MySqlCommand(ins, conn);
                     comm.ExecuteNonQuery();
                     sel = "SELECT max(del_id) FROM delivery";
@@ -147,7 +156,7 @@ namespace Jacam_Merchat
                 }
                 else
                 {
-                    MessageBox.Show("There is something wrong!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please Check all TextBox before proceeding", "There is something wrong!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
                 
@@ -158,6 +167,30 @@ namespace Jacam_Merchat
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtCharge_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtCharge.Text, "  ^ [0-9]"))
+            {
+                txtCharge.Text = "";
+            }
+            total();
+        }
+
+        private void total()
+        {
+            if (txtCharge.Text != "")
+            {
+                double total = 0;
+                for (int i = 0; i < dgvItems.Rows.Count; i++)
+                {
+                    total += (double)Convert.ToDouble(dgvItems.Rows[i].Cells["price"].Value.ToString());
+                }
+                total += (double)Convert.ToDouble(txtCharge.Text);
+                lblTotal.Text = total.ToString("c");
+            }
+            
         }
     }
 }

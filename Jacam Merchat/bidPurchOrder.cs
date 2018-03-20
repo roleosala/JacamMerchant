@@ -137,6 +137,9 @@ namespace Jacam_Merchat
                 btnDelRec.Text = "Deliver";
             }
             dgvPO.ClearSelection();
+            lblSup.Hide();
+            cmbSup.Hide();
+            btnPrint.Hide();
         }
 
         private void bidPurchOrder_FormClosing(object sender, FormClosingEventArgs e)
@@ -171,6 +174,9 @@ namespace Jacam_Merchat
             dgvPO.ClearSelection();
             btnDelRec.Enabled = true;
             btnDelRec.BackColor = Color.DeepSkyBlue;
+            lblSup.Hide();
+            cmbSup.Hide();
+            btnPrint.Hide();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -237,6 +243,9 @@ namespace Jacam_Merchat
                     showSupPurchOrderLine(id);
                     offset = 1;
                 }
+                lblSup.Show();
+                cmbSup.Show();
+                btnPrint.Show();
             }
             else
             { 
@@ -354,6 +363,9 @@ namespace Jacam_Merchat
                     }
                 }
                 dgvPO.ClearSelection();
+                lblSup.Show();
+                cmbSup.Show();
+                btnPrint.Show();
             }
         }
 

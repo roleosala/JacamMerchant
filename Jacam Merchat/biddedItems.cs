@@ -131,6 +131,7 @@ namespace Jacam_Merchat
                     MessageBox.Show("Cannot remove current item.", "Item not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            total();
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
@@ -259,9 +260,38 @@ namespace Jacam_Merchat
                 }
                 
             }*/
+            total();
         }
         
+
+        private void total()
+        {
+            if (dgvBid.Rows.Count > 0)
+            {
+                double total = 0;
+                for (int i = 0; dgvBid.Rows.Count > i; i++)
+                {
+                    total += (double)Convert.ToDouble(dgvBid.Rows[i].Cells[3].Value.ToString());
+                }
+                lblTotal.Text = total.ToString("c");
+            }
+            else
+            {
+                int z = 0;
+                lblTotal.Text = z.ToString("c");
+            }
+        }
         private void biddedItems_Load(object sender, EventArgs e)
+        {
+            total();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -40,6 +40,10 @@
             this.btnCancel = new MetroFramework.Controls.MetroTile();
             this.lblId = new System.Windows.Forms.Label();
             this.dgvItems = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCharge = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +117,7 @@
             // btnConfirm
             // 
             this.btnConfirm.ActiveControl = null;
-            this.btnConfirm.Location = new System.Drawing.Point(552, 641);
+            this.btnConfirm.Location = new System.Drawing.Point(552, 668);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(110, 41);
             this.btnConfirm.TabIndex = 8;
@@ -125,7 +129,7 @@
             // 
             this.btnCancel.ActiveControl = null;
             this.btnCancel.BackColor = System.Drawing.Color.Red;
-            this.btnCancel.Location = new System.Drawing.Point(436, 641);
+            this.btnCancel.Location = new System.Drawing.Point(436, 668);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 41);
             this.btnCancel.TabIndex = 8;
@@ -148,6 +152,7 @@
             this.dgvItems.AllowUserToAddRows = false;
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvItems.BackgroundColor = System.Drawing.Color.White;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Location = new System.Drawing.Point(36, 314);
             this.dgvItems.MultiSelect = false;
@@ -157,11 +162,50 @@
             this.dgvItems.Size = new System.Drawing.Size(626, 321);
             this.dgvItems.TabIndex = 10;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(393, 255);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(139, 21);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Delivery Charge:";
+            // 
+            // txtCharge
+            // 
+            this.txtCharge.Location = new System.Drawing.Point(397, 281);
+            this.txtCharge.Name = "txtCharge";
+            this.txtCharge.Size = new System.Drawing.Size(265, 27);
+            this.txtCharge.TabIndex = 12;
+            this.txtCharge.TextChanged += new System.EventHandler(this.txtCharge_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(32, 668);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 21);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Total:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(91, 668);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(57, 21);
+            this.lblTotal.TabIndex = 14;
+            this.lblTotal.Text = "label7";
+            // 
             // addAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 717);
+            this.ClientSize = new System.Drawing.Size(699, 744);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtCharge);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvItems);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnCancel);
@@ -200,5 +244,9 @@
         private MetroFramework.Controls.MetroTile btnCancel;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.DataGridView dgvItems;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCharge;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

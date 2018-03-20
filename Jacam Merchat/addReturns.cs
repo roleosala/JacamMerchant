@@ -16,28 +16,16 @@ namespace Jacam_Merchat
         MySqlConnection conn;
         public int user_id { get; set; }
         public int user_type { get; set; }
-        public string po_del_id { get; set; }
+        public string del_id { get; set; }
+        public Delivery del { get; set; }
         public addReturns()
         {
             InitializeComponent();
             conn = new MySqlConnection("server=localhost; database=jacammerchant; uid=root; pwd=root");
         }
-
-        public void showDel()
-        {
-            string sh = "SELECT * FROM po_del WHERE po_del_id = '"+po_del_id+"'";
-            conn.Open();
-            MySqlCommand comm = new MySqlCommand(sh, conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-            comm.ExecuteNonQuery();
-            conn.Close();
-            DataTable dt = new DataTable();
-            adp.Fill(dt);
-        }
-
         public void showDelLine()
         {
-            string sh = "SELECT * FROM po_del_line WHERE po_del_id = '" + po_del_id + "'";
+            string sh = "SELECT * FROM delivery_line WHERE del_id = '" + del_id + "'";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sh, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -53,6 +41,11 @@ namespace Jacam_Merchat
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void addReturns_Load(object sender, EventArgs e)
         {
 
         }

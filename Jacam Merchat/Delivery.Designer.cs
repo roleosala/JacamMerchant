@@ -28,29 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvDel = new System.Windows.Forms.DataGridView();
             this.btnAdd = new MetroFramework.Controls.MetroTile();
             this.btnStat = new MetroFramework.Controls.MetroTile();
+            this.dgvDel = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDel)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvDel
-            // 
-            this.dgvDel.AllowUserToAddRows = false;
-            this.dgvDel.AllowUserToDeleteRows = false;
-            this.dgvDel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDel.Location = new System.Drawing.Point(38, 102);
-            this.dgvDel.Margin = new System.Windows.Forms.Padding(5);
-            this.dgvDel.MultiSelect = false;
-            this.dgvDel.Name = "dgvDel";
-            this.dgvDel.ReadOnly = true;
-            this.dgvDel.RowHeadersVisible = false;
-            this.dgvDel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDel.Size = new System.Drawing.Size(855, 545);
-            this.dgvDel.TabIndex = 0;
-            this.dgvDel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellContentClick);
-            this.dgvDel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellDoubleClick);
             // 
             // btnAdd
             // 
@@ -61,7 +43,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(119, 42);
             this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Deliver";
+            this.btnAdd.Text = "Return";
             this.btnAdd.UseCustomBackColor = true;
             this.btnAdd.UseCustomForeColor = true;
             this.btnAdd.UseSelectable = true;
@@ -81,6 +63,25 @@
             this.btnStat.UseCustomForeColor = true;
             this.btnStat.UseSelectable = true;
             this.btnStat.Click += new System.EventHandler(this.btnStat_Click);
+            // 
+            // dgvDel
+            // 
+            this.dgvDel.AllowUserToAddRows = false;
+            this.dgvDel.AllowUserToDeleteRows = false;
+            this.dgvDel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDel.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDel.Location = new System.Drawing.Point(38, 102);
+            this.dgvDel.Margin = new System.Windows.Forms.Padding(5);
+            this.dgvDel.MultiSelect = false;
+            this.dgvDel.Name = "dgvDel";
+            this.dgvDel.ReadOnly = true;
+            this.dgvDel.RowHeadersVisible = false;
+            this.dgvDel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDel.Size = new System.Drawing.Size(855, 545);
+            this.dgvDel.TabIndex = 0;
+            this.dgvDel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellContentClick);
+            this.dgvDel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDel_CellDoubleClick);
             // 
             // Delivery
             // 
@@ -103,9 +104,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvDel;
         private MetroFramework.Controls.MetroTile btnAdd;
         private MetroFramework.Controls.MetroTile btnStat;
+        private System.Windows.Forms.DataGridView dgvDel;
     }
 }

@@ -60,14 +60,17 @@ namespace Jacam_Merchat
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            int ri = dgvCompany.CurrentRow.Index;
-            if (ri >= 0)
+            if (dgvCompany.Rows.Count > 0)
             {
-                addComControl con = new addComControl();
-                con.prevform = this;
-                con.user_id = user_id;
-                con.com_id = int.Parse(dgvCompany.Rows[ri].Cells[0].Value.ToString());
-                con.Show();
+                int ri = dgvCompany.CurrentRow.Index;
+                if (ri >= 0)
+                {
+                    addComControl con = new addComControl();
+                    con.prevform = this;
+                    con.user_id = user_id;
+                    con.com_id = int.Parse(dgvCompany.Rows[ri].Cells[0].Value.ToString());
+                    con.Show();
+                }
             }
             showCom();
         }

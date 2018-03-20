@@ -43,12 +43,16 @@
             this.dgvSI = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.tb3 = new System.Windows.Forms.TabPage();
+            this.btnPrintSO = new System.Windows.Forms.Button();
             this.dgvSO = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.printDialogSi = new System.Windows.Forms.PrintDialog();
             this.PrintDocSi = new System.Drawing.Printing.PrintDocument();
-            this.btnPrintSO = new System.Windows.Forms.Button();
             this.PrintDocSO = new System.Drawing.Printing.PrintDocument();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgvSoR = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabPage.SuspendLayout();
             this.tb1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPro)).BeginInit();
@@ -56,6 +60,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSI)).BeginInit();
             this.tb3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSO)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSoR)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage
@@ -66,6 +72,7 @@
             this.tabPage.Controls.Add(this.tb1);
             this.tabPage.Controls.Add(this.tb2);
             this.tabPage.Controls.Add(this.tb3);
+            this.tabPage.Controls.Add(this.tabPage1);
             this.tabPage.Location = new System.Drawing.Point(36, 100);
             this.tabPage.Name = "tabPage";
             this.tabPage.SelectedIndex = 0;
@@ -236,6 +243,16 @@
             this.tb3.Text = "Stocks out";
             this.tb3.UseVisualStyleBackColor = true;
             // 
+            // btnPrintSO
+            // 
+            this.btnPrintSO.Location = new System.Drawing.Point(855, 7);
+            this.btnPrintSO.Name = "btnPrintSO";
+            this.btnPrintSO.Size = new System.Drawing.Size(91, 36);
+            this.btnPrintSO.TabIndex = 5;
+            this.btnPrintSO.Text = "Print";
+            this.btnPrintSO.UseVisualStyleBackColor = true;
+            this.btnPrintSO.Click += new System.EventHandler(this.btnPrintSO_Click);
+            // 
             // dgvSO
             // 
             this.dgvSO.AllowUserToAddRows = false;
@@ -273,19 +290,61 @@
             this.PrintDocSi.DocumentName = "Stocks In";
             this.PrintDocSi.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocSi_PrintPage);
             // 
-            // btnPrintSO
-            // 
-            this.btnPrintSO.Location = new System.Drawing.Point(855, 7);
-            this.btnPrintSO.Name = "btnPrintSO";
-            this.btnPrintSO.Size = new System.Drawing.Size(91, 36);
-            this.btnPrintSO.TabIndex = 5;
-            this.btnPrintSO.Text = "Print";
-            this.btnPrintSO.UseVisualStyleBackColor = true;
-            this.btnPrintSO.Click += new System.EventHandler(this.btnPrintSO_Click);
-            // 
             // PrintDocSO
             // 
             this.PrintDocSO.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocSO_PrintPage);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.dgvSoR);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(952, 545);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Stock Out Returns";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(855, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 36);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Print";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dgvSoR
+            // 
+            this.dgvSoR.AllowUserToAddRows = false;
+            this.dgvSoR.AllowUserToDeleteRows = false;
+            this.dgvSoR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSoR.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSoR.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSoR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSoR.Location = new System.Drawing.Point(6, 49);
+            this.dgvSoR.MultiSelect = false;
+            this.dgvSoR.Name = "dgvSoR";
+            this.dgvSoR.ReadOnly = true;
+            this.dgvSoR.RowHeadersVisible = false;
+            this.dgvSoR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSoR.Size = new System.Drawing.Size(940, 472);
+            this.dgvSoR.TabIndex = 7;
+            this.dgvSoR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 21);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Stock Out History";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Inventory
             // 
@@ -310,6 +369,9 @@
             this.tb3.ResumeLayout(false);
             this.tb3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSO)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSoR)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -337,5 +399,9 @@
         private System.Windows.Forms.Button btnPrintSi;
         private System.Windows.Forms.Button btnPrintSO;
         private System.Drawing.Printing.PrintDocument PrintDocSO;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dgvSoR;
+        private System.Windows.Forms.Label label6;
     }
 }

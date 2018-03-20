@@ -50,7 +50,7 @@ namespace Jacam_Merchat
         private void show()
         {
             dgvRet.DataSource = null;
-            string sh = "SELECT * FROM po_return ";
+            string sh = "SELECT pr.*, s.name FROM jacammerchant.po_return pr LEFT JOIN profile s ON s.prof_id = pr.sup_id; ";
             conn.Open();
             MySqlCommand comm = new MySqlCommand(sh, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -66,10 +66,31 @@ namespace Jacam_Merchat
             dgvRet.Columns[3].Visible = false;
             dgvRet.Columns[4].HeaderText = "Date Receive";
             dgvRet.Columns[5].Visible = false;
+            dgvRet.Columns[6].HeaderText = "Return Number";
+            dgvRet.Columns[7].HeaderText = "Returned To";
+            DataGridViewTextBoxColumn txt = new DataGridViewTextBoxColumn();
+            txt.Name = "txt";
+            txt.HeaderText = "Status";
+            dgvRet.Columns.Add(txt);
+            for (int i = 0; i < dgvRet.Rows.Count; i++)
+            {
+                if (dgvRet.Rows[i].Cells["date_rec"].Value.ToString() == "")
+                {
+                    dgvRet.Rows[i].Cells["txt"].Value = "Not Yet Received!";
+                    dgvRet.Rows[i].Cells["txt"].Style.ForeColor = Color.Red;
+                }
+                else
+                {
+                    dgvRet.Rows[i].Cells["txt"].Value = "Received!";
+                    dgvRet.Rows[i].Cells["txt"].Style.ForeColor = Color.Green;
+                }
+            }
+            dgvRet.ReadOnly = true;
         }
 
         private void showLine(string ret_id)
         {
+            //dgvRet.Columns.Remove("txt");
             dgvRet.DataSource = null;
             string sh = "SELECT prl.*, bi.name FROM jacammerchant.po_return_line prl LEFT JOIN po_del_line pdl ON pdl.po_del_line_id = prl.po_del_line_id LEFT JOIN bid_items bi ON bi.item_id = prl.item_id WHERE prl.ret_id = '" + ret_id+"';";
             conn.Open();
@@ -85,25 +106,29 @@ namespace Jacam_Merchat
             dgvRet.Columns[2].Visible = false;
             dgvRet.Columns[3].Visible = false;
             dgvRet.Columns[4].HeaderText = "QTY Returned";
-            dgvRet.Columns[5].HeaderText = "Item Description";
+            dgvRet.Columns[5].HeaderText = "Deliverables";
+            dgvRet.Columns[6].HeaderText = "Item Description";
             offSet = 1;
-            int c = 0;
-            for (int i = 0; i < dgvRet.Rows.Count; i++)
+            if (user_type == 4)
             {
-                if (dgvRet.Rows[i].Cells["qty"].Value.ToString() != "")
-                {
-                    c++;
-                }
-            }
-            if (c > 0)
-            {
-                DataGridViewTextBoxColumn txt = new DataGridViewTextBoxColumn();
-                txt.Name = "txt";
-                txt.HeaderText = "Items to be Delivered";
-                dgvRet.Columns.Add(txt);
+                int c = 0;
                 for (int i = 0; i < dgvRet.Rows.Count; i++)
                 {
-                    dgvRet.Rows[i].Cells["txt"].Value = 0;
+                    if (dgvRet.Rows[i].Cells["qty"].Value.ToString() != "")
+                    {
+                        c++;
+                    }
+                }
+                if (c > 0)
+                {
+                    DataGridViewTextBoxColumn txt = new DataGridViewTextBoxColumn();
+                    txt.Name = "txt";
+                    txt.HeaderText = "Items to be Delivered";
+                    dgvRet.Columns.Add(txt);
+                    for (int i = 0; i < dgvRet.Rows.Count; i++)
+                    {
+                        dgvRet.Rows[i].Cells["txt"].Value = 0;
+                    }
                 }
             }
         }
@@ -133,7 +158,7 @@ namespace Jacam_Merchat
                     {
                         btnViewRet.Text = "Deliver";
                     }
-                    else if (user_type == 1     )
+                    else if (user_type == 1)
                     {
                         btnViewRet.Hide();
                     }
@@ -161,6 +186,7 @@ namespace Jacam_Merchat
                         comm = new MySqlCommand(upd, conn);
                         comm.ExecuteNonQuery();
                         MessageBox.Show("Successfully Received all Item/s.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnViewRet.Text = "Deliver";
                     }
                     else
                     {
@@ -194,12 +220,26 @@ namespace Jacam_Merchat
                     string ins = "INSERT INTO po_del_ret VALUES(NULL, '" + det + "', '" + user_id + "', '" + dr + "', NULL, NULL)";
                     comm = new MySqlCommand(ins, conn);
                     comm.ExecuteNonQuery();
+                    string select = "SELECT max(del_ret_id) FROM po_del_ret";
+                    MySqlCommand comm2 = new MySqlCommand(select, conn);
+                    MySqlDataAdapter adp2 = new MySqlDataAdapter(comm2);
+                    comm2.ExecuteNonQuery();
+                    DataTable dt2 = new DataTable();
+                    adp2.Fill(dt2);
                     int co = 0;
                     for (int i = 0; i < dgvRet.Rows.Count; i++)
                     {
-                        if (dgvRet.Rows[i].Cells["txt"].Value.ToString() != "0")
+                        if (dgvRet.Rows[i].Cells["txt"].Value.ToString() != "0" && int.Parse(dgvRet.Rows[i].Cells["txt"].Value.ToString()) > 0)
                         {
-                            ins = "INSERT INTO po_del_ret_line VALUES(NULL, '" + del_ret_id + "', '" + dgvRet.Rows[i].Cells[0].Value.ToString()+"', '"+ dgvRet.Rows[i].Cells["txt"].Value.ToString() + "')";
+                            ins = "INSERT INTO po_del_ret_line VALUES(NULL, '" + dt2.Rows[0][0].ToString() + "', '" + dgvRet.Rows[i].Cells[0].Value.ToString()+"', '"+ dgvRet.Rows[i].Cells["item_id"].Value.ToString() + "' ,'"+ dgvRet.Rows[i].Cells["txt"].Value.ToString() + "')";
+                            comm = new MySqlCommand(ins, conn);
+                            comm.ExecuteNonQuery();
+                            int excess = int.Parse(dgvRet.Rows[i].Cells[5].Value.ToString()) - int.Parse(dgvRet.Rows[i].Cells["txt"].Value.ToString());
+                            if (excess < 0)
+                            {
+                                excess = 0;
+                            }
+                            ins = "UPDATE po_return_line SET qtyRem = '"+excess+"' WHERE ret_line_id = '"+dgvRet.Rows[i].Cells[0].Value.ToString()+"'";
                             comm = new MySqlCommand(ins, conn);
                             comm.ExecuteNonQuery();
                             co++;
@@ -223,16 +263,28 @@ namespace Jacam_Merchat
         {
             if (offSet == 1)
             {
-                show();
+                if (user_type == 4)
+                {
+                    dgvRet.Columns.Remove("txt");
+                    showSup();
+                }
+                else
+                {
+                    show();
+                }
                 btnViewRet.Text = "View";
                 btnViewRet.Show();
-                dgvRet.Columns.Remove("txt");
             }
             else
             {
                 this.Close();
                 prevform.Show();
             }
+        }
+
+        private void dgvRet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

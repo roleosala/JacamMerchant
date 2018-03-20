@@ -95,6 +95,7 @@
             this.dgvDel.AllowUserToAddRows = false;
             this.dgvDel.AllowUserToDeleteRows = false;
             this.dgvDel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDel.BackgroundColor = System.Drawing.Color.White;
             this.dgvDel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDel.Location = new System.Drawing.Point(40, 207);
             this.dgvDel.MultiSelect = false;

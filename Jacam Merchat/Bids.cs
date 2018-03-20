@@ -26,6 +26,11 @@ namespace Jacam_Merchat
         private void Bids_Load(object sender, EventArgs e)
         {
             show();
+            if (user_type == 4)
+            {
+                btnNew.Hide();
+                btnCart.Hide();
+            }
         }
         public void show()
         {
